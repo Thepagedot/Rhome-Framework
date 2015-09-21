@@ -137,6 +137,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                         case 37:
                             channelList.Add(new Contact(channelName, channelType, channelIseId, channelAddress));
                             break;
+                        case 36:
+                            channelList.Add(new Shutter(channelName, channelType, channelIseId, channelAddress));
+                            break;
                         case 38:
                             channelList.Add(new DoorHandle(channelName, channelType, channelIseId, channelAddress));
                             break;
@@ -200,13 +203,15 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return roomList;
         }
 
-        public async Task SendChannelUpdateAsync(Channel channel, object value)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Ise ID of the channel to update</param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public async Task SendChannelUpdateAsync(int id, object value)
         {
-            var homeMaticChannel = channel as HomeMaticChannel;
-            if (homeMaticChannel == null)
-                throw new FormatException("Wrong Format. Please provide a HomeMatic channel to this API");
-
-            var url = new Uri(String.Format("http://{0}/config/xmlapi/statechange.cgi?ise_id={1}&new_value={2}", Ccu.Address, homeMaticChannel.IseId, value.ToString().ToLower()));
+            var url = new Uri(String.Format("http://{0}/config/xmlapi/statechange.cgi?ise_id={1}&new_value={2}", Ccu.Address, id, value.ToString().ToLower()));
             await Downloader.DownloadWebResponse(url);
         }
 
@@ -250,7 +255,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                     foreach (XElement xmlDatapoint in xmlChannel.Descendants("datapoint"))
                     {
                         var datapointType = xmlDatapoint.Attribute("type").Value;
-                        if (datapointType.Equals("STATE") || datapointType.Equals("SETPOINT"))
+                        if (datapointType.Equals("STATE") || datapointType.Equals("SETPOINT") || datapointType.Equals("LEVEL") || datapointType.Equals("STOP"))
                         {
                             int datapointIseId = Convert.ToInt32(xmlDatapoint.Attribute("ise_id").Value);
                             string datapointValue = xmlDatapoint.Attribute("value").Value;

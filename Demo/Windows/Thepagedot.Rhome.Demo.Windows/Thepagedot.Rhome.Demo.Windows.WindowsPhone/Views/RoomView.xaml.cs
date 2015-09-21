@@ -2,6 +2,8 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Thepagedot.Rhome.Demo.Win.Common;
+using Thepagedot.Rhome.Base.Models;
+using Thepagedot.Rhome.Demo.Win.ViewModels;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -86,6 +88,12 @@ namespace Thepagedot.Rhome.Demo.Win.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+
+            var currentRoom = e.Parameter as Room;
+            if (currentRoom != null)
+            {
+                RoomViewModel.Current.CurrentRoom = currentRoom;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -94,5 +102,10 @@ namespace Thepagedot.Rhome.Demo.Win.Views
         }
 
         #endregion
+
+        private void TextBlock_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            var x = RoomViewModel.Current.CurrentRoom;
+        }
     }
 }

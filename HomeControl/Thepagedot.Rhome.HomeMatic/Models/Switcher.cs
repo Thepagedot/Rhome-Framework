@@ -6,7 +6,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 {
     public class Switcher : HomeMaticChannel
     {
-        public bool State { get; set; }
+        public bool State { get; set; }        
 
         public Switcher(string name, int type, int iseId, string address) : base(name, type, iseId, address)
         {
@@ -20,8 +20,8 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            var value = datapoints.First().Value;
-            State = Convert.ToBoolean(value);
+            var value = datapoints.First().Value;            
+            State = Convert.ToBoolean(value);            
         }
 
         //public override async void ChangeState(object state)

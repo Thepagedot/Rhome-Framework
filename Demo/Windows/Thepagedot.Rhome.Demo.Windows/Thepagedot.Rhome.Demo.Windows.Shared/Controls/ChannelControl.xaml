@@ -5,15 +5,48 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:Thepagedot.Rhome.Demo.Win.Common"
-    mc:Ignorable="d"
+    xmlns:converters="using:Thepagedot.Rhome.Demo.Win.Converters"
+    mc:Ignorable="d"   
     Width="Auto"
-    Height="Auto">
+    Height="Auto" d:DesignWidth="580" d:DesignHeight="160">
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/HomeMaticItemTemplates.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Converters -->
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:BooleanToNegatedVisibilityConverter x:Key="BooleanToNegatedVisibilityConverter"/>
+            <converters:DoorHandleStateToVisibilityConverter x:Key="DoorHandleStateToVisibilityConverter" />
+            <converters:DoorHandleStateToNegatedVisibilityConverter x:Key="DoorHandleStateToNegatedVisibilityConverter" />
+
+            <DataTemplate x:Key="DoorHandleDataTemplate">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding State}" Style="{StaticResource TitleTextBlockStyle}" Margin="0,3,0,0" FontSize="25.5" FontWeight="Normal">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource HomeMaticBlue}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <Image Source="ms-appx:///Assets/Icons/lock-open.png" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Margin="0,-9,0,-2" Visibility="{Binding State, Converter={StaticResource DoorHandleStateToNegatedVisibilityConverter}}"/>
+                    <Image Source="ms-appx:///Assets/Icons/lock-close.png" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Margin="0,-9,0,-2" Visibility="{Binding State, Converter={StaticResource DoorHandleStateToVisibilityConverter}}"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ContactDataTemplate">
+                <Grid>
+                    <TextBlock x:Uid="Open" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="Open" Visibility="{Binding State, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource TitleTextBlockStyle}" Margin="0,3,0,0" FontSize="25.5" FontWeight="Normal">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource HomeMaticBlue}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock x:Uid="Closed" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="Closed" Visibility="{Binding State, Converter={StaticResource BooleanToNegatedVisibilityConverter}}" Style="{StaticResource TitleTextBlockStyle}" Margin="0,3,0,0" FontSize="25.5" FontWeight="Normal">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource HomeMaticBlue}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <Image Source="ms-appx:///Assets/Icons/lock-open.png" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Margin="0,-9,0,-2" Visibility="{Binding State, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    <Image Source="ms-appx:///Assets/Icons/lock-close.png" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Margin="0,-9,0,-2" Visibility="{Binding State, Converter={StaticResource BooleanToNegatedVisibilityConverter}}"/>
+                </Grid>
+            </DataTemplate>
 
             <DataTemplate x:Key="SwitcherDataTemplate">
                 <Grid>
@@ -25,11 +58,32 @@
                 </Grid>
             </DataTemplate>
 
+            <DataTemplate x:Key="ShutterDataTemplate">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding Level}" Style="{StaticResource TitleTextBlockStyle}" Margin="0,3,0,0" FontSize="25.5" FontWeight="Normal">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource HomeMaticBlue}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <StackPanel HorizontalAlignment="Right" Width="Auto" Height="Auto" Orientation="Horizontal">
+                        <AppBarButton HorizontalAlignment="Left" Icon="Up" Margin="0,-12,0,0" Label="appbarbutton" VerticalAlignment="Top" IsCompact="True" Click="ShutterUp_Click"/>
+                        <AppBarButton HorizontalAlignment="Left" Icon="Stop" Margin="0,-12,0,0" Label="appbarbutton" VerticalAlignment="Top" IsCompact="True" Click="ShutterDown_Click"/>
+                        <AppBarButton HorizontalAlignment="Left" Margin="0,-12,0,0" Label="appbarbutton" VerticalAlignment="Top" IsCompact="True" Click="ShutterStop_Click">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xE1FD;"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
             <common:ChannelTemplateSelector
     	        x:Key="ChannelTemplateSelector"
     	        SwitcherTemplate="{StaticResource SwitcherDataTemplate}"
     	        ContactTemplate="{StaticResource ContactDataTemplate}"
-                DoorHandleTemplate="{StaticResource DoorHandleDataTemplate}"/>
+                DoorHandleTemplate="{StaticResource DoorHandleDataTemplate}"
+                ShutterTemplate="{StaticResource ShutterDataTemplate}" />
+            
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -37,7 +91,6 @@
         <ContentControl
             ContentTemplateSelector="{StaticResource ChannelTemplateSelector}"
             Content="{Binding Channel}"
-            HorizontalContentAlignment="Stretch">
-        </ContentControl>
+            HorizontalContentAlignment="Stretch" />
     </Grid>
 </UserControl>

@@ -3,9 +3,8 @@ using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
-	public class HomeMaticDevice : Device
+	public class HomeMaticDevice : Device<HomeMaticChannel>
     {
-        public new List<HomeMaticChannel> ChannelList { get; set; }
 		public int IseId { get; set; }
 		public string Address { get; set; }
 

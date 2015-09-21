@@ -6,7 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Thepagedot.Rhome.Demo.Win.Controls"
     mc:Ignorable="d"
-    DataContext="{Binding Current, Mode=OneWay, Source={StaticResource RoomViewModel}}" RequestedTheme="Light">
+    DataContext="{Binding Current, Mode=TwoWay, Source={StaticResource RoomViewModel}}"
+    RequestedTheme="Light">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -25,8 +26,6 @@
             </CommandBar.PrimaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
-
-
 
     <Grid x:Name="LayoutRoot">
         <ScrollViewer>
@@ -57,7 +56,8 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Left"
                         Style="{StaticResource TitleTextBlockStyle}"
-                        Margin="12"/>
+                        Margin="12"
+                        Tapped="TextBlock_Tapped"/>
 
                 </Grid>
 
@@ -65,14 +65,12 @@
                     Grid.Row="1"
                     Padding="12"
                     ItemsSource="{Binding CurrentRoom.DeviceList}">
-
                     <ListView.Resources>
                         <DataTemplate x:Key="DeviceDataTemplate">
                             <Grid Margin="0,0,0,20">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="0*"/>
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
                                 <TextBlock
@@ -86,7 +84,8 @@
                                 <ListView
                                     Grid.Row="1"
                                     ItemsSource="{Binding ChannelList}"
-                                    HorizontalContentAlignment="Stretch" Margin="0" >
+                                    HorizontalContentAlignment="Stretch"
+                                    Margin="0">
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
                                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -94,10 +93,7 @@
                                     </ListView.ItemContainerStyle>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid>
-                                                <controls:ChannelControl Channel="{Binding}" HorizontalAlignment="Stretch" Background="#FF00FF46"/>
-                                            </Grid>
-
+                                            <controls:ChannelControl Channel="{Binding}" HorizontalAlignment="Stretch" Background="#FF00FF46"/>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>

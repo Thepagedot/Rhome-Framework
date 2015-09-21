@@ -27,7 +27,8 @@ namespace Thepagedot.Rhome.Demo.Win.ViewModels
 
         public void LoadSettings()
         {
-            SettingsConfiguration.HomeMaticSettings = new HomeMaticSettings("192.168.0.14");
+            //SettingsConfiguration.HomeMaticSettings = new HomeMaticSettings("192.168.0.14");
+            SettingsConfiguration.HomeMaticSettings = new HomeMaticSettings("192.168.127.16");
             var homeMaticCcu = new Ccu("My HomeMatic", SettingsConfiguration.HomeMaticSettings.Address);
             App.HomeMaticXmlApi = new HomeMaticXmlApi(homeMaticCcu);
         }

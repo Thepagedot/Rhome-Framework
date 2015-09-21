@@ -47,6 +47,7 @@
     <Compile Include="Models\HomeMaticRoom.cs" />
     <Compile Include="Models\HomeMaticSettings.cs" />
     <Compile Include="Models\Information.cs" />
+    <Compile Include="Models\Shutter.cs" />
     <Compile Include="Models\Switcher.cs" />
     <Compile Include="Models\TemperatureSlider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

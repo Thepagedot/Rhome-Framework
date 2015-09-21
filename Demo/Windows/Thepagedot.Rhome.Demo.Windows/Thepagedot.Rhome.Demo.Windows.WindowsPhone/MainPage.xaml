@@ -45,6 +45,11 @@
                                 <SolidColorBrush Color="Black"/>
                             </TextBlock.Foreground>
                         </TextBlock>
+                        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Label="appbarbutton" VerticalAlignment="Top" IsCompact="True" Margin="0,-12,0,0">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xE1FD;"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
                     </StackPanel>
                     <Grid VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,12,0">
                         <Grid.ColumnDefinitions>
