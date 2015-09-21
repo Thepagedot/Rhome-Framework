@@ -7,7 +7,7 @@ Additinally a cross platform demo applications demontrate the usage of the libra
 - HomeMatic 
 
 ### Supported Devices
-These devices can be accessed with our solution by now. Please consider that we are coninously trying to extend this lis.
+These devices can be accessed with our solution by now. Please consider that we are coninously trying to extend this list to support more devices.
 #### HomeMatic
 ##### Should work
 - Switchers
