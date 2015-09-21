@@ -8,6 +8,12 @@ Rhome stands for Remote Home and provides a unified smart home remote control li
 
 ### Supported Devices
 #### HomeMatic
+##### Should work
+- Switchers
+- Windows Contacts
+- Shutters
+
+##### Tested
 - Funk-Schalter 1-Kanal Zwischenstecker (HM-LC-Sw1-Pl)
 - Funk-Fenster-Drehgriffkontakt (HM-Sec-RHS)
 - Funk-Fensterkontakt (HM-Sec-SC-2)
