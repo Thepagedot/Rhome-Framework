@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="Thepagedot.Rhome.Demo.Win.Controls.ChannelControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:Thepagedot.Rhome.Demo.Win.Common"
+    mc:Ignorable="d"
+    Width="Auto"
+    Height="Auto">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/HomeMaticItemTemplates.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="SwitcherDataTemplate">
+                <Grid>
+                    <ToggleSwitch x:Name="OnOffSwitch" x:Uid="ToogleSwitchOnOff" Header="" VerticalAlignment="Top" IsOn="{Binding State}" HorizontalAlignment="Stretch" Margin="0,-17,0,0" Toggled="OnOffSwitch_Toggled">
+                        <ToggleSwitch.Foreground>
+                            <SolidColorBrush Color="{StaticResource HomeMaticBlue}"/>
+                        </ToggleSwitch.Foreground>
+                    </ToggleSwitch>
+                </Grid>
+            </DataTemplate>
+
+            <common:ChannelTemplateSelector
+    	        x:Key="ChannelTemplateSelector"
+    	        SwitcherTemplate="{StaticResource SwitcherDataTemplate}"
+    	        ContactTemplate="{StaticResource ContactDataTemplate}"
+                DoorHandleTemplate="{StaticResource DoorHandleDataTemplate}"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <ContentControl
+            ContentTemplateSelector="{StaticResource ChannelTemplateSelector}"
+            Content="{Binding Channel}"
+            HorizontalContentAlignment="Stretch">
+        </ContentControl>
+    </Grid>
+</UserControl>
