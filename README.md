@@ -11,3 +11,6 @@ Rhome stands for Remote Home and provides a unified smart home remote control li
 - Wireless switch (76792)
 - Wireless window handle contact (76789)
 - Wireless window contact (131775C0)
+
+## How to use
+Coming soon...
