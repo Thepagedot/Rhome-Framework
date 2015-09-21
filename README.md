@@ -1,12 +1,13 @@
 # Rhome
-Rhome stands for Remote Home and provides a unified smart home remote control library and mobile application.
+Rhome is for for (R)emote (Home) and provides a unified smart home remote control .NET library. We are targeting a solution that unites all major smart home solutions in one layer to tidy up the mess of different manufacturers and apps.
+Additinally a cross platform demo applications demontrate the usage of the library and gives you a neat smart home application for your mobile device.
 
 ## Details
-
 ### Supported Home Control solutions
 - HomeMatic 
 
 ### Supported Devices
+These devices can be accessed with our solution by now. Please consider that we are coninously trying to extend this lis.
 #### HomeMatic
 ##### Should work
 - Switchers
