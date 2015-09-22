@@ -14,14 +14,14 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 {
     public class HomeMaticXmlApi : IHomeControlApi
     {
-        private Ccu Ccu;
+        private readonly Ccu Ccu;
 
         public HomeMaticXmlApi(Ccu ccu)
         {
             this.Ccu = ccu;
         }
 
-        public async Task<List<Room>> GetRoomsAsync()
+        public async Task<IEnumerable<Room>> GetRoomsAsync()
         {
             var roomList = new List<Room>();
 
@@ -33,8 +33,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var xmlRoomList = XDocument.Parse(xmlResponse);
             foreach (var xmlRoom in xmlRoomList.Descendants("room"))
             {
-                string roomName = xmlRoom.Attribute("name").Value;
-                int roomIseId = Convert.ToInt32(xmlRoom.Attribute("ise_id").Value);
+                var roomName = xmlRoom.Attribute("name").Value;
+                var roomIseId = Convert.ToInt32(xmlRoom.Attribute("ise_id").Value);
                 var channelIdsForRoomList = new List<int>();
 
                 foreach (var xmlChannel in xmlRoom.Descendants("channel"))
@@ -49,9 +49,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return roomList;
         }
 
-        public async Task<List<Device>> GetDevicesForRoomAsync(Room room)
+        public async Task GetDevicesForRoomAsync(Room room)
         {
-            var roomDeviceList = new List<Device>();
             var stateList = await GetAllStatesAsync();
 
             var homeMaticRoom = room as HomeMaticRoom;
@@ -94,11 +93,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             {
                 throw new FormatException("Wrong Format. Please provide a HomeMatic room to this API.");
             }
-
-            return roomDeviceList;
         }
 
-        public async Task<List<Device>> GetDevicesAsync()
+        public async Task<IEnumerable<Device>> GetDevicesAsync()
         {
             var deviceList = new List<Device>();
 
@@ -108,20 +105,20 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
             // Parse xml
             var xmlDeviceList = XDocument.Parse(xmlResponse);
-            foreach (XElement xmlDevice in xmlDeviceList.Descendants("device"))
+            foreach (var xmlDevice in xmlDeviceList.Descendants("device"))
             {
-                string deviceName = xmlDevice.Attribute("name").Value;
-                int deviceIseId = Convert.ToInt32(xmlDevice.Attribute("ise_id").Value);
-                string deviceAddress = xmlDevice.Attribute("address").Value;
+                var deviceName = xmlDevice.Attribute("name").Value;
+                var deviceIseId = Convert.ToInt32(xmlDevice.Attribute("ise_id").Value);
+                var deviceAddress = xmlDevice.Attribute("address").Value;
 
                 // Get Channels
                 var channelList = new List<HomeMaticChannel>();
                 foreach (var xmlChannel in xmlDevice.Descendants("channel"))
                 {
-                    string channelName = xmlChannel.Attribute("name").Value;
-                    int channelType = Convert.ToInt32(xmlChannel.Attribute("type").Value);
-                    int channelIseId = Convert.ToInt32(xmlChannel.Attribute("ise_id").Value);
-                    string channelAddress = xmlChannel.Attribute("address").Value;
+                    var channelName = xmlChannel.Attribute("name").Value;
+                    var channelType = Convert.ToInt32(xmlChannel.Attribute("type").Value);
+                    var channelIseId = Convert.ToInt32(xmlChannel.Attribute("ise_id").Value);
+                    var channelAddress = xmlChannel.Attribute("address").Value;
 
                     switch (channelType)
                     {
@@ -152,59 +149,20 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return deviceList;
         }
 
-        public async Task<List<Room>> GetRoomsWidthDevicesAsync()
+        public async Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync()
         {
-            var deviceList = await GetDevicesAsync();
             var roomList = await GetRoomsAsync();
-            var stateList = await GetAllStatesAsync();
 
             foreach (var room in roomList)
             {
-                var homeMaticRoom = room as HomeMaticRoom;
-                if (homeMaticRoom != null)
-                {
-                    foreach (var device in deviceList)
-                    {
-                        var addDeviceToRoom = false;
-
-                        var homeMaticDevice = device as HomeMaticDevice;
-                        if (homeMaticDevice != null)
-                        {
-                            foreach (var channel in homeMaticDevice.ChannelList)
-                            {
-                                // Compare devices channels ISE_IDs with the one from the room list
-                                if (!homeMaticRoom.ChannelIdList.Contains(channel.IseId))
-                                    continue;
-
-                                // Get state from state list
-                                var datapoints = stateList.Where(d => d.ChannelIseId == channel.IseId).ToList();
-                                if (datapoints.Any())
-                                    channel.SetState(datapoints);
-
-                                // If a device has multiple channels only add it once
-                                addDeviceToRoom = true;
-                            }
-
-                            if (addDeviceToRoom)
-                                room.DeviceList.Add(device);
-                        }
-                        else
-                        {
-                            throw new FormatException("Wrong Format. Non homatic devices detected that cannot be handeld.");
-                        }
-                    }
-                }
-                else
-                {
-                    throw new FormatException("Wrong Format. Please provide a HomeMatic room to this API.");
-                }
+                await GetDevicesForRoomAsync(room);
             }
 
             return roomList;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id">Ise ID of the channel to update</param>
         /// <param name="value"></param>
@@ -257,9 +215,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                         var datapointType = xmlDatapoint.Attribute("type").Value;
                         if (datapointType.Equals("STATE") || datapointType.Equals("SETPOINT") || datapointType.Equals("LEVEL") || datapointType.Equals("STOP"))
                         {
-                            int datapointIseId = Convert.ToInt32(xmlDatapoint.Attribute("ise_id").Value);
-                            string datapointValue = xmlDatapoint.Attribute("value").Value;
-                            string datapointUnit = xmlDatapoint.Attribute("valueunit").Value;
+                            var datapointIseId = Convert.ToInt32(xmlDatapoint.Attribute("ise_id").Value);
+                            var datapointValue = xmlDatapoint.Attribute("value").Value;
+                            var datapointUnit = xmlDatapoint.Attribute("valueunit").Value;
                             stateList.Add(new Datapoint(datapointType, datapointIseId, channelIdeId, datapointValue, datapointUnit));
                         }
                     }
@@ -300,6 +258,5 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         }
 
         #endregion
-
     }
 }

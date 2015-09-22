@@ -7,14 +7,14 @@ namespace Thepagedot.Rhome.Base.Interfaces
 	public interface IHomeControlApi
 	{
         // Rooms
-        Task<List<Room>> GetRoomsAsync();
-        Task<List<Device>> GetDevicesForRoomAsync(Room room);
+        Task<IEnumerable<Room>> GetRoomsAsync();
+        Task GetDevicesForRoomAsync(Room room);
 
         // Devices
-        Task<List<Device>> GetDevicesAsync();
+        Task<IEnumerable<Device>> GetDevicesAsync();
 
         // Rooms and Devices
-        Task<List<Room>> GetRoomsWidthDevicesAsync();
+        Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync();
 
         // States
 	    Task SendChannelUpdateAsync(int id, object value);
