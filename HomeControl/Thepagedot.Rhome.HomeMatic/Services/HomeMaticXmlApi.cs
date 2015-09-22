@@ -26,8 +26,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var roomList = new List<Room>();
 
             // Get xml response from API
-            var url = new Uri(String.Format("http://{0}/config/xmlapi/roomlist.cgi", Ccu.Address));
-            var xmlResponse = await Downloader.DownloadWebResponse(url);
+            var url = String.Format("http://{0}/config/xmlapi/roomlist.cgi", Ccu.Address);
+            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
 
             // Parse xml
             var xmlRoomList = XDocument.Parse(xmlResponse);
@@ -100,8 +100,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var deviceList = new List<Device>();
 
             // Get xml response from API
-            var url = new Uri(String.Format("http://{0}/config/xmlapi/devicelist.cgi", Ccu.Address));
-            var xmlResponse = await Downloader.DownloadWebResponse(url);
+            var url = String.Format("http://{0}/config/xmlapi/devicelist.cgi", Ccu.Address);
+            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
 
             // Parse xml
             var xmlDeviceList = XDocument.Parse(xmlResponse);
@@ -169,7 +169,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         /// <returns></returns>
         public async Task SendChannelUpdateAsync(int id, object value)
         {
-            var url = new Uri(String.Format("http://{0}/config/xmlapi/statechange.cgi?ise_id={1}&new_value={2}", Ccu.Address, id, value.ToString().ToLower()));
+            var url = String.Format("http://{0}/config/xmlapi/statechange.cgi?ise_id={1}&new_value={2}", Ccu.Address, id, value.ToString().ToLower());
             await Downloader.DownloadWebResponse(url);
         }
 
@@ -180,7 +180,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                 throw new FormatException("Wrong Format. Please provide a HomeMatic channel to this API");
 
             // Get xml response from API
-            var url = new Uri(String.Format("http://{0}/config/xmlapi/state.cgi?channel_id={1}", Ccu.Address, homeMaticChannel.IseId));
+            var url = String.Format("http://{0}/config/xmlapi/state.cgi?channel_id={1}", Ccu.Address, homeMaticChannel.IseId);
             var xmlResponse = await Downloader.DownloadWebResponse(url);
 
             // Parse xml
@@ -190,7 +190,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                 var datapointType = xmlDatapoint.Attribute("type").Value;
                 if (datapointType.Equals("STATE") || datapointType.Equals("SETPOINT"))
                 {
-                    string datapointValue = xmlDatapoint.Attribute("value").Value;
+                    var datapointValue = xmlDatapoint.Attribute("value").Value;
                     return datapointValue;
                 }
             }
@@ -201,9 +201,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         private async Task<List<Datapoint>> GetAllStatesAsync()
         {
             var stateList = new List<Datapoint>();
-            var url = new Uri(String.Format("http://{0}/config/xmlapi/statelist.cgi", Ccu.Address));
+            var url = String.Format("http://{0}/config/xmlapi/statelist.cgi", Ccu.Address);
+            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 20));
 
-            var xmlResponse = await Downloader.DownloadWebResponse(url);
             var xmlDeviceList = XDocument.Parse(xmlResponse);
             foreach (XElement xmlDevice in xmlDeviceList.Descendants("device"))
             {
@@ -233,7 +233,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         {
             try
             {
-                await Downloader.DownloadWebResponse(new Uri(String.Format("http://{0}", Ccu.Address)));
+                await Downloader.DownloadWebResponse(String.Format("http://{0}", Ccu.Address));
                 Debug.WriteLine("CCU found. IP-Address: " + Ccu.Address);
             }
             catch (WebException e)
@@ -244,7 +244,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
             try
             {
-                XDocument xmlApiVersion = XDocument.Parse(await Downloader.DownloadWebResponse(new Uri(String.Format("http://{0}/addons/xmlapi/version.cgi", Ccu.Address))));
+                XDocument xmlApiVersion = XDocument.Parse(await Downloader.DownloadWebResponse(String.Format("http://{0}/addons/xmlapi/version.cgi", Ccu.Address)));
                 string version = xmlApiVersion.Element("version").Value;
                 Debug.WriteLine("XML API found. Version: " + version);
             }
