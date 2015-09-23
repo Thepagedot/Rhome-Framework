@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{A70DD12F-A287-4518-8CCC-FE93C72B9670}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{0F2B59AF-C3E9-4123-9C6A-5F860FE1CD5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thepagedot.Rhome.Demo.Shared", "Demo\Shared\Thepagedot.Rhome.Demo.Shared\Thepagedot.Rhome.Demo.Shared.csproj", "{E787A5C5-262C-4F6C-85C8-6096E40F9E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thepagedot.Rhome.Hue", "HomeControl\Thepagedot.Rhome.Hue\Thepagedot.Rhome.Hue.csproj", "{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -116,6 +118,22 @@ Global
 		{E787A5C5-262C-4F6C-85C8-6096E40F9E08}.Release|ARM.ActiveCfg = Release|Any CPU
 		{E787A5C5-262C-4F6C-85C8-6096E40F9E08}.Release|x64.ActiveCfg = Release|Any CPU
 		{E787A5C5-262C-4F6C-85C8-6096E40F9E08}.Release|x86.ActiveCfg = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|x64.Build.0 = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Debug|x86.Build.0 = Debug|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|ARM.Build.0 = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|x64.ActiveCfg = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|x64.Build.0 = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|x86.ActiveCfg = Release|Any CPU
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,5 +148,6 @@ Global
 		{EF0E99DF-41E4-4CB3-A6DB-B8D911E6A3BB} = {8A1D8AF3-3B13-4C11-B784-C000BA31243E}
 		{0F2B59AF-C3E9-4123-9C6A-5F860FE1CD5F} = {A70DD12F-A287-4518-8CCC-FE93C72B9670}
 		{E787A5C5-262C-4F6C-85C8-6096E40F9E08} = {0F2B59AF-C3E9-4123-9C6A-5F860FE1CD5F}
+		{A25134AB-4BCA-41DA-835B-D9F834F4B5AE} = {8A1D8AF3-3B13-4C11-B784-C000BA31243E}
 	EndGlobalSection
 EndGlobal

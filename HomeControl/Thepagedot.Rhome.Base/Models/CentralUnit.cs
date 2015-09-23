@@ -16,6 +16,7 @@
 
     public enum CentralUnitBrand
     {
-        HomeMatic
+        HomeMatic,
+        Hue
     }
 }
