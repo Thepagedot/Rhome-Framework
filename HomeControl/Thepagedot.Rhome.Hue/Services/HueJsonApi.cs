@@ -5,11 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Thepagedot.Rhome.Base.Interfaces;
 using Thepagedot.Rhome.Base.Models;
+using Thepagedot.Rhome.Hue.Models;
 
 namespace Thepagedot.Rhome.Hue.Services
 {
     public class HueJsonApi : IHomeControlApi
     {
+		private readonly Bridge Bridge;
+
+		public HueJsonApi (Bridge bridge)
+		{
+			this.Bridge = bridge;
+		}
+
         public Task<bool> CheckConnectionAsync()
         {
             throw new NotImplementedException();
