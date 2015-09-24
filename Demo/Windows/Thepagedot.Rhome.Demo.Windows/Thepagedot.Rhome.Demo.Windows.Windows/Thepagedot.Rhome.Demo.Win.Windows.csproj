@@ -105,7 +105,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <ProjectReference Include="..\..\..\..\HomeControl\Thepagedot.Rhome.Base\Thepagedot.Rhome.Base.csproj">
-      <Project>{FEF4C43A-4D06-477E-BE6F-8709EA321397}</Project>
+      <Project>{fef4c43a-4d06-477e-be6f-8709ea321397}</Project>
       <Name>Thepagedot.Rhome.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\HomeControl\Thepagedot.Rhome.HomeMatic\Thepagedot.Rhome.HomeMatic.csproj">
