@@ -47,7 +47,6 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Datapoint.cs" />
     <Compile Include="Models\DoorHandle.cs" />
-    <Compile Include="Models\EmptyClass.cs" />
     <Compile Include="Models\HomeMaticChannel.cs" />
     <Compile Include="Models\HomeMaticDevice.cs" />
     <Compile Include="Models\HomeMaticRoom.cs" />
