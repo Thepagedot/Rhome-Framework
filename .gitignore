@@ -194,3 +194,21 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+#Xamarin
+Components
+packages
+Resource.designer.cs
+
+obj
+bin
+test-results
+
+*.pidb
+*.userprefs
+*.swp
+*.DS_Store
+*.nib
+*.suo
+*.user
+*.pfx
