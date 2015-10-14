@@ -19,7 +19,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             if (view == null)
                 view = LayoutInflater.From(Context).Inflate(Resource.Layout.RoomItem, null);
 
-            view.FindViewById<TextView>(Resource.Id.room_name).Text = GetItem(position).Name;
+            view.FindViewById<TextView>(Resource.Id.tvRoomName).Text = GetItem(position).Name;
 
             return view;
         }

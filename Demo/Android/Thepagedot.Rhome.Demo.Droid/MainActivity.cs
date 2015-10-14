@@ -26,7 +26,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             base.OnCreate(bundle);
 
             if (DataHolder.Current == null)
-                new DataHolder();            
+                new DataHolder();         
 
             SetContentView(Resource.Layout.Main);
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -57,8 +57,8 @@ namespace Thepagedot.Rhome.Demo.Droid
             var homeControl = DataHolder.Current.CurrentHomeControl as HomeMaticXmlApi;
             var rooms = await homeControl.GetRoomsAsync();
 
-            var lvRooms = FindViewById<ListView>(Resource.Id.lvRooms);
-            lvRooms.Adapter = new RoomAdapter(this, 0, rooms.ToList());
+            var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
+            gvRooms.Adapter = new RoomAdapter(this, 0, rooms.ToList());
         }
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)

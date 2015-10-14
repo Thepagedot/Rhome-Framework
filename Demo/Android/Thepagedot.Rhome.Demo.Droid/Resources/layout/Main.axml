@@ -17,10 +17,14 @@
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        <ListView
-            android:id="@+id/lvRooms"
+        <GridView
+            android:id="@+id/gvRooms"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:verticalSpacing="0dp"
+            android:horizontalSpacing="0dp"
+            android:stretchMode="columnWidth"
+            android:numColumns="2" />
     </LinearLayout>
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
