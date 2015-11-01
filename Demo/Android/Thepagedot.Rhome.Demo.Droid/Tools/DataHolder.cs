@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Thepagedot.Rhome.Base.Interfaces;
 
 namespace Thepagedot.Rhome.Demo.Droid

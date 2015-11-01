@@ -195,7 +195,7 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
-#Xamarin
+#Xamarin Additions
 Components
 packages
 Resource.designer.cs
