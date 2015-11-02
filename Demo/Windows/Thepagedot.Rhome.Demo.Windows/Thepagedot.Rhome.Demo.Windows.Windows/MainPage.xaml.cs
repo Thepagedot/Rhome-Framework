@@ -14,5 +14,10 @@ namespace Thepagedot.Rhome.Demo.Win
         {
             this.InitializeComponent();
         }
+
+        private void RoomGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

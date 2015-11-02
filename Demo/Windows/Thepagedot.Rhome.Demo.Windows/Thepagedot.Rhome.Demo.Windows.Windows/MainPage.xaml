@@ -4,9 +4,56 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    DataContext="{Binding Current, Source={StaticResource MainViewModel}}"
+    mc:Ignorable="d" RequestedTheme="Light">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Background>
+        <ImageBrush Stretch="UniformToFill" ImageSource="Assets/Background/Background.jpg"/>
+    </Page.Background>
+
+    <Grid>
+    	<Grid.Background>
+    		<ImageBrush ImageSource="Assets/Background/Background.jpg" Stretch="UniformToFill"/>
+    	</Grid.Background>
+    	<Hub Header="Hub">
+    		<HubSection Header="HubSection 0" Width="1000">
+    			<HubSection.Background>
+    				<ImageBrush Stretch="UniformToFill" ImageSource="Assets/Header/House.jpg"/>
+    			</HubSection.Background>
+    			<DataTemplate>
+    				<Grid/>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection Header="Rooms">
+    			<DataTemplate>
+    				<Grid>
+                        <GridView ItemsSource="{Binding RoomList}" ItemClick="RoomGridView_ItemClick">
+                            <GridView.Resources>
+                                <DataTemplate x:Key="RoomDataTemplate">
+                                    <Border BorderThickness="1" Margin="0" BorderBrush="Black" Background="{StaticResource LightGrayColorBrush}">
+                                        <Grid Width="125" Height="125">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="60" CornerRadius="30" Grid.RowSpan="2">
+                                                <Border.Background>
+                                                    <ImageBrush Stretch="UniformToFill" ImageSource="Assets/Header/House.jpg"/>
+                                                </Border.Background>
+                                            </Border>
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Name}" Margin="0,0,0,5" Grid.Row="1" TextAlignment="Center" Foreground="{StaticResource SecondaryColorBrush}"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </GridView.Resources>
+                            <GridView.ItemTemplate>
+                                <StaticResource ResourceKey="RoomDataTemplate"/>
+                            </GridView.ItemTemplate>
+                        </GridView>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    	</Hub>
 
     </Grid>
 </Page>
