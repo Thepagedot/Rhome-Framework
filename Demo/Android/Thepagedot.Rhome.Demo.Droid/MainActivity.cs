@@ -45,11 +45,12 @@ namespace Thepagedot.Rhome.Demo.Droid
             drawerToggle.SyncState();          
 
             await DataHolder.Current.Init();
+            DataHolder.Current.Rooms.Add(new HomeMaticRoom("asd", 0, null));
 
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
             gvRooms.ItemClick += GvRooms_ItemClick;
-            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms);
+            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));           
         }
 
         void GvRooms_ItemClick (object sender, AdapterView.ItemClickEventArgs e)

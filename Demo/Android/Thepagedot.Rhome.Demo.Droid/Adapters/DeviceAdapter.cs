@@ -17,8 +17,6 @@ namespace Thepagedot.Rhome.Demo.Droid
             var view = convertView ?? LayoutInflater.From(Context).Inflate(Resource.Layout.Device, null);
             var device = GetItem(position);
 
-            view.FindViewById<TextView>(Resource.Id.tvName).Text = device.Name;
-
             if (device is HomeMaticDevice)
             {
                 var adapter = new HomeMaticChannelAdapter(Context, 0, ((HomeMaticDevice)device).ChannelList);

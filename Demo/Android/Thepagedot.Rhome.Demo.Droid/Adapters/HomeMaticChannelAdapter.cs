@@ -15,7 +15,7 @@ namespace Thepagedot.Rhome.Demo.Droid
         {            
             var channel = GetItem(position);
             var view = CreateViewFor(Context, channel);
-            //view.FindViewById<TextView>(Resource.Id.tvName).Text = channel.Name;
+            view.FindViewById<TextView>(Resource.Id.tvName).Text = channel.Name;
 
             return view;
         }

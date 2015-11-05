@@ -1397,6 +1397,9 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f060065
 			public const int default_margin = 2131099749;
 			
+			// aapt resource value: 0x7f060066
+			public const int default_margin_half = 2131099750;
+			
 			// aapt resource value: 0x7f060053
 			public const int design_appbar_elevation = 2131099731;
 			
