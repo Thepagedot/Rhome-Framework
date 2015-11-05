@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
-    [Activity(Label = "Rhome", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Rhome", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
         DrawerLayout drawerLayout;
