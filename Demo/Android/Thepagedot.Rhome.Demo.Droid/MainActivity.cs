@@ -44,8 +44,8 @@ namespace Thepagedot.Rhome.Demo.Droid
             drawerLayout.SetDrawerListener(drawerToggle);
             drawerToggle.SyncState();          
 
+            // Load data
             await DataHolder.Current.Init();
-            DataHolder.Current.Rooms.Add(new HomeMaticRoom("asd", 0, null));
 
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
