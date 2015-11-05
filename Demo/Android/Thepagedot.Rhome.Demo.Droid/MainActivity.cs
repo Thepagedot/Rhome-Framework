@@ -42,23 +42,26 @@ namespace Thepagedot.Rhome.Demo.Droid
             // Create ActionBarDrawerToggle button and add it to the toolbar
             var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.SetDrawerListener(drawerToggle);
-            drawerToggle.SyncState();
+            drawerToggle.SyncState();          
 
-            // Demo Data
-            var ccu = new Ccu("HomeMatic Robby", "192.168.0.14");
-            var homematic = new HomeMaticXmlApi(ccu);
-            DataHolder.Current.CurrentHomeControl = homematic;
+            var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
+            gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
+            gvRooms.ItemClick += GvRooms_ItemClick;
+            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms);
         }
 
-        protected override async void OnResume()
+        void GvRooms_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
+        {
+            DataHolder.Current.CurrentRoom = DataHolder.Current.Rooms.ElementAt(e.Position);
+            StartActivity(new Intent(this, typeof(RoomActivity)));
+        }           
+
+        protected override void OnResume()
         {
             base.OnResume();
 
-            var homeControl = DataHolder.Current.CurrentHomeControl as HomeMaticXmlApi;
-            var rooms = await homeControl.GetRoomsAsync();
-
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
-            gvRooms.Adapter = new RoomAdapter(this, 0, rooms.ToList());
+            gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
         }
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
@@ -66,5 +69,5 @@ namespace Thepagedot.Rhome.Demo.Droid
             Toast.MakeText(this, e.MenuItem.TitleFormatted + " clicked.", ToastLength.Short).Show();
             drawerLayout.CloseDrawers();
         }
-    }
+    }      
 }
