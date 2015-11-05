@@ -118,6 +118,7 @@
     <AndroidResource Include="Resources\layout\Room.axml" />
     <AndroidResource Include="Resources\layout\Device.axml" />
     <AndroidResource Include="Resources\layout\Channel.axml" />
+    <AndroidResource Include="Resources\layout\Switcher.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\values-v21\" />

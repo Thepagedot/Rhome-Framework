@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thepagedot.Rhome.HomeMatic.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -28,6 +29,21 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             var stopIseId = datapoints.ElementAt(1).IseId;
             this.Level = float.Parse(level, CultureInfo.InvariantCulture.NumberFormat);
             this.StopIseId = Convert.ToInt32(stopIseId);            
+        }
+
+        public async Task Up(HomeMaticXmlApi homeMaticXmlApi)
+        {
+            await homeMaticXmlApi.SendChannelUpdateAsync(IseId, 1);
+        }
+
+        public async Task Down(HomeMaticXmlApi homeMaticXmlApi)
+        {
+            await homeMaticXmlApi.SendChannelUpdateAsync(IseId, 0);
+        }
+
+        public async Task Stop(HomeMaticXmlApi homeMaticXmlApi)
+        {
+            await homeMaticXmlApi.SendChannelUpdateAsync(StopIseId, 0);
         }
     }
 }

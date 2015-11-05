@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Thepagedot.Rhome.HomeMatic.Services;
 using Thepagedot.Rhome.HomeMatic.Models;
 using Thepagedot.Rhome.Base.Models;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
@@ -11,8 +13,9 @@ namespace Thepagedot.Rhome.Demo.Droid
     {
         // Currents
         public static DataHolder Current { get; set; }
-        public IHomeControlApi CurrentHomeControl { get; set; }
         public Room CurrentRoom { get; set; }
+
+        public HomeMaticXmlApi HomeMaticApi { get; set; }
 
         public List<IHomeControlApi> HomeControlApis { get; set; }
         public List<Room> Rooms { get; set;}
@@ -23,14 +26,22 @@ namespace Thepagedot.Rhome.Demo.Droid
             HomeControlApis = new List<IHomeControlApi>();
             Rooms = new List<Room>();
 
-            CreateDemoData();
+            //CreateDemoData();
+
+            var ccu = new Ccu("HomeMatic Robby", "192.168.0.14");
+            HomeMaticApi = new HomeMaticXmlApi(ccu);
+        }
+
+        public async Task Init()
+        {
+            var rooms = await HomeMaticApi.GetRoomsWidthDevicesAsync();
+            Rooms = rooms.ToList();
         }
 
         private void CreateDemoData()
         {
             var ccu = new Ccu("HomeMatic Robby", "192.168.0.14");
-            var homematic = new HomeMaticXmlApi(ccu);
-            DataHolder.Current.CurrentHomeControl = homematic;
+            HomeMaticApi = new HomeMaticXmlApi(ccu);
 
             var room1 = new HomeMaticRoom("Living Room", 0, null);
             var room2 = new HomeMaticRoom("Kitchen", 0, null);

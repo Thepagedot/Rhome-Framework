@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Thepagedot.Rhome.HomeMatic.Services;
+using System.Threading.Tasks;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -32,5 +34,15 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         //        State = (bool)state;
         //    }
         //}
+
+        public async Task On(HomeMaticXmlApi homeMaticXmlApi)
+        {
+            await homeMaticXmlApi.SendChannelUpdateAsync(IseId, true);
+        }
+
+        public async Task Off(HomeMaticXmlApi homeMaticXmlApi)
+        {
+            await homeMaticXmlApi.SendChannelUpdateAsync(IseId, false);
+        }
     }
 }

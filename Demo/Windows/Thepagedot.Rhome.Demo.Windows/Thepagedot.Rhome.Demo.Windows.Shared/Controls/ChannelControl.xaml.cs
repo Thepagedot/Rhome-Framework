@@ -64,11 +64,11 @@ namespace Thepagedot.Rhome.Demo.Win.Controls
             var button = (sender as Button);
             if (button != null)
             {
-                var channel = button.DataContext as Shutter;
-                if (channel != null)
+                var shutter = button.DataContext as Shutter;
+                if (shutter != null)
                 {
                     button.IsEnabled = false;
-                    await App.HomeMaticXmlApi.SendChannelUpdateAsync(channel.IseId, 1);
+                    await shutter.Up(App.HomeMaticXmlApi);
                     button.IsEnabled = true;
                 }
             }
@@ -79,11 +79,11 @@ namespace Thepagedot.Rhome.Demo.Win.Controls
             var button = (sender as Button);
             if (button != null)
             {
-                var channel = button.DataContext as Shutter;
-                if (channel != null)
+                var shutter = button.DataContext as Shutter;
+                if (shutter != null)
                 {
                     button.IsEnabled = false;
-                    await App.HomeMaticXmlApi.SendChannelUpdateAsync(channel.IseId, 0);
+                    await shutter.Down(App.HomeMaticXmlApi);
                     button.IsEnabled = true;
                 }
             }
@@ -94,11 +94,11 @@ namespace Thepagedot.Rhome.Demo.Win.Controls
             var button = (sender as Button);
             if (button != null)
             {
-                var channel = button.DataContext as Shutter;
-                if (channel != null)
+                var shutter = button.DataContext as Shutter;
+                if (shutter != null)
                 {
                     button.IsEnabled = false;
-                    await App.HomeMaticXmlApi.SendChannelUpdateAsync(channel.StopIseId, 0);
+                    await shutter.Stop(App.HomeMaticXmlApi);
                     button.IsEnabled = true;
                 }
             }

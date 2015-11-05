@@ -21,7 +21,7 @@ namespace Thepagedot.Rhome.Demo.Droid
     {
         DrawerLayout drawerLayout;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
@@ -43,6 +43,8 @@ namespace Thepagedot.Rhome.Demo.Droid
             var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.SetDrawerListener(drawerToggle);
             drawerToggle.SyncState();          
+
+            await DataHolder.Current.Init();
 
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
