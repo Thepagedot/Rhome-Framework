@@ -1746,8 +1746,11 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f020047
 			public const int Icon = 2130837575;
 			
+			// aapt resource value: 0x7f020049
+			public const int notification_template_icon_bg = 2130837577;
+			
 			// aapt resource value: 0x7f020048
-			public const int notification_template_icon_bg = 2130837576;
+			public const int Room = 2130837576;
 			
 			static Drawable()
 			{

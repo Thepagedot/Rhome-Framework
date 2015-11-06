@@ -130,6 +130,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_lock_black_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_lock_black_24dp.png" />
     <AndroidResource Include="Resources\layout\DoorHandle.axml" />
+    <AndroidResource Include="Resources\drawable\Room.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\values-v21\" />

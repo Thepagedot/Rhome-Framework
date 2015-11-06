@@ -16,7 +16,7 @@
             <ImageView
                 android:layout_height="100dip"
                 android:layout_width="match_parent"
-                android:src="@drawable/house"
+                android:src="@drawable/room"
                 android:cropToPadding="false"
                 android:scaleType="centerCrop" />
             <TextView
