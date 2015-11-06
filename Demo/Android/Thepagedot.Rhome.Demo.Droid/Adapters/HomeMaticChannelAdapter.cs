@@ -39,6 +39,33 @@ namespace Thepagedot.Rhome.Demo.Droid
                 return view;
             }
 
+            if (channel is DoorHandle)
+            {
+                view = LayoutInflater.From(Context).Inflate(Resource.Layout.DoorHandle, null);
+                var state = (channel as DoorHandle).State;
+
+                switch (state)
+                {
+                    case DoorHandleState.Open:
+                        view.FindViewById<TextView>(Resource.Id.tvState).Text = context.GetString(Resource.String.open);
+                        view.FindViewById<ImageView>(Resource.Id.ivOpen).Visibility = ViewStates.Visible;
+                        view.FindViewById<ImageView>(Resource.Id.ivClosed).Visibility = ViewStates.Gone;
+                        break;
+                    case DoorHandleState.Tilted:
+                        view.FindViewById<TextView>(Resource.Id.tvState).Text = context.GetString(Resource.String.tilted);
+                        view.FindViewById<ImageView>(Resource.Id.ivOpen).Visibility = ViewStates.Visible;
+                        view.FindViewById<ImageView>(Resource.Id.ivClosed).Visibility = ViewStates.Gone;
+                        break;
+                    case DoorHandleState.Closed:
+                        view.FindViewById<TextView>(Resource.Id.tvState).Text = context.GetString(Resource.String.closed);
+                        view.FindViewById<ImageView>(Resource.Id.ivOpen).Visibility = ViewStates.Gone;
+                        view.FindViewById<ImageView>(Resource.Id.ivClosed).Visibility = ViewStates.Visible;
+                        break;
+                }
+
+                return view;
+            }
+
             return LayoutInflater.From(Context).Inflate(Resource.Layout.Channel, null);
         }
     }

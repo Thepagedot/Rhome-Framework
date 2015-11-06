@@ -4,4 +4,7 @@
 	<string name="app_name">Rhome</string>
 	<string name="open_drawer">Open drawer</string>
 	<string name="close_drawer">Close drawer</string>
+	<string name="open">Open</string>
+	<string name="tilted">Tilted</string>
+	<string name="closed">Closed</string>
 </resources>
