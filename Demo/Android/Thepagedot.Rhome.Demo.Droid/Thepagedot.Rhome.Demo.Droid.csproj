@@ -119,6 +119,17 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_lock_open_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_lock_open_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_lock_open_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_lock_open_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_lock_open_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_lock_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_lock_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_lock_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_lock_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_lock_black_24dp.png" />
+    <AndroidResource Include="Resources\layout\DoorHandle.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\values-v21\" />
