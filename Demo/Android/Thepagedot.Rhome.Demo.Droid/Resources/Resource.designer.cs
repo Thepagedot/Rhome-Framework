@@ -1394,6 +1394,9 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f060002
 			public const int cardview_default_radius = 2131099650;
 			
+			// aapt resource value: 0x7f060067
+			public const int channel_height_min = 2131099751;
+			
 			// aapt resource value: 0x7f060065
 			public const int default_margin = 2131099749;
 			

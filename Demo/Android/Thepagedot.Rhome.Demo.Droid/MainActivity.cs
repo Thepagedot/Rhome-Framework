@@ -62,9 +62,6 @@ namespace Thepagedot.Rhome.Demo.Droid
         protected override void OnResume()
         {
             base.OnResume();
-
-            var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
-            gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
         }
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
