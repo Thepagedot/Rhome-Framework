@@ -1726,16 +1726,22 @@ namespace Thepagedot.Rhome.Demo.Droid
 			public const int ic_home_black_24dp = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int ic_settings_black_24dp = 2130837571;
+			public const int ic_lock_black_24dp = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int ic_view_quilt_black_24dp = 2130837572;
+			public const int ic_lock_open_black_24dp = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int Icon = 2130837573;
+			public const int ic_settings_black_24dp = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int notification_template_icon_bg = 2130837574;
+			public const int ic_view_quilt_black_24dp = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int Icon = 2130837575;
+			
+			// aapt resource value: 0x7f020048
+			public const int notification_template_icon_bg = 2130837576;
 			
 			static Drawable()
 			{
@@ -2287,58 +2293,61 @@ namespace Thepagedot.Rhome.Demo.Droid
 			public const int Device = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int Main = 2130903075;
+			public const int DoorHandle = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int NavigationHeader = 2130903076;
+			public const int Main = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int notification_media_action = 2130903077;
+			public const int NavigationHeader = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int notification_media_cancel_action = 2130903078;
+			public const int notification_media_action = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int notification_template_big_media = 2130903079;
+			public const int notification_media_cancel_action = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int notification_template_big_media_narrow = 2130903080;
+			public const int notification_template_big_media = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int notification_template_lines = 2130903081;
+			public const int notification_template_big_media_narrow = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int notification_template_media = 2130903082;
+			public const int notification_template_lines = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_template_part_chronometer = 2130903083;
+			public const int notification_template_media = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_template_part_time = 2130903084;
+			public const int notification_template_part_chronometer = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int Room = 2130903085;
+			public const int notification_template_part_time = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int RoomItem = 2130903086;
+			public const int Room = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int select_dialog_item_material = 2130903087;
+			public const int RoomItem = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int select_dialog_multichoice_material = 2130903088;
+			public const int select_dialog_item_material = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int select_dialog_singlechoice_material = 2130903089;
+			public const int select_dialog_multichoice_material = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int support_simple_spinner_dropdown_item = 2130903090;
+			public const int select_dialog_singlechoice_material = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int Test = 2130903091;
+			public const int support_simple_spinner_dropdown_item = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int Toolbar = 2130903092;
+			public const int Test = 2130903092;
+			
+			// aapt resource value: 0x7f030035
+			public const int Toolbar = 2130903093;
 			
 			static Layout()
 			{
