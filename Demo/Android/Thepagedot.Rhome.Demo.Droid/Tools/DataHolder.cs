@@ -6,6 +6,7 @@ using Thepagedot.Rhome.HomeMatic.Models;
 using Thepagedot.Rhome.Base.Models;
 using System.Threading.Tasks;
 using System.Linq;
+using Android.Content;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
@@ -27,15 +28,19 @@ namespace Thepagedot.Rhome.Demo.Droid
             Rooms = new List<Room>();
 
             //CreateDemoData();
-
-            var ccu = new Ccu("HomeMatic Robby", "192.168.0.14");
-            HomeMaticApi = new HomeMaticXmlApi(ccu);
         }
 
-        public async Task Init()
+        public async Task Init(Context context)
         {
-            var rooms = await HomeMaticApi.GetRoomsWidthDevicesAsync();
-            Rooms = rooms.ToList();
+            var address = Settings.GetHomeMaticIpAddress(context);
+            if (address != null)
+            {
+                var ccu = new Ccu("HomeMatic Robby", address);
+                HomeMaticApi = new HomeMaticXmlApi(ccu);
+
+                var rooms = await HomeMaticApi.GetRoomsWidthDevicesAsync();
+                Rooms = rooms.ToList();
+            }                
         }
 
         private void CreateDemoData()

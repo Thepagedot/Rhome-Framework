@@ -7,4 +7,8 @@
 	<string name="open">Open</string>
 	<string name="tilted">Tilted</string>
 	<string name="closed">Closed</string>
+	<string name="connection_successful_title">Connection successful</string>
+	<string name="connection_successful_message">This looks good! Your connection was successful and you can enjoy your Rhome app now.</string>
+	<string name="connection_failed_title">Connection failed</string>
+	<string name="connection_failed_message">Something went wrong. Please check if you entered a valid IP address and your CCU has the XML-API installed.</string>
 </resources>

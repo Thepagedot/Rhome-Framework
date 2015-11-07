@@ -45,7 +45,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             drawerToggle.SyncState();          
 
             // Load data
-            await DataHolder.Current.Init();
+            await DataHolder.Current.Init(this);
 
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
@@ -69,7 +69,16 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
-            Toast.MakeText(this, e.MenuItem.TitleFormatted + " clicked.", ToastLength.Short).Show();
+            switch (e.MenuItem.ItemId)
+            {
+                default:
+                    Toast.MakeText(this, e.MenuItem.TitleFormatted + " clicked.", ToastLength.Short).Show();
+                    break;
+                case Resource.Id.nav_settings:
+                    StartActivity(new Intent(this, typeof(SettingsActivity)));
+                    break;                   
+            }
+            
             drawerLayout.CloseDrawers();
         }
     }      

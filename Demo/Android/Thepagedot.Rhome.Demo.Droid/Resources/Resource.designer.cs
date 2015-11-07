@@ -1825,6 +1825,9 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0028
 			public const int bottom = 2131427368;
 			
+			// aapt resource value: 0x7f0b0080
+			public const int btnCheckAddress = 2131427456;
+			
 			// aapt resource value: 0x7f0b004b
 			public const int buttonPanel = 2131427403;
 			
@@ -1890,6 +1893,9 @@ namespace Thepagedot.Rhome.Demo.Droid
 			
 			// aapt resource value: 0x7f0b0023
 			public const int enterAlwaysCollapsed = 2131427363;
+			
+			// aapt resource value: 0x7f0b007f
+			public const int etIpAddress = 2131427455;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int exitUntilCollapsed = 2131427364;
@@ -1963,6 +1969,9 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0073
 			public const int media_actions = 2131427443;
 			
+			// aapt resource value: 0x7f0b0087
+			public const int menu_rescan = 2131427463;
+			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
 			
@@ -1972,20 +1981,20 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0014
 			public const int multiply = 2131427348;
 			
+			// aapt resource value: 0x7f0b0086
+			public const int nav_about = 2131427462;
+			
 			// aapt resource value: 0x7f0b0084
-			public const int nav_about = 2131427460;
+			public const int nav_devices = 2131427460;
 			
 			// aapt resource value: 0x7f0b0082
-			public const int nav_devices = 2131427458;
-			
-			// aapt resource value: 0x7f0b0080
-			public const int nav_home = 2131427456;
-			
-			// aapt resource value: 0x7f0b0081
-			public const int nav_rooms = 2131427457;
+			public const int nav_home = 2131427458;
 			
 			// aapt resource value: 0x7f0b0083
-			public const int nav_settings = 2131427459;
+			public const int nav_rooms = 2131427459;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int nav_settings = 2131427461;
 			
 			// aapt resource value: 0x7f0b006f
 			public const int nav_view = 2131427439;
@@ -2110,8 +2119,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b000c
 			public const int tabMode = 2131427340;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int tbSwitcher = 2131427455;
+			// aapt resource value: 0x7f0b0081
+			public const int tbSwitcher = 2131427457;
 			
 			// aapt resource value: 0x7f0b007a
 			public const int text = 2131427450;
@@ -2362,16 +2371,19 @@ namespace Thepagedot.Rhome.Demo.Droid
 			public const int select_dialog_singlechoice_material = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int support_simple_spinner_dropdown_item = 2130903091;
+			public const int Settings = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int Switcher = 2130903092;
+			public const int support_simple_spinner_dropdown_item = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int Test = 2130903093;
+			public const int Switcher = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int Toolbar = 2130903094;
+			public const int Test = 2130903094;
+			
+			// aapt resource value: 0x7f030037
+			public const int Toolbar = 2130903095;
 			
 			static Layout()
 			{
@@ -2388,6 +2400,9 @@ namespace Thepagedot.Rhome.Demo.Droid
 			
 			// aapt resource value: 0x7f0c0000
 			public const int NavMenu = 2131492864;
+			
+			// aapt resource value: 0x7f0c0001
+			public const int SettingsMenu = 2131492865;
 			
 			static Menu()
 			{
@@ -2464,6 +2479,18 @@ namespace Thepagedot.Rhome.Demo.Droid
 			
 			// aapt resource value: 0x7f080019
 			public const int closed = 2131230745;
+			
+			// aapt resource value: 0x7f08001d
+			public const int connection_failed_message = 2131230749;
+			
+			// aapt resource value: 0x7f08001c
+			public const int connection_failed_title = 2131230748;
+			
+			// aapt resource value: 0x7f08001b
+			public const int connection_successful_message = 2131230747;
+			
+			// aapt resource value: 0x7f08001a
+			public const int connection_successful_title = 2131230746;
 			
 			// aapt resource value: 0x7f080013
 			public const int hello = 2131230739;

@@ -66,6 +66,7 @@
     <Compile Include="Views\RoomActivity.cs" />
     <Compile Include="Adapters\DeviceAdapter.cs" />
     <Compile Include="Adapters\HomeMaticChannelAdapter.cs" />
+    <Compile Include="Tools\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -131,6 +132,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_lock_black_24dp.png" />
     <AndroidResource Include="Resources\layout\DoorHandle.axml" />
     <AndroidResource Include="Resources\drawable\Room.jpg" />
+    <AndroidResource Include="Resources\layout\Settings.axml" />
+    <AndroidResource Include="Resources\menu\SettingsMenu.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\values-v21\" />
