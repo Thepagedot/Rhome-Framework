@@ -134,6 +134,7 @@
     <AndroidResource Include="Resources\drawable\Room.jpg" />
     <AndroidResource Include="Resources\layout\Settings.axml" />
     <AndroidResource Include="Resources\menu\SettingsMenu.xml" />
+    <AndroidResource Include="Resources\layout\AddHomeControlSystemDialog.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\values-v21\" />

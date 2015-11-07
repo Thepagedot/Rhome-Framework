@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
+		android:id="@+id/menu_add"
+		android:icon="@drawable/ic_home_black_24dp"
+		android:title="Add new home control system" />
+	<item
 		android:id="@+id/menu_rescan"
 		android:icon="@drawable/ic_home_black_24dp"
 		android:title="Scan for changes" />

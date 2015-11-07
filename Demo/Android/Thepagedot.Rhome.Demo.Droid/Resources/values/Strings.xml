@@ -11,4 +11,5 @@
 	<string name="connection_successful_message">This looks good! Your connection was successful and you can enjoy your Rhome app now.</string>
 	<string name="connection_failed_title">Connection failed</string>
 	<string name="connection_failed_message">Something went wrong. Please check if you entered a valid IP address and your CCU has the XML-API installed.</string>
+	<string name="add_new_home_control_system_title">Add new home control system</string>
 </resources>

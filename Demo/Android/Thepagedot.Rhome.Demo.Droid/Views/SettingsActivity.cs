@@ -15,6 +15,8 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using System.Net;
 using System.Threading.Tasks;
+using Thepagedot.Rhome.HomeMatic.Services;
+using Thepagedot.Rhome.HomeMatic.Models;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
@@ -85,7 +87,30 @@ namespace Thepagedot.Rhome.Demo.Droid
         {
             MenuInflater.Inflate(Resource.Menu.SettingsMenu, menu);
             return true;
-        }            
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {            
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_add:
+                    var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+                    builder.SetTitle(Resource.String.add_new_home_control_system_title);
+                    builder.SetView(Resource.Layout.AddHomeControlSystemDialog);
+                    builder.SetCancelable(false);
+                    builder.SetPositiveButton(Android.Resource.String.Ok, (object sender, DialogClickEventArgs e) => 
+                        {
+                            var name = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etName).Text;
+                            var address = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etIpAddress).Text;
+                            DataHolder.Current.HomeControlSystems.Add(new HomeMaticXmlApi(new Ccu(name, address)));
+                        });
+                    builder.SetNegativeButton(Android.Resource.String.Cancel, (sender, e) => {});
+                    builder.Show();                    
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
 	}
 }
 

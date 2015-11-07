@@ -18,13 +18,13 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         public HomeMaticXmlApi HomeMaticApi { get; set; }
 
-        public List<IHomeControlApi> HomeControlApis { get; set; }
+        public List<IHomeControlApi> HomeControlSystems { get; set; }
         public List<Room> Rooms { get; set;}
 
         public DataHolder()
         {
             Current = this;
-            HomeControlApis = new List<IHomeControlApi>();
+            HomeControlSystems = new List<IHomeControlApi>();
             Rooms = new List<Room>();
 
             //CreateDemoData();

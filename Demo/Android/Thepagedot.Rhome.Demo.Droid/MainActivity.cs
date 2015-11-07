@@ -64,7 +64,8 @@ namespace Thepagedot.Rhome.Demo.Droid
             base.OnResume();
 
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
-            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));           
+            if (gvRooms != null)
+                ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));           
         }
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
