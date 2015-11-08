@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<deviceList>
+	<device name='Balkontüre' address='KEQ0846462' ise_id='1601' interface='BidCos-RF' device_type='HM-Sec-RHS' ready_config='true'>
+		<channel name='Balkontüre Drehgriff' type='38' address='KEQ0846462:1' ise_id='1622' direction='SENDER' parent_device='1601' index='1' group_partner='' aes_available='true' transmission_mode='AES' visible='true' ready_config='true' operate='true' />
+	</device>
+	<device name='HM-CCU-1 System' address='System' ise_id='1389' interface='System' device_type='HM-CCU-1' ready_config='true'>
+		<channel name='Zentralennetzteil' type='17' address='System:1' ise_id='1390' direction='SENDER' parent_device='1389' index='1' group_partner='' aes_available='false' transmission_mode='DEFAULT' visible='true' ready_config='true' operate='true' />
+		<channel name='Sabotagekontakt' type='17' address='System:2' ise_id='1406' direction='SENDER' parent_device='1389' index='2' group_partner='' aes_available='false' transmission_mode='DEFAULT' visible='true' ready_config='true' operate='true' />
+	</device>
+	<device name='Küchenfensterkontakt' address='IEQ0540908' ise_id='1523' interface='BidCos-RF' device_type='HM-Sec-SC' ready_config='true'>
+		<channel name='Küchenfenster' type='37' address='IEQ0540908:1' ise_id='1544' direction='SENDER' parent_device='1523' index='1' group_partner='' aes_available='true' transmission_mode='AES' visible='true' ready_config='true' operate='true' />
+	</device>
+	<device name='Nachttischlampe' address='GEQ0033068' ise_id='1570' interface='BidCos-RF' device_type='HM-LC-Sw1-Pl' ready_config='true'>
+		<channel name='Nachttischlampe Schalter' type='26' address='GEQ0033068:1' ise_id='1595' direction='RECEIVER' parent_device='1570' index='1' group_partner='' aes_available='true' transmission_mode='DEFAULT' visible='true' ready_config='true' operate='true' />
+	</device>
+	<device name='Thermostat Küche' address='KEQ0082242' ise_id='1709' interface='BidCos-RF' device_type='HM-CC-TC' ready_config='true'>
+		<channel name='HM-CC-TC KEQ0082242:1' type='22' address='KEQ0082242:1' ise_id='1729' direction='SENDER' parent_device='1709' index='1' group_partner='' aes_available='false' transmission_mode='DEFAULT' visible='true' ready_config='true' operate='true' />
+		<channel name='HM-CC-TC KEQ0082242:2' type='17' address='KEQ0082242:2' ise_id='1732' direction='SENDER' parent_device='1709' index='2' group_partner='' aes_available='false' transmission_mode='DEFAULT' visible='true' ready_config='true' operate='true' />
+		<channel name='HM-CC-TC KEQ0082242:3' type='26' address='KEQ0082242:3' ise_id='1737' direction='RECEIVER' parent_device='1709' index='3' group_partner='' aes_available='false' transmission_mode='DEFAULT' visible='true' ready_config='true' operate='true' />
+	</device>
+</deviceList>

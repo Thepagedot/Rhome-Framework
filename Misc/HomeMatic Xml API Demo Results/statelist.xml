@@ -1,0 +1,333 @@
+
+<stateList>
+	<device name="Balkontüre" ise_id="1601" unreach="false" sticky_unreach="false" config_pending="false">
+		<channel name="Balkontüre:0" ise_id="1602" visible="" operate="">
+			<datapoint name="BidCos-RF.KEQ0846462:0.UNREACH" type="UNREACH" ise_id="1618" value="false" valuetype="2" valueunit="" timestamp="1420244605" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0846462:0.STICKY_UNREACH" type="STICKY_UNREACH" ise_id="1614" value="false" valuetype="2" valueunit="" timestamp="1420244605" operations="7"/>
+			<datapoint name="BidCos-RF.KEQ0846462:0.CONFIG_PENDING" type="CONFIG_PENDING" ise_id="1604" value="false" valuetype="2" valueunit="" timestamp="1420337136" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0846462:0.LOWBAT" type="LOWBAT" ise_id="1608" value="false" valuetype="2" valueunit="" timestamp="1420244605" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0846462:0.RSSI_DEVICE" type="RSSI_DEVICE" ise_id="1612" value="1" valuetype="8" valueunit="" timestamp="1420244605" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0846462:0.RSSI_PEER" type="RSSI_PEER" ise_id="1613" value="1" valuetype="8" valueunit="" timestamp="1420244605" operations="5"/>
+		</channel>
+		<channel name="Balkontüre Drehgriff" ise_id="1622" visible="true" operate="true">
+			<datapoint name="BidCos-RF.KEQ0846462:1.STATE" type="STATE" ise_id="1647" value="0" valuetype="16" valueunit="" timestamp="1446995763" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0846462:1.ERROR" type="ERROR" ise_id="1623" value="0" valuetype="16" valueunit="" timestamp="1446995763" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0846462:1.LOWBAT" type="LOWBAT" ise_id="1646" value="false" valuetype="2" valueunit="" timestamp="1446995763" operations="5"/>
+		</channel>
+	</device>
+	<device name="HM-CCU-1 System" ise_id="1389">
+		<channel name="Zentralennetzteil" ise_id="1390" visible="true" operate="true">
+			<datapoint name="System.System:1.U_SOURCE_FAIL" type="U_SOURCE_FAIL" ise_id="1401" value="false" valuetype="2" valueunit="" timestamp="1443022910" operations="5"/>
+			<datapoint name="System.System:1.LOWBAT" type="LOWBAT" ise_id="1393" value="false" valuetype="2" valueunit="" timestamp="1420286907" operations="5"/>
+			<datapoint name="System.System:1.U_USBD_OK" type="U_USBD_OK" ise_id="1405" value="false" valuetype="2" valueunit="" timestamp="1420244569" operations="5"/>
+			<datapoint name="System.System:1.BAT_LEVEL" type="BAT_LEVEL" ise_id="1391" value="0.905625" valuetype="4" valueunit="100%" timestamp="1446997360" operations="5"/>
+		</channel>
+		<channel name="Sabotagekontakt" ise_id="1406" visible="true" operate="true">
+			<datapoint name="System.System:2.SHAKING" type="SHAKING" ise_id="1407" value="false" valuetype="2" valueunit="" timestamp="1446980731" operations="4"/>
+		</channel>
+	</device>
+	<device name="HM-RCV-50 BidCoS-RF" ise_id="1010">
+		<channel name="HM-RCV-50 BidCoS-RF:0" ise_id="1011" visible="" operate="">
+			<datapoint name="BidCos-RF.BidCoS-RF:0.INSTALL_MODE" type="INSTALL_MODE" ise_id="1012" value="false" valuetype="2" valueunit="" timestamp="1420244605" operations="3"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:1" ise_id="1013" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:1.PRESS_LONG" type="PRESS_LONG" ise_id="1015" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:1.PRESS_SHORT" type="PRESS_SHORT" ise_id="1016" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:1.LEVEL" type="LEVEL" ise_id="1014" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:2" ise_id="1017" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:2.PRESS_LONG" type="PRESS_LONG" ise_id="1019" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:2.PRESS_SHORT" type="PRESS_SHORT" ise_id="1020" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:2.LEVEL" type="LEVEL" ise_id="1018" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:3" ise_id="1021" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:3.PRESS_LONG" type="PRESS_LONG" ise_id="1023" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:3.PRESS_SHORT" type="PRESS_SHORT" ise_id="1024" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:3.LEVEL" type="LEVEL" ise_id="1022" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:4" ise_id="1025" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:4.PRESS_LONG" type="PRESS_LONG" ise_id="1027" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:4.PRESS_SHORT" type="PRESS_SHORT" ise_id="1028" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:4.LEVEL" type="LEVEL" ise_id="1026" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:5" ise_id="1029" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:5.PRESS_LONG" type="PRESS_LONG" ise_id="1031" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:5.PRESS_SHORT" type="PRESS_SHORT" ise_id="1032" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:5.LEVEL" type="LEVEL" ise_id="1030" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:6" ise_id="1033" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:6.PRESS_LONG" type="PRESS_LONG" ise_id="1035" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:6.PRESS_SHORT" type="PRESS_SHORT" ise_id="1036" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:6.LEVEL" type="LEVEL" ise_id="1034" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:7" ise_id="1037" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:7.PRESS_LONG" type="PRESS_LONG" ise_id="1039" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:7.PRESS_SHORT" type="PRESS_SHORT" ise_id="1040" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:7.LEVEL" type="LEVEL" ise_id="1038" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:8" ise_id="1041" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:8.PRESS_LONG" type="PRESS_LONG" ise_id="1043" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:8.PRESS_SHORT" type="PRESS_SHORT" ise_id="1044" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:8.LEVEL" type="LEVEL" ise_id="1042" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:9" ise_id="1045" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:9.PRESS_LONG" type="PRESS_LONG" ise_id="1047" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:9.PRESS_SHORT" type="PRESS_SHORT" ise_id="1048" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:9.LEVEL" type="LEVEL" ise_id="1046" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:10" ise_id="1049" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:10.PRESS_LONG" type="PRESS_LONG" ise_id="1051" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:10.PRESS_SHORT" type="PRESS_SHORT" ise_id="1052" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:10.LEVEL" type="LEVEL" ise_id="1050" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:11" ise_id="1053" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:11.PRESS_LONG" type="PRESS_LONG" ise_id="1055" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:11.PRESS_SHORT" type="PRESS_SHORT" ise_id="1056" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:11.LEVEL" type="LEVEL" ise_id="1054" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:12" ise_id="1057" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:12.PRESS_LONG" type="PRESS_LONG" ise_id="1059" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:12.PRESS_SHORT" type="PRESS_SHORT" ise_id="1060" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:12.LEVEL" type="LEVEL" ise_id="1058" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:13" ise_id="1061" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:13.PRESS_LONG" type="PRESS_LONG" ise_id="1063" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:13.PRESS_SHORT" type="PRESS_SHORT" ise_id="1064" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:13.LEVEL" type="LEVEL" ise_id="1062" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:14" ise_id="1065" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:14.PRESS_LONG" type="PRESS_LONG" ise_id="1067" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:14.PRESS_SHORT" type="PRESS_SHORT" ise_id="1068" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:14.LEVEL" type="LEVEL" ise_id="1066" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:15" ise_id="1069" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:15.PRESS_LONG" type="PRESS_LONG" ise_id="1071" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:15.PRESS_SHORT" type="PRESS_SHORT" ise_id="1072" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:15.LEVEL" type="LEVEL" ise_id="1070" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:16" ise_id="1073" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:16.PRESS_LONG" type="PRESS_LONG" ise_id="1075" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:16.PRESS_SHORT" type="PRESS_SHORT" ise_id="1076" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:16.LEVEL" type="LEVEL" ise_id="1074" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:17" ise_id="1077" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:17.PRESS_LONG" type="PRESS_LONG" ise_id="1079" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:17.PRESS_SHORT" type="PRESS_SHORT" ise_id="1080" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:17.LEVEL" type="LEVEL" ise_id="1078" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:18" ise_id="1081" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:18.PRESS_LONG" type="PRESS_LONG" ise_id="1083" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:18.PRESS_SHORT" type="PRESS_SHORT" ise_id="1084" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:18.LEVEL" type="LEVEL" ise_id="1082" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:19" ise_id="1085" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:19.PRESS_LONG" type="PRESS_LONG" ise_id="1087" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:19.PRESS_SHORT" type="PRESS_SHORT" ise_id="1088" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:19.LEVEL" type="LEVEL" ise_id="1086" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:20" ise_id="1089" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:20.PRESS_LONG" type="PRESS_LONG" ise_id="1091" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:20.PRESS_SHORT" type="PRESS_SHORT" ise_id="1092" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:20.LEVEL" type="LEVEL" ise_id="1090" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:21" ise_id="1093" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:21.PRESS_LONG" type="PRESS_LONG" ise_id="1095" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:21.PRESS_SHORT" type="PRESS_SHORT" ise_id="1096" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:21.LEVEL" type="LEVEL" ise_id="1094" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:22" ise_id="1097" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:22.PRESS_LONG" type="PRESS_LONG" ise_id="1099" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:22.PRESS_SHORT" type="PRESS_SHORT" ise_id="1100" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:22.LEVEL" type="LEVEL" ise_id="1098" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:23" ise_id="1101" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:23.PRESS_LONG" type="PRESS_LONG" ise_id="1103" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:23.PRESS_SHORT" type="PRESS_SHORT" ise_id="1104" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:23.LEVEL" type="LEVEL" ise_id="1102" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:24" ise_id="1105" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:24.PRESS_LONG" type="PRESS_LONG" ise_id="1107" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:24.PRESS_SHORT" type="PRESS_SHORT" ise_id="1108" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:24.LEVEL" type="LEVEL" ise_id="1106" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:25" ise_id="1109" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:25.PRESS_LONG" type="PRESS_LONG" ise_id="1111" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:25.PRESS_SHORT" type="PRESS_SHORT" ise_id="1112" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:25.LEVEL" type="LEVEL" ise_id="1110" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:26" ise_id="1113" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:26.PRESS_LONG" type="PRESS_LONG" ise_id="1115" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:26.PRESS_SHORT" type="PRESS_SHORT" ise_id="1116" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:26.LEVEL" type="LEVEL" ise_id="1114" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:27" ise_id="1117" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:27.PRESS_LONG" type="PRESS_LONG" ise_id="1119" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:27.PRESS_SHORT" type="PRESS_SHORT" ise_id="1120" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:27.LEVEL" type="LEVEL" ise_id="1118" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:28" ise_id="1121" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:28.PRESS_LONG" type="PRESS_LONG" ise_id="1123" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:28.PRESS_SHORT" type="PRESS_SHORT" ise_id="1124" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:28.LEVEL" type="LEVEL" ise_id="1122" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:29" ise_id="1125" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:29.PRESS_LONG" type="PRESS_LONG" ise_id="1127" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:29.PRESS_SHORT" type="PRESS_SHORT" ise_id="1128" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:29.LEVEL" type="LEVEL" ise_id="1126" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:30" ise_id="1129" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:30.PRESS_LONG" type="PRESS_LONG" ise_id="1131" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:30.PRESS_SHORT" type="PRESS_SHORT" ise_id="1132" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:30.LEVEL" type="LEVEL" ise_id="1130" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:31" ise_id="1133" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:31.PRESS_LONG" type="PRESS_LONG" ise_id="1135" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:31.PRESS_SHORT" type="PRESS_SHORT" ise_id="1136" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:31.LEVEL" type="LEVEL" ise_id="1134" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:32" ise_id="1137" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:32.PRESS_LONG" type="PRESS_LONG" ise_id="1139" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:32.PRESS_SHORT" type="PRESS_SHORT" ise_id="1140" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:32.LEVEL" type="LEVEL" ise_id="1138" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:33" ise_id="1141" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:33.PRESS_LONG" type="PRESS_LONG" ise_id="1143" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:33.PRESS_SHORT" type="PRESS_SHORT" ise_id="1144" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:33.LEVEL" type="LEVEL" ise_id="1142" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:34" ise_id="1145" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:34.PRESS_LONG" type="PRESS_LONG" ise_id="1147" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:34.PRESS_SHORT" type="PRESS_SHORT" ise_id="1148" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:34.LEVEL" type="LEVEL" ise_id="1146" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:35" ise_id="1149" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:35.PRESS_LONG" type="PRESS_LONG" ise_id="1151" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:35.PRESS_SHORT" type="PRESS_SHORT" ise_id="1152" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:35.LEVEL" type="LEVEL" ise_id="1150" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:36" ise_id="1153" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:36.PRESS_LONG" type="PRESS_LONG" ise_id="1155" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:36.PRESS_SHORT" type="PRESS_SHORT" ise_id="1156" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:36.LEVEL" type="LEVEL" ise_id="1154" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:37" ise_id="1157" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:37.PRESS_LONG" type="PRESS_LONG" ise_id="1159" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:37.PRESS_SHORT" type="PRESS_SHORT" ise_id="1160" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:37.LEVEL" type="LEVEL" ise_id="1158" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:38" ise_id="1161" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:38.PRESS_LONG" type="PRESS_LONG" ise_id="1163" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:38.PRESS_SHORT" type="PRESS_SHORT" ise_id="1164" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:38.LEVEL" type="LEVEL" ise_id="1162" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:39" ise_id="1165" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:39.PRESS_LONG" type="PRESS_LONG" ise_id="1167" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:39.PRESS_SHORT" type="PRESS_SHORT" ise_id="1168" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:39.LEVEL" type="LEVEL" ise_id="1166" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:40" ise_id="1169" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:40.PRESS_LONG" type="PRESS_LONG" ise_id="1171" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:40.PRESS_SHORT" type="PRESS_SHORT" ise_id="1172" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:40.LEVEL" type="LEVEL" ise_id="1170" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:41" ise_id="1173" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:41.PRESS_LONG" type="PRESS_LONG" ise_id="1175" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:41.PRESS_SHORT" type="PRESS_SHORT" ise_id="1176" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:41.LEVEL" type="LEVEL" ise_id="1174" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:42" ise_id="1177" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:42.PRESS_LONG" type="PRESS_LONG" ise_id="1179" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:42.PRESS_SHORT" type="PRESS_SHORT" ise_id="1180" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:42.LEVEL" type="LEVEL" ise_id="1178" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:43" ise_id="1181" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:43.PRESS_LONG" type="PRESS_LONG" ise_id="1183" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:43.PRESS_SHORT" type="PRESS_SHORT" ise_id="1184" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:43.LEVEL" type="LEVEL" ise_id="1182" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:44" ise_id="1185" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:44.PRESS_LONG" type="PRESS_LONG" ise_id="1187" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:44.PRESS_SHORT" type="PRESS_SHORT" ise_id="1188" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:44.LEVEL" type="LEVEL" ise_id="1186" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:45" ise_id="1189" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:45.PRESS_LONG" type="PRESS_LONG" ise_id="1191" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:45.PRESS_SHORT" type="PRESS_SHORT" ise_id="1192" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:45.LEVEL" type="LEVEL" ise_id="1190" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:46" ise_id="1193" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:46.PRESS_LONG" type="PRESS_LONG" ise_id="1195" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:46.PRESS_SHORT" type="PRESS_SHORT" ise_id="1196" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:46.LEVEL" type="LEVEL" ise_id="1194" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:47" ise_id="1197" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:47.PRESS_LONG" type="PRESS_LONG" ise_id="1199" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:47.PRESS_SHORT" type="PRESS_SHORT" ise_id="1200" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:47.LEVEL" type="LEVEL" ise_id="1198" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:48" ise_id="1201" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:48.PRESS_LONG" type="PRESS_LONG" ise_id="1203" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:48.PRESS_SHORT" type="PRESS_SHORT" ise_id="1204" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:48.LEVEL" type="LEVEL" ise_id="1202" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:49" ise_id="1205" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:49.PRESS_LONG" type="PRESS_LONG" ise_id="1207" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:49.PRESS_SHORT" type="PRESS_SHORT" ise_id="1208" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:49.LEVEL" type="LEVEL" ise_id="1206" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+		<channel name="HM-RCV-50 BidCoS-RF:50" ise_id="1209" visible="true" operate="true">
+			<datapoint name="BidCos-RF.BidCoS-RF:50.PRESS_LONG" type="PRESS_LONG" ise_id="1211" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:50.PRESS_SHORT" type="PRESS_SHORT" ise_id="1212" value="" valuetype="2" valueunit="" timestamp="0" operations="6"/>
+			<datapoint name="BidCos-RF.BidCoS-RF:50.LEVEL" type="LEVEL" ise_id="1210" value="" valuetype="6" valueunit="100%" timestamp="0" operations="2"/>
+		</channel>
+	</device>
+	<device name="Küchenfensterkontakt" ise_id="1523" unreach="false" sticky_unreach="true" config_pending="false">
+		<channel name="Küchenfensterkontakt:0" ise_id="1524" visible="" operate="">
+			<datapoint name="BidCos-RF.IEQ0540908:0.UNREACH" type="UNREACH" ise_id="1540" value="false" valuetype="2" valueunit="" timestamp="1420339175" operations="5"/>
+			<datapoint name="BidCos-RF.IEQ0540908:0.STICKY_UNREACH" type="STICKY_UNREACH" ise_id="1536" value="true" valuetype="2" valueunit="" timestamp="1420328777" operations="7"/>
+			<datapoint name="BidCos-RF.IEQ0540908:0.CONFIG_PENDING" type="CONFIG_PENDING" ise_id="1526" value="false" valuetype="2" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.IEQ0540908:0.LOWBAT" type="LOWBAT" ise_id="1530" value="false" valuetype="2" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.IEQ0540908:0.RSSI_DEVICE" type="RSSI_DEVICE" ise_id="1534" value="1" valuetype="8" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.IEQ0540908:0.RSSI_PEER" type="RSSI_PEER" ise_id="1535" value="1" valuetype="8" valueunit="" timestamp="1420244606" operations="5"/>
+		</channel>
+		<channel name="Küchenfenster" ise_id="1544" visible="true" operate="true">
+			<datapoint name="BidCos-RF.IEQ0540908:1.STATE" type="STATE" ise_id="1569" value="false" valuetype="2" valueunit="" timestamp="1446995777" operations="5"/>
+			<datapoint name="BidCos-RF.IEQ0540908:1.ERROR" type="ERROR" ise_id="1545" value="0" valuetype="16" valueunit="" timestamp="1446995777" operations="5"/>
+			<datapoint name="BidCos-RF.IEQ0540908:1.LOWBAT" type="LOWBAT" ise_id="1568" value="false" valuetype="2" valueunit="" timestamp="1446995777" operations="5"/>
+		</channel>
+	</device>
+	<device name="Nachttischlampe" ise_id="1570" unreach="false" sticky_unreach="true" config_pending="false">
+		<channel name="Nachttischlampe:0" ise_id="1571" visible="" operate="">
+			<datapoint name="BidCos-RF.GEQ0033068:0.UNREACH" type="UNREACH" ise_id="1591" value="false" valuetype="2" valueunit="" timestamp="1441928701" operations="5"/>
+			<datapoint name="BidCos-RF.GEQ0033068:0.STICKY_UNREACH" type="STICKY_UNREACH" ise_id="1587" value="true" valuetype="2" valueunit="" timestamp="1441917001" operations="7"/>
+			<datapoint name="BidCos-RF.GEQ0033068:0.CONFIG_PENDING" type="CONFIG_PENDING" ise_id="1573" value="false" valuetype="2" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.GEQ0033068:0.LOWBAT" type="LOWBAT" ise_id="1581" value="false" valuetype="2" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.GEQ0033068:0.DUTYCYCLE" type="DUTYCYCLE" ise_id="1577" value="false" valuetype="2" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.GEQ0033068:0.RSSI_DEVICE" type="RSSI_DEVICE" ise_id="1585" value="209" valuetype="8" valueunit="" timestamp="1420244606" operations="5"/>
+			<datapoint name="BidCos-RF.GEQ0033068:0.RSSI_PEER" type="RSSI_PEER" ise_id="1586" value="207" valuetype="8" valueunit="" timestamp="1420244606" operations="5"/>
+		</channel>
+		<channel name="Nachttischlampe Schalter" ise_id="1595" visible="true" operate="true">
+			<datapoint name="BidCos-RF.GEQ0033068:1.STATE" type="STATE" ise_id="1599" value="false" valuetype="2" valueunit="" timestamp="1446945165" operations="7"/>
+		</channel>
+	</device>
+	<device name="Thermostat Küche" ise_id="1709" unreach="false" sticky_unreach="true" config_pending="false">
+		<channel name="Thermostat Küche:0" ise_id="1710" visible="" operate="">
+			<datapoint name="BidCos-RF.KEQ0082242:0.UNREACH" type="UNREACH" ise_id="1725" value="false" valuetype="2" valueunit="" timestamp="1437615455" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0082242:0.STICKY_UNREACH" type="STICKY_UNREACH" ise_id="1721" value="true" valuetype="2" valueunit="" timestamp="1437615334" operations="7"/>
+			<datapoint name="BidCos-RF.KEQ0082242:0.CONFIG_PENDING" type="CONFIG_PENDING" ise_id="1711" value="false" valuetype="2" valueunit="" timestamp="1420387652" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0082242:0.LOWBAT" type="LOWBAT" ise_id="1715" value="true" valuetype="2" valueunit="" timestamp="1446997645" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0082242:0.RSSI_DEVICE" type="RSSI_DEVICE" ise_id="1719" value="200" valuetype="8" valueunit="" timestamp="1420392899" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0082242:0.RSSI_PEER" type="RSSI_PEER" ise_id="1720" value="184" valuetype="8" valueunit="" timestamp="1420392899" operations="5"/>
+		</channel>
+		<channel name="HM-CC-TC KEQ0082242:1" ise_id="1729" visible="true" operate="true">
+			<datapoint name="BidCos-RF.KEQ0082242:1.TEMPERATURE" type="TEMPERATURE" ise_id="1731" value="22.600000" valuetype="4" valueunit="°C" timestamp="1446997645" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0082242:1.HUMIDITY" type="HUMIDITY" ise_id="1730" value="58" valuetype="16" valueunit="%" timestamp="1446997645" operations="5"/>
+		</channel>
+		<channel name="HM-CC-TC KEQ0082242:2" ise_id="1732" visible="true" operate="true">
+			<datapoint name="BidCos-RF.KEQ0082242:2.SETPOINT" type="SETPOINT" ise_id="1735" value="21.000000" valuetype="4" valueunit="°C" timestamp="1446958803" operations="7"/>
+			<datapoint name="BidCos-RF.KEQ0082242:2.ADJUSTING_COMMAND" type="ADJUSTING_COMMAND" ise_id="1733" value="0" valuetype="16" valueunit="" timestamp="1446997665" operations="5"/>
+			<datapoint name="BidCos-RF.KEQ0082242:2.ADJUSTING_DATA" type="ADJUSTING_DATA" ise_id="1734" value="0" valuetype="16" valueunit="" timestamp="1446997665" operations="5"/>
+		</channel>
+		<channel name="HM-CC-TC KEQ0082242:3" ise_id="1737" visible="true" operate="true"/>
+	</device>
+</stateList>

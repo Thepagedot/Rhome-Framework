@@ -1,0 +1,17 @@
+<roomList>
+	<room name="Bad" ise_id="1263"/>
+	<room name="Flur" ise_id="1708"/>
+	<room name="Küche" ise_id="1258">
+		<channel ise_id="1729"/>
+		<channel ise_id="1732"/>
+		<channel ise_id="1737"/>
+		<channel ise_id="1544"/>
+	</room>
+	<room name="Schlafzimmer" ise_id="1259">
+		<channel ise_id="1595"/>
+	</room>
+	<room name="Terrasse" ise_id="1267"/>
+	<room name="Wohnzimmer" ise_id="1257">
+		<channel ise_id="1622"/>
+	</room>
+</roomList>
