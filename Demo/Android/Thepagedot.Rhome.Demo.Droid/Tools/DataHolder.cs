@@ -18,13 +18,13 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         public HomeMaticXmlApi HomeMaticApi { get; set; }
 
-        public List<IHomeControlApi> HomeControlSystems { get; set; }
+        public List<CentralUnit> CentralUnits { get; set; }
         public List<Room> Rooms { get; set;}
 
         public DataHolder()
         {
             Current = this;
-            HomeControlSystems = new List<IHomeControlApi>();
+            CentralUnits = new List<CentralUnit>();
             Rooms = new List<Room>();
 
             //CreateDemoData();
@@ -32,15 +32,21 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         public async Task Init(Context context)
         {
-            var address = Settings.GetHomeMaticIpAddress(context);
-            if (address != null)
+            // Load Settings
+            await Settings.LoadSettings();
+            if (Settings.Configuration != null)
             {
-                var ccu = new Ccu("HomeMatic Robby", address);
-                HomeMaticApi = new HomeMaticXmlApi(ccu);
-
-                var rooms = await HomeMaticApi.GetRoomsWidthDevicesAsync();
-                Rooms = rooms.ToList();
-            }                
+                CentralUnits = Settings.Configuration.CentralUnits;
+                if (CentralUnits.Any())
+                {
+                    HomeMaticApi = new HomeMaticXmlApi(new Ccu(CentralUnits.First()));
+                    Rooms = (await HomeMaticApi.GetRoomsWidthDevicesAsync()).ToList();
+                }                
+            }
+            else
+            {
+                Settings.Configuration = new Thepagedot.Rhome.Demo.Shared.Models.ConfigurationSettings();
+            }
         }
 
         private void CreateDemoData()

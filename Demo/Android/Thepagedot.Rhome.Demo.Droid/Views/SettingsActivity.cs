@@ -23,27 +23,17 @@ namespace Thepagedot.Rhome.Demo.Droid
     [Activity(Label = "Settings", ParentActivity = typeof(MainActivity))]			
 	public class SettingsActivity : AppCompatActivity
 	{        
+        ListView lvCentralUnits;
+
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
             SetContentView(Resource.Layout.Settings);
             SetSupportActionBar(FindViewById<Toolbar>(Resource.Id.toolbar));
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            FindViewById<Button>(Resource.Id.btnCheckAddress).Click += btnCheckAddress_Click;
-		}
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            // Init
-            var address = Settings.GetHomeMaticIpAddress(this);
-            if (address != null)
-            {
-                FindViewById<EditText>(Resource.Id.etIpAddress).Text = address;
-            } 
-        }
+            lvCentralUnits = FindViewById<ListView>(Resource.Id.lvCentralUnits);
+            lvCentralUnits.Adapter = new CentralUnitAdapter(DataHolder.Current.CentralUnits);
+		}            
 
         async void btnCheckAddress_Click (object sender, EventArgs e)
         {
@@ -57,7 +47,7 @@ namespace Thepagedot.Rhome.Demo.Droid
                 builder.SetMessage(Resource.String.connection_successful_message);
 
                 // Save settings
-                Settings.SaveHomeMaticIpAddress(this, address);
+                //Settings.SaveHomeMaticIpAddress(this, address);
             }
             else
             {
@@ -98,12 +88,7 @@ namespace Thepagedot.Rhome.Demo.Droid
                     builder.SetTitle(Resource.String.add_new_home_control_system_title);
                     builder.SetView(Resource.Layout.AddHomeControlSystemDialog);
                     builder.SetCancelable(false);
-                    builder.SetPositiveButton(Android.Resource.String.Ok, (object sender, DialogClickEventArgs e) => 
-                        {
-                            var name = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etName).Text;
-                            var address = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etIpAddress).Text;
-                            DataHolder.Current.HomeControlSystems.Add(new HomeMaticXmlApi(new Ccu(name, address)));
-                        });
+                    builder.SetPositiveButton(Android.Resource.String.Ok, AddCentralUnitDialogPositiveButton_Clicked);
                     builder.SetNegativeButton(Android.Resource.String.Cancel, (sender, e) => {});
                     builder.Show();                    
                     break;
@@ -111,6 +96,19 @@ namespace Thepagedot.Rhome.Demo.Droid
 
             return base.OnOptionsItemSelected(item);
         }
+
+        private async void AddCentralUnitDialogPositiveButton_Clicked(object sender, DialogClickEventArgs e) 
+        {
+            var name = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etName).Text;
+            var address = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etIpAddress).Text;
+            DataHolder.Current.CentralUnits.Add(new Ccu(name, address));
+
+            // Update list
+            (lvCentralUnits.Adapter as CentralUnitAdapter).NotifyDataSetChanged();
+
+            // Save changes in settings
+            Settings.Configuration.CentralUnits = DataHolder.Current.CentralUnits;
+            await Settings.SaveSettings();
+        }
 	}
 }
-

@@ -11,7 +11,7 @@ namespace Thepagedot.Rhome.Hue.Models
     {
         public string UserName { get; set; }
 
-        protected Bridge(string name, string address, string userName) : base(name, address, CentralUnitBrand.Hue)
+        protected Bridge(string name, string address, string userName) : base(name, address, CentralUnitBrand.PhilipsHue)
         {
             this.UserName = userName;
         }

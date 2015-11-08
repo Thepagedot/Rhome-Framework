@@ -27,4 +27,16 @@
             android:digits="0123456789."
             android:hint="IP Address" />
     </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:text="Brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_marginTop="@dimen/default_margin" />
+    <Spinner
+        android:id="@+id/spBrand"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:entries="@array/brand_names" />
 </LinearLayout>

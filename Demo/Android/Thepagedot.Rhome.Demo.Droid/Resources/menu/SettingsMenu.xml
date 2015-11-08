@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
 	<item
 		android:id="@+id/menu_add"
-		android:icon="@drawable/ic_home_black_24dp"
-		android:title="Add new home control system" />
+		android:icon="@drawable/ic_add_white_24dp"
+		android:title="Add new home control system"
+		app:showAsAction="always" />
 	<item
 		android:id="@+id/menu_rescan"
 		android:icon="@drawable/ic_home_black_24dp"
