@@ -12,9 +12,9 @@ namespace Thepagedot.Rhome.Demo.Droid
     {
         public static ConfigurationSettings Configuration { get; set; }
 
-        private static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-        private static string configurationFileName = "configuration.json";
-        private static JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects };             
+        private static readonly string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+        private static readonly string configurationFileName = "configuration.json";
+        private static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects };             
 
         public static async Task SaveSettingsAsync()
         {

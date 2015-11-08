@@ -39,7 +39,7 @@ namespace Thepagedot.Rhome.Demo.Droid
                 CentralUnits = Settings.Configuration.CentralUnits;
                 if (CentralUnits.Any())
                 {
-                    HomeMaticApi = new HomeMaticXmlApi(new Ccu(CentralUnits.First()));
+                    HomeMaticApi = new HomeMaticXmlApi((Ccu)(CentralUnits.First()));
                     if (Settings.Configuration.Rooms == null || Settings.Configuration.Rooms.Count == 0)
                     {
                         Rooms = (await HomeMaticApi.GetRoomsWidthDevicesAsync()).ToList();

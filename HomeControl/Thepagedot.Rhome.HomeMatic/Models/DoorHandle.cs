@@ -7,17 +7,17 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 {
     public class DoorHandle : HomeMaticChannel
     {
-		public DoorHandleState State { get; set; }
-
-        public DoorHandle(string name, int type, int iseId, string address) : base(name, type, iseId, address)
-        {
-            this.State = DoorHandleState.Closed;
-        }
+		public DoorHandleState State { get; set; }        
 
         [JsonConstructor]
         public DoorHandle(string name, int type, int iseId, string address, DoorHandleState state) : base(name, type, iseId, address)
         {
             this.State = state;
+        }
+
+        public DoorHandle(string name, int type, int iseId, string address) : base(name, type, iseId, address)
+        {
+            this.State = DoorHandleState.Closed;
         }
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
@@ -37,15 +37,6 @@ namespace Thepagedot.Rhome.HomeMatic.Models
                     break;
             }
         }
-
-        //public override async void ChangeState(object state)
-        //{
-        //    if ((DoorHandleState)state != State)
-        //    {
-        //        await HomeMaticXml.ChangeState(IseId, state);
-        //        State = (DoorHandleState)state;
-        //    }
-        //}
     }
 
     public enum DoorHandleState

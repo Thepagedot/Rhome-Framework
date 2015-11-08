@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -13,15 +14,16 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public float Level { get; set; }
         public int StopIseId { get; set; }
 
-        public Shutter(string name, int type, int iseId, string address) : base(name, type, iseId, address)
-        {
-        }
-
+        [JsonConstructor]
         public Shutter(string name, int type, int iseId, string address, float level, int stopIseId) : base(name, type, iseId, address)
         {
             this.Level = level;
             this.StopIseId = stopIseId;
         }
+
+        public Shutter(string name, int type, int iseId, string address) : base(name, type, iseId, address)
+        {
+        }        
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {
