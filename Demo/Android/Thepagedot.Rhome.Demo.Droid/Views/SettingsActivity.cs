@@ -162,7 +162,7 @@ namespace Thepagedot.Rhome.Demo.Droid
 
             // Save changes in settings
             Settings.Configuration.CentralUnits = DataHolder.Current.CentralUnits;
-            await Settings.SaveSettings();
+            await Settings.SaveSettingsAsync();
         }
 	}
 }

@@ -24,5 +24,13 @@ namespace Thepagedot.Rhome.Base.Models
             Floor = 0;
 			DeviceList = new List<Device> ();
         }
+
+        protected Room(string name, Uri imageUrl, List<Device> deviceList)
+        {
+            Name = name;
+            ImageUrl = imageUrl;
+            Floor = 0;
+            DeviceList = deviceList;
+        }
     }
 }

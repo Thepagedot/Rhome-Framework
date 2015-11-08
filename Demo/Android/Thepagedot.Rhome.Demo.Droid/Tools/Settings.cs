@@ -14,11 +14,11 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         private static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         private static string configurationFileName = "configuration.json";
+        private static JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects };             
 
-
-        public static async Task SaveSettings()
+        public static async Task SaveSettingsAsync()
         {
-            var json = JsonConvert.SerializeObject(Configuration);
+            var json = JsonConvert.SerializeObject(Configuration, Formatting.Indented, jsonSerializerSettings);
             var filePath = Path.Combine(folderPath, configurationFileName);
             using (var file = File.Open(filePath, FileMode.Create, FileAccess.Write))
             {
@@ -29,7 +29,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             }            
         }
 
-        public static async Task LoadSettings()
+        public static async Task LoadSettingsAsync()
         {
             string json;
             var filePath = Path.Combine(folderPath, configurationFileName);
@@ -44,7 +44,7 @@ namespace Thepagedot.Rhome.Demo.Droid
                     }
                 }
 
-                var conf = JsonConvert.DeserializeObject<ConfigurationSettings>(json);
+                var conf = JsonConvert.DeserializeObject<ConfigurationSettings>(json, jsonSerializerSettings);             
                 if (conf != null)
                     Configuration = conf;
             }         

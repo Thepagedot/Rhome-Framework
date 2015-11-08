@@ -13,6 +13,7 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Thepagedot.Rhome.HomeMatic.Models;
 using Thepagedot.Rhome.HomeMatic.Services;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
@@ -51,6 +52,24 @@ namespace Thepagedot.Rhome.Demo.Droid
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
             gvRooms.ItemClick += GvRooms_ItemClick;
             ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));           
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.MainMenu, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_refresh:
+                    DataHolder.Current.HomeMaticApi.UpdatesStatesForRoomsAsync(DataHolder.Current.Rooms);
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
 
         void GvRooms_ItemClick (object sender, AdapterView.ItemClickEventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Thepagedot.Rhome.HomeMatic.Services;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -15,6 +16,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             this.State = false;
         }
 
+        [JsonConstructor]
         public Switcher(string name, int type, int iseId, string address, bool state) : base(name, type, iseId, address)
         {
             this.State = state;

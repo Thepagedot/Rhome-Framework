@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -9,6 +10,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public double Value { get; set; }
         public string Unit { get; set; }
 
+        [JsonConstructor]
         public TemperatureSlider(string name, int type, int iseId, string address) : base(name, type, iseId, address)
         {
             MinValue = 6.0;

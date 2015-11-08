@@ -33,14 +33,24 @@ namespace Thepagedot.Rhome.Demo.Droid
         public async Task Init(Context context)
         {
             // Load Settings
-            await Settings.LoadSettings();
+            await Settings.LoadSettingsAsync();
             if (Settings.Configuration != null)
             {
                 CentralUnits = Settings.Configuration.CentralUnits;
                 if (CentralUnits.Any())
                 {
                     HomeMaticApi = new HomeMaticXmlApi(new Ccu(CentralUnits.First()));
-                    Rooms = (await HomeMaticApi.GetRoomsWidthDevicesAsync()).ToList();
+                    if (Settings.Configuration.Rooms == null || Settings.Configuration.Rooms.Count == 0)
+                    {
+                        Rooms = (await HomeMaticApi.GetRoomsWidthDevicesAsync()).ToList();
+                        Settings.Configuration.Rooms = Rooms;
+                        await Settings.SaveSettingsAsync();
+                    }
+                    else
+                    {
+                        Rooms = Settings.Configuration.Rooms;
+                        await HomeMaticApi.UpdatesStatesForRoomsAsync(Rooms);
+                    }                    
                 }                
             }
             else

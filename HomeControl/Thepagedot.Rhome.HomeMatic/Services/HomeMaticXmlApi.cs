@@ -149,6 +149,24 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return deviceList;
         }
 
+        public async Task UpdatesStatesForRoomsAsync(List<Room> rooms)
+        {
+            var allStates = await GetAllStatesAsync();
+
+            var channels = new List<HomeMaticChannel>();
+            foreach (var room in rooms)
+                foreach (var device in room.DeviceList)
+                    foreach(var channel in ((HomeMaticDevice)device).ChannelList)
+                        channels.Add(channel);
+
+            foreach (var channel in channels)
+            {
+                var datapoints = allStates.Where(s => s.ChannelIseId == channel.IseId);
+                if (datapoints.Any())
+                    channel.SetState(datapoints);
+            }
+        }
+
         public async Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync()
         {
             var roomList = await GetRoomsAsync();

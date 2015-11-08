@@ -1991,11 +1991,14 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0079
 			public const int media_actions = 2131427449;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int menu_add = 2131427468;
-			
 			// aapt resource value: 0x7f0b008d
-			public const int menu_rescan = 2131427469;
+			public const int menu_add = 2131427469;
+			
+			// aapt resource value: 0x7f0b0087
+			public const int menu_refresh = 2131427463;
+			
+			// aapt resource value: 0x7f0b008e
+			public const int menu_rescan = 2131427470;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -2006,20 +2009,20 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0014
 			public const int multiply = 2131427348;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int nav_about = 2131427467;
-			
-			// aapt resource value: 0x7f0b0089
-			public const int nav_devices = 2131427465;
-			
-			// aapt resource value: 0x7f0b0087
-			public const int nav_home = 2131427463;
-			
-			// aapt resource value: 0x7f0b0088
-			public const int nav_rooms = 2131427464;
+			// aapt resource value: 0x7f0b008c
+			public const int nav_about = 2131427468;
 			
 			// aapt resource value: 0x7f0b008a
-			public const int nav_settings = 2131427466;
+			public const int nav_devices = 2131427466;
+			
+			// aapt resource value: 0x7f0b0088
+			public const int nav_home = 2131427464;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int nav_rooms = 2131427465;
+			
+			// aapt resource value: 0x7f0b008b
+			public const int nav_settings = 2131427467;
 			
 			// aapt resource value: 0x7f0b0075
 			public const int nav_view = 2131427445;
@@ -2442,10 +2445,13 @@ namespace Thepagedot.Rhome.Demo.Droid
 		{
 			
 			// aapt resource value: 0x7f0d0000
-			public const int NavMenu = 2131558400;
+			public const int MainMenu = 2131558400;
 			
 			// aapt resource value: 0x7f0d0001
-			public const int SettingsMenu = 2131558401;
+			public const int NavMenu = 2131558401;
+			
+			// aapt resource value: 0x7f0d0002
+			public const int SettingsMenu = 2131558402;
 			
 			static Menu()
 			{

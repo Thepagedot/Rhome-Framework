@@ -148,7 +148,9 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_white_24dp.png" />
     <AndroidResource Include="Resources\layout\HomeControlApiItem.axml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\MainMenu.xml" />
+  </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportdesign">
       <Version>22.2.0.0</Version>

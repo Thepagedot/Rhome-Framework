@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Thepagedot.Rhome.Base.Models;
+using Newtonsoft.Json;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -22,5 +23,12 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             ChannelIdList = new List<int>();
 			DeviceList = new List<Device>();
 		}
+
+        [JsonConstructor]
+        public HomeMaticRoom(int iseId, List<int> channelIdList, string name, int floor, Uri imageUrl, List<Device> deviceList) : base(name, imageUrl, deviceList)
+        {
+            IseId = iseId;
+            ChannelIdList = new List<int>();
+        }
     }
 }
