@@ -17,6 +17,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Thepagedot.Rhome.HomeMatic.Services;
 using Thepagedot.Rhome.HomeMatic.Models;
+using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
@@ -33,6 +34,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             lvCentralUnits = FindViewById<ListView>(Resource.Id.lvCentralUnits);
             lvCentralUnits.Adapter = new CentralUnitAdapter(DataHolder.Current.CentralUnits);
+            lvCentralUnits.ItemClick += (sender, e) => ShowAddEditDialog(DataHolder.Current.CentralUnits.ElementAt(e.Position));
 		}            
 
         async void btnCheckAddress_Click (object sender, EventArgs e)
@@ -84,25 +86,77 @@ namespace Thepagedot.Rhome.Demo.Droid
             switch (item.ItemId)
             {
                 case Resource.Id.menu_add:
-                    var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
-                    builder.SetTitle(Resource.String.add_new_home_control_system_title);
-                    builder.SetView(Resource.Layout.AddHomeControlSystemDialog);
-                    builder.SetCancelable(false);
-                    builder.SetPositiveButton(Android.Resource.String.Ok, AddCentralUnitDialogPositiveButton_Clicked);
-                    builder.SetNegativeButton(Android.Resource.String.Cancel, (sender, e) => {});
-                    builder.Show();                    
+                    ShowAddEditDialog(null);             
                     break;
             }
 
             return base.OnOptionsItemSelected(item);
         }
 
-        private async void AddCentralUnitDialogPositiveButton_Clicked(object sender, DialogClickEventArgs e) 
+        private void ShowAddEditDialog(CentralUnit centralUnit)
+        {            
+            var builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+            var dialogView = LayoutInflater.Inflate(Resource.Layout.AddHomeControlSystemDialog, null);
+            builder.SetView(dialogView);
+            builder.SetNeutralButton(Android.Resource.String.Cancel, (sender, e) => {});
+
+
+            if (centralUnit == null)
+            {
+                // New central unit will be added    
+                builder.SetTitle(Resource.String.add_home_control_system_title);
+                builder.SetPositiveButton(Android.Resource.String.Ok, AddCentralUnitButton_Clicked);
+            }
+            else
+            {
+                // Existing unit will be edited
+                builder.SetTitle(Resource.String.edit_home_control_system_title);
+                builder.SetPositiveButton(Android.Resource.String.Ok, (sender, e) => EditCentralUnitButton_Clicked(sender, e, centralUnit));
+                builder.SetNegativeButton(Resource.String.delete, (sender, e) => DeleteCentralUnitButton_Clicked(sender, e, centralUnit));
+
+                // Fill controls with properties of the existing central unit
+                dialogView.FindViewById<EditText>(Resource.Id.etName).Text = centralUnit.Name;
+                dialogView.FindViewById<EditText>(Resource.Id.etIpAddress).Text = centralUnit.Address;
+                dialogView.FindViewById<Spinner>(Resource.Id.spBrand).SetSelection((int)centralUnit.Brand);
+                dialogView.FindViewById<Spinner>(Resource.Id.spBrand).Enabled = false;
+            }
+
+            builder.Show();
+        }
+
+
+        private async void AddCentralUnitButton_Clicked(object sender, DialogClickEventArgs e) 
         {
             var name = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etName).Text;
             var address = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etIpAddress).Text;
             DataHolder.Current.CentralUnits.Add(new Ccu(name, address));
 
+            await UpdateAndSaveAsync();
+        }
+
+        private async void EditCentralUnitButton_Clicked(object sender, DialogClickEventArgs e, CentralUnit centralUnit)
+        {
+            var name = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etName).Text;
+            var address = (sender as Android.Support.V7.App.AlertDialog).FindViewById<EditText>(Resource.Id.etIpAddress).Text;
+
+            centralUnit.Name = name;
+            centralUnit.Address = address;
+
+            await UpdateAndSaveAsync();
+        }
+
+        private async void DeleteCentralUnitButton_Clicked(object sender, DialogClickEventArgs e, CentralUnit centralUnit)
+        {
+            DataHolder.Current.CentralUnits.Remove(centralUnit);
+            await UpdateAndSaveAsync();
+        }
+
+        /// <summary>
+        /// Updates the ListView's controller and saves the changes to the settings
+        /// </summary>
+        /// <returns>Task to await</returns>
+        private async Task UpdateAndSaveAsync()
+        {
             // Update list
             (lvCentralUnits.Adapter as CentralUnitAdapter).NotifyDataSetChanged();
 

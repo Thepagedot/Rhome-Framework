@@ -2512,7 +2512,7 @@ namespace Thepagedot.Rhome.Demo.Droid
 			public const int abc_toolbar_collapse_description = 2131230736;
 			
 			// aapt resource value: 0x7f08001e
-			public const int add_new_home_control_system_title = 2131230750;
+			public const int add_home_control_system_title = 2131230750;
 			
 			// aapt resource value: 0x7f080014
 			public const int app_name = 2131230740;
@@ -2537,6 +2537,12 @@ namespace Thepagedot.Rhome.Demo.Droid
 			
 			// aapt resource value: 0x7f08001a
 			public const int connection_successful_title = 2131230746;
+			
+			// aapt resource value: 0x7f080020
+			public const int delete = 2131230752;
+			
+			// aapt resource value: 0x7f08001f
+			public const int edit_home_control_system_title = 2131230751;
 			
 			// aapt resource value: 0x7f080013
 			public const int hello = 2131230739;

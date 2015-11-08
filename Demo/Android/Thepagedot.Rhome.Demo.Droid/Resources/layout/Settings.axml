@@ -20,6 +20,5 @@
         android:layout_height="match_parent"
         android:divider="@null"
         android:dividerHeight="0px"
-        android:id="@+id/lvCentralUnits"
-        android:paddingTop="@dimen/default_margin" />
+        android:id="@+id/lvCentralUnits" />
 </LinearLayout>
