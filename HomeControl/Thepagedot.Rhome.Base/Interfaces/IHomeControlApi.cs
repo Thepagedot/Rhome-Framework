@@ -20,8 +20,11 @@ namespace Thepagedot.Rhome.Base.Interfaces
 	    Task SendChannelUpdateAsync(int id, object value);
         Task<object> GetChannelStateAsync(Channel channel);
 
+        // Update
+        Task UpdateStatesForRoomsAsync(IEnumerable<Room> rooms);
+        Task UpdateStatesForRoomAsync(Room room);
+
         // Helper methods
         Task<bool> CheckConnectionAsync();
 	}
-}
-
+}    

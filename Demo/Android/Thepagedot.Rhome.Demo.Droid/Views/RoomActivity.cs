@@ -13,6 +13,7 @@ using Android.Widget;
 using Android.Support.V7.App;
 
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V4.Widget;
 
 namespace Thepagedot.Rhome.Demo.Droid
 {
@@ -30,9 +31,20 @@ namespace Thepagedot.Rhome.Demo.Droid
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
+            // Init swipe to refresh
+            var slSwipeContainer = FindViewById<SwipeRefreshLayout>(Resource.Id.slSwipeContainer);
+            slSwipeContainer.SetColorSchemeResources(Android.Resource.Color.HoloBlueBright, Android.Resource.Color.HoloGreenLight, Android.Resource.Color.HoloOrangeLight, Android.Resource.Color.HoloRedLight);
+            slSwipeContainer.Refresh += SlSwipeContainer_Refresh;
+
             var lvDevices = FindViewById<ListView>(Resource.Id.lvDevices);
             lvDevices.Adapter = new DeviceAdapter(this, 0, DataHolder.Current.CurrentRoom.DeviceList);
+        }
 
+        async void SlSwipeContainer_Refresh (object sender, EventArgs e)
+        {
+            await DataHolder.Current.UpdateCurrentRoom();
+            (sender as SwipeRefreshLayout).Refreshing = false;
+            (FindViewById<ListView>(Resource.Id.lvDevices).Adapter as DeviceAdapter).NotifyDataSetChanged();
         }
     }
 }

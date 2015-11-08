@@ -30,7 +30,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             //CreateDemoData();
         }
 
-        public async Task Init(Context context)
+        public async Task Init()
         {
             // Load Settings
             await Settings.LoadSettingsAsync();
@@ -40,6 +40,8 @@ namespace Thepagedot.Rhome.Demo.Droid
                 if (CentralUnits.Any())
                 {
                     HomeMaticApi = new HomeMaticXmlApi((Ccu)(CentralUnits.First()));
+
+                    // Load rooms either from settings or download from API
                     if (Settings.Configuration.Rooms == null || Settings.Configuration.Rooms.Count == 0)
                     {
                         Rooms = (await HomeMaticApi.GetRoomsWidthDevicesAsync()).ToList();
@@ -48,15 +50,24 @@ namespace Thepagedot.Rhome.Demo.Droid
                     }
                     else
                     {
-                        Rooms = Settings.Configuration.Rooms;
-                        await HomeMaticApi.UpdatesStatesForRoomsAsync(Rooms);
-                    }                    
+                        Rooms = Settings.Configuration.Rooms;                    
+                    }
                 }                
             }
             else
             {
                 Settings.Configuration = new Thepagedot.Rhome.Demo.Shared.Models.ConfigurationSettings();
             }
+        }
+
+        public async Task Update()
+        {
+            await HomeMaticApi.UpdateStatesForRoomsAsync(Rooms);
+        }
+
+        public async Task UpdateCurrentRoom()
+        {
+            await HomeMaticApi.UpdateStatesForRoomAsync(CurrentRoom);
         }
 
         private void CreateDemoData()

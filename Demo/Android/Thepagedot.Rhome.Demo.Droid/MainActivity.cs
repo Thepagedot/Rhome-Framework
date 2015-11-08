@@ -26,69 +26,52 @@ namespace Thepagedot.Rhome.Demo.Droid
         {
             base.OnCreate(bundle);
 
-            if (DataHolder.Current == null)
-                new DataHolder();         
-
             SetContentView(Resource.Layout.Main);
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-
-            // Init toolbar
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
-            // Attach item selected handler to navigation view
-            var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
-
-            // Create ActionBarDrawerToggle button and add it to the toolbar
+            // Init navigation drawer
+            FindViewById<NavigationView>(Resource.Id.nav_view).NavigationItemSelected += NavigationView_NavigationItemSelected;
             var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.SetDrawerListener(drawerToggle);
-            drawerToggle.SyncState();          
+            drawerToggle.SyncState();
 
-            // Load data
-            await DataHolder.Current.Init(this);
+            // Init swipe to refresh
+            var slSwipeContainer = FindViewById<SwipeRefreshLayout>(Resource.Id.slSwipeContainer);
+            slSwipeContainer.SetColorSchemeResources(Android.Resource.Color.HoloBlueBright, Android.Resource.Color.HoloGreenLight, Android.Resource.Color.HoloOrangeLight, Android.Resource.Color.HoloRedLight);
+            slSwipeContainer.Refresh += SlSwipeContainer_Refresh;
 
+            // Init DataHolder
+            if (DataHolder.Current == null) new DataHolder();
+            await DataHolder.Current.Init();
+
+            // Init GridView
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
             gvRooms.ItemClick += GvRooms_ItemClick;
-            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));           
-        }
+            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));        
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+            // Update status
+            await DataHolder.Current.Update();
+        }                        
+
+        async void SlSwipeContainer_Refresh (object sender, EventArgs e)
         {
-            MenuInflater.Inflate(Resource.Menu.MainMenu, menu);
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Resource.Id.menu_refresh:
-                    DataHolder.Current.HomeMaticApi.UpdatesStatesForRoomsAsync(DataHolder.Current.Rooms);
-                    break;
-            }
-
-            return base.OnOptionsItemSelected(item);
-        }
+            await DataHolder.Current.Update();
+            (sender as SwipeRefreshLayout).Refreshing = false;
+        }            
 
         void GvRooms_ItemClick (object sender, AdapterView.ItemClickEventArgs e)
         {
             DataHolder.Current.CurrentRoom = DataHolder.Current.Rooms.ElementAt(e.Position);
             StartActivity(new Intent(this, typeof(RoomActivity)));
-        }           
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
-            if (gvRooms != null)
-                ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));           
         }
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
+            drawerLayout.CloseDrawers();
+
             switch (e.MenuItem.ItemId)
             {
                 default:
@@ -98,8 +81,6 @@ namespace Thepagedot.Rhome.Demo.Droid
                     StartActivity(new Intent(this, typeof(SettingsActivity)));
                     break;                   
             }
-            
-            drawerLayout.CloseDrawers();
         }
     }      
 }
