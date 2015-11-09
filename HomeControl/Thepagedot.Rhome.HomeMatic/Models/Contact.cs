@@ -20,9 +20,13 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             this.State = false;
         }
 
-        public override void SetState(IEnumerable<Datapoint> values)
+        public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            State = Convert.ToBoolean(values.First().Value);
+			base.SetState(datapoints);
+
+			var statePoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.STATE);
+			if (statePoint != null)
+            	State = Convert.ToBoolean(statePoint.Value);
         }           
     }
 }

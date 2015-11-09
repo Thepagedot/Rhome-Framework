@@ -21,15 +21,19 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             Values = new List<Datapoint>();
         }
 
-        public override void SetState(IEnumerable<Datapoint> values)
+        public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            for (int i = 0; i < values.Count(); i++)
-            {
-                var datapoint = values.ElementAt(i);
-                Values.Add(datapoint);
-                Content += String.Format("{0}: {1}{2}", datapoint.Type, datapoint.Value, datapoint.ValueUnit);
+			base.SetState(datapoints);
 
-                if (i != values.Count() - 1)
+			//TODO: This must be called by the UI to give the chance to provide cutsom stings for name
+			// So the content property needs to be deleted and the ui has to build the string out of the list of datapoints and their ToFormateedString(string) methods
+            for (int i = 0; i < datapoints.Count(); i++)
+            {
+                var datapoint = datapoints.ElementAt(i);
+                Values.Add(datapoint);
+				Content += datapoint.ToString();
+
+                if (i != datapoints.Count() - 1)
                     Content += "\n";    
             }
         }

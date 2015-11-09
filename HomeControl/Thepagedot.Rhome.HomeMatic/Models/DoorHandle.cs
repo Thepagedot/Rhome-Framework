@@ -22,20 +22,24 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            var value = datapoints.First().Value;
+			base.SetState(datapoints);
 
-            switch (Convert.ToInt32(value))
-            {
-                case 0:
-                    State = DoorHandleState.Closed;
-                    break;
-                case 1:
-                     State = DoorHandleState.Tilted;
-                    break;
-                case 2:
-                    State = DoorHandleState.Open;
-                    break;
-            }
+			var statePoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.STATE);
+			if (statePoint != null)
+			{
+				switch (Convert.ToInt32(statePoint.Value))
+				{
+					case 0:
+						State = DoorHandleState.Closed;
+						break;
+					case 1:
+						State = DoorHandleState.Tilted;
+						break;
+					case 2:
+						State = DoorHandleState.Open;
+						break;
+				}
+			}
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -19,7 +20,9 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            //throw new NotImplementedException();
+			base.SetState(datapoints);
+
+			var statePoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.STATE);
         }
 
         //public override void ChangeState(object state)

@@ -62,12 +62,14 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         public async Task Update()
         {
-            await HomeMaticApi.UpdateStatesForRoomsAsync(Rooms);
+			if (HomeMaticApi != null)
+            	await HomeMaticApi.UpdateStatesForRoomsAsync(Rooms);
         }
 
         public async Task UpdateCurrentRoom()
         {
-            await HomeMaticApi.UpdateStatesForRoomAsync(CurrentRoom);
+			if (HomeMaticApi != null)
+            	await HomeMaticApi.UpdateStatesForRoomAsync(CurrentRoom);
         }
 
         private void CreateDemoData()

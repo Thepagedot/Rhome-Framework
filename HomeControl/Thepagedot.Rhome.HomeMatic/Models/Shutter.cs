@@ -27,10 +27,17 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            var level = datapoints.First().Value;
-            var stopIseId = datapoints.ElementAt(1).IseId;
-            this.Level = float.Parse(level, CultureInfo.InvariantCulture.NumberFormat);
-            this.StopIseId = Convert.ToInt32(stopIseId);            
+			base.SetState(datapoints);
+
+			var levelPoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.LEVEL);
+			if (levelPoint != null)
+				Level = float.Parse(levelPoint.Value, CultureInfo.InvariantCulture.NumberFormat);
+
+			var stopPoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.STOP);
+			if (stopPoint != null)
+			{
+				StopIseId = stopPoint.IseId;
+			}            
         }
 
         public async Task Up(HomeMaticXmlApi homeMaticXmlApi)

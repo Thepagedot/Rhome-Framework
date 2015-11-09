@@ -56,6 +56,14 @@ namespace Thepagedot.Rhome.Demo.Droid
             await DataHolder.Current.Update();
         }                        
 
+		protected override void OnResume()
+		{
+			base.OnResume();
+			var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
+			ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));        
+
+		}
+
         async void SlSwipeContainer_Refresh (object sender, EventArgs e)
         {
             await DataHolder.Current.Update();

@@ -24,8 +24,11 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {
-            var value = datapoints.First().Value;            
-            State = Convert.ToBoolean(value);            
+			base.SetState(datapoints);
+
+			var statePoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.STATE);
+			if (statePoint != null)
+				State = Convert.ToBoolean(statePoint.Value);            
         }
 
         public async Task On(HomeMaticXmlApi homeMaticXmlApi)

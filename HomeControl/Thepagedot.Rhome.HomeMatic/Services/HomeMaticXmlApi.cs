@@ -12,7 +12,7 @@ using Thepagedot.Rhome.HomeMatic.Models;
 
 namespace Thepagedot.Rhome.HomeMatic.Services
 {
-    public class HomeMaticXmlApi : IHomeControlApi
+	public class HomeMaticXmlApi : IHomeControlApi
     {
         private readonly Ccu Ccu;
 
@@ -212,31 +212,6 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             await Downloader.DownloadWebResponse(url);
         }
 
-        public async Task<object> GetChannelStateAsync(Channel channel)
-        {
-            var homeMaticChannel = channel as HomeMaticChannel;
-            if (homeMaticChannel == null)
-                throw new FormatException("Wrong Format. Please provide a HomeMatic channel to this API");
-
-            // Get xml response from API
-            var url = String.Format("http://{0}/config/xmlapi/state.cgi?channel_id={1}", Ccu.Address, homeMaticChannel.IseId);
-            var xmlResponse = await Downloader.DownloadWebResponse(url);
-
-            // Parse xml
-            var xmlDatapointList = XDocument.Parse(xmlResponse);
-            foreach (XElement xmlDatapoint in xmlDatapointList.Descendants("datapoint"))
-            {
-                var datapointType = xmlDatapoint.Attribute("type").Value;
-                if (datapointType.Equals("STATE") || datapointType.Equals("SETPOINT"))
-                {
-                    var datapointValue = xmlDatapoint.Attribute("value").Value;
-                    return datapointValue;
-                }
-            }
-
-            return null;
-        }
-
         private async Task<List<Datapoint>> GetAllStatesAsync()
         {
             var stateList = new List<Datapoint>();
@@ -252,19 +227,21 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                     foreach (XElement xmlDatapoint in xmlChannel.Descendants("datapoint"))
                     {
                         var datapointType = xmlDatapoint.Attribute("type").Value;
-                        if (datapointType.Equals("STATE") || datapointType.Equals("SETPOINT") || datapointType.Equals("LEVEL") || datapointType.Equals("STOP"))
-                        {
-                            var datapointIseId = Convert.ToInt32(xmlDatapoint.Attribute("ise_id").Value);
-                            var datapointValue = xmlDatapoint.Attribute("value").Value;
-                            var datapointUnit = xmlDatapoint.Attribute("valueunit").Value;
-                            stateList.Add(new Datapoint(datapointType, datapointIseId, channelIdeId, datapointValue, datapointUnit));
-                        }
+                        var datapointIseId = Convert.ToInt32(xmlDatapoint.Attribute("ise_id").Value);
+                        var datapointValue = xmlDatapoint.Attribute("value").Value;
+                        var datapointUnit = xmlDatapoint.Attribute("valueunit").Value;
+                        stateList.Add(new Datapoint(datapointType, datapointIseId, channelIdeId, datapointValue, datapointUnit));                        
                     }
                 }
             }
 
             return stateList;
         }
+
+		public Task<object> GetChannelStateAsync(Channel channel)
+		{
+			throw new NotImplementedException();
+		}
 
         #region Helper
 
