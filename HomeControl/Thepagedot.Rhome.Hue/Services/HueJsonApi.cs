@@ -52,5 +52,15 @@ namespace Thepagedot.Rhome.Hue.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task UpdateStatesForRoomsAsync(IEnumerable<Room> rooms)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateStatesForRoomAsync(Room room)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
