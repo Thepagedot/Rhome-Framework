@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -41,7 +42,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 					return String.Format("{0}: {1}{2}", name, Value, ValueUnit);
 				case DatapointType.TEMPERATURE:
 					name = name ?? "Temperature";
-					return String.Format("{0}: {1:N2}{2}", name, Convert.ToDouble(Value), ValueUnit);
+                    return String.Format("{0}: {1:N2}{2}", name, double.Parse(Value, CultureInfo.InvariantCulture), ValueUnit);
 			}
 		}
     }

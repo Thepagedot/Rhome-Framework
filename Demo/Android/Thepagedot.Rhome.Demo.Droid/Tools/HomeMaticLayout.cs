@@ -26,6 +26,8 @@ namespace Thepagedot.Rhome.Demo.Droid
                 return GetViewForDoorHandle(context, channel);
             if (channel is Information)
                 return GetViewForInformation(context, channel);                
+            if (channel is TemperatureSlider)
+                return GetViewForTemperatureSlider(context, channel);
 
             return LayoutInflater.From(context).Inflate(Resource.Layout.Channel, null);
         }
@@ -38,9 +40,9 @@ namespace Thepagedot.Rhome.Demo.Droid
             tbSwitcher.CheckedChange += async delegate(object sender, CompoundButton.CheckedChangeEventArgs e)
             {
                 if (e.IsChecked)
-                    await (channel as Switcher).On(DataHolder.Current.HomeMaticApi);
+                    await (channel as Switcher).OnAsync(DataHolder.Current.HomeMaticApi);
                 else
-                    await (channel as Switcher).Off(DataHolder.Current.HomeMaticApi);
+                    await (channel as Switcher).OffAsync(DataHolder.Current.HomeMaticApi);
             };
 
             return view;
@@ -98,6 +100,21 @@ namespace Thepagedot.Rhome.Demo.Droid
         {
             var view = LayoutInflater.From(context).Inflate(Resource.Layout.Information, null);
             view.FindViewById<TextView>(Resource.Id.tvContent).Text = (channel as Information).Content;
+            return view;
+        }
+
+        private static View GetViewForTemperatureSlider(Context context, HomeMaticChannel channel)
+        {
+            var temperatureSlider = (channel as TemperatureSlider);
+            var view = LayoutInflater.From(context).Inflate(Resource.Layout.TemperatureSlider, null);
+            view.FindViewById<TextView>(Resource.Id.tvState).Text = temperatureSlider.Value + temperatureSlider.Unit;
+            view.FindViewById<SeekBar>(Resource.Id.sbTemperature).Progress = Convert.ToInt32(temperatureSlider.Value);
+            view.FindViewById<SeekBar>(Resource.Id.sbTemperature).ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) => {
+                view.FindViewById<TextView>(Resource.Id.tvState).Text = e.Progress + temperatureSlider.Unit;
+            };
+            view.FindViewById<SeekBar>(Resource.Id.sbTemperature).StopTrackingTouch += async (object sender, SeekBar.StopTrackingTouchEventArgs e) => 
+                    await temperatureSlider.ChangeTemperatureAsync(e.SeekBar.Progress, DataHolder.Current.HomeMaticApi);
+
             return view;
         }
     }

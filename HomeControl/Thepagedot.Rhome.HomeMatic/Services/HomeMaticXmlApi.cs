@@ -119,26 +119,27 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                     var channelType = Convert.ToInt32(xmlChannel.Attribute("type").Value);
                     var channelIseId = Convert.ToInt32(xmlChannel.Attribute("ise_id").Value);
                     var channelAddress = xmlChannel.Attribute("address").Value;
+                    var channelIsVisible = Convert.ToBoolean(xmlChannel.Attribute("visible").Value);
 
                     switch (channelType)
                     {
                         case 17:
-                            channelList.Add(new TemperatureSlider(channelName, channelType, channelIseId, channelAddress));
+                            channelList.Add(new TemperatureSlider(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
                             break;
                         case 22:
-                            channelList.Add(new Information(channelName, channelType, channelIseId, channelAddress));
+                            channelList.Add(new Information(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
                             break;
                         case 26:
-                            channelList.Add(new Switcher(channelName, channelType, channelIseId, channelAddress));
+                            channelList.Add(new Switcher(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
                             break;
                         case 37:
-                            channelList.Add(new Contact(channelName, channelType, channelIseId, channelAddress));
+                            channelList.Add(new Contact(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
                             break;
                         case 36:
-                            channelList.Add(new Shutter(channelName, channelType, channelIseId, channelAddress));
+                            channelList.Add(new Shutter(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
                             break;
                         case 38:
-                            channelList.Add(new DoorHandle(channelName, channelType, channelIseId, channelAddress));
+                            channelList.Add(new DoorHandle(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
                             break;
                     }
                 }
@@ -209,7 +210,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         public async Task SendChannelUpdateAsync(int id, object value)
         {
             var url = String.Format("http://{0}/config/xmlapi/statechange.cgi?ise_id={1}&new_value={2}", Ccu.Address, id, value.ToString().ToLower());
-            await Downloader.DownloadWebResponse(url);
+            var rewsult = await Downloader.DownloadWebResponse(url);
         }
 
         private async Task<List<Datapoint>> GetAllStatesAsync()

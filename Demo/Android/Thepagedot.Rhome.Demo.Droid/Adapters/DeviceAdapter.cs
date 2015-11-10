@@ -4,6 +4,7 @@ using Android.Widget;
 using Android.Content;
 using System.Collections.Generic;
 using Android.Views;
+using System.Linq;
 using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.Demo.Droid
@@ -19,8 +20,10 @@ namespace Thepagedot.Rhome.Demo.Droid
 
             if (device is HomeMaticDevice)
             {
-                var adapter = new HomeMaticChannelAdapter(Context, 0, ((HomeMaticDevice)device).ChannelList);
-                view.FindViewById<ListView>(Resource.Id.lvChannels).Adapter = adapter;
+                var adapter = new HomeMaticChannelAdapter(Context, 0, ((HomeMaticDevice)device).ChannelList.Where(c => c.IsVisible).ToList());
+                var lvChannels = view.FindViewById<ListView>(Resource.Id.lvChannels);
+                lvChannels.Adapter = adapter;
+                ScollingHelpers.SetListViewHeightBasedOnChildren(lvChannels, 0);                
             }
 
             return view;

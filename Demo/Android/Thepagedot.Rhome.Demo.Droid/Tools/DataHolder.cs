@@ -62,8 +62,11 @@ namespace Thepagedot.Rhome.Demo.Droid
 
         public async Task Update()
         {
-			if (HomeMaticApi != null)
-            	await HomeMaticApi.UpdateStatesForRoomsAsync(Rooms);
+            if (HomeMaticApi != null)
+            {
+                await HomeMaticApi.UpdateStatesForRoomsAsync(Rooms);
+                await Settings.SaveSettingsAsync();
+            }
         }
 
         public async Task UpdateCurrentRoom()
@@ -82,9 +85,9 @@ namespace Thepagedot.Rhome.Demo.Droid
             var room3 = new HomeMaticRoom("Bathroom", 0, null);
 
             var device1 = new HomeMaticDevice("Device 1", 0, "");
-            device1.ChannelList.Add(new Switcher("Lamp 1", 0, 0, ""));
+            device1.ChannelList.Add(new Switcher("Lamp 1", 0, 0, "", true));
             var device2 = new HomeMaticDevice("Device 2", 0, "");
-            device2.ChannelList.Add(new Shutter("Shutters 1", 0, 0, ""));
+            device2.ChannelList.Add(new Shutter("Shutters 1", 0, 0, "", true));
 
             room1.DeviceList.Add(device1);
             room1.DeviceList.Add(device2);

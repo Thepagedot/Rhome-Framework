@@ -10,12 +10,12 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 		public bool State { get; set; }        
 
         [JsonConstructor]
-        public Contact(string name, int type, int iseId, string address, bool state) : base(name, type, iseId, address)
+        public Contact(string name, int type, int iseId, string address, bool isVisible, bool state) : base(name, type, iseId, address, isVisible)
         {
             this.State = state;
         }
 
-        public Contact(string name, int type, int iseId, string address) : base(name, type, iseId, address)
+        public Contact(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
         {
             this.State = false;
         }

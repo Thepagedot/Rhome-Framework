@@ -10,12 +10,12 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 		public DoorHandleState State { get; set; }        
 
         [JsonConstructor]
-        public DoorHandle(string name, int type, int iseId, string address, DoorHandleState state) : base(name, type, iseId, address)
+        public DoorHandle(string name, int type, int iseId, string address, bool isVisible, DoorHandleState state) : base(name, type, iseId, address, isVisible)
         {
             this.State = state;
         }
 
-        public DoorHandle(string name, int type, int iseId, string address) : base(name, type, iseId, address)
+        public DoorHandle(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
         {
             this.State = DoorHandleState.Closed;
         }

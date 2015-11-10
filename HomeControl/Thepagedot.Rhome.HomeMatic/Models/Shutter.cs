@@ -15,13 +15,13 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public int StopIseId { get; set; }
 
         [JsonConstructor]
-        public Shutter(string name, int type, int iseId, string address, float level, int stopIseId) : base(name, type, iseId, address)
+        public Shutter(string name, int type, int iseId, string address, float level, int stopIseId, bool isVisible) : base(name, type, iseId, address, isVisible)
         {
             this.Level = level;
             this.StopIseId = stopIseId;
         }
 
-        public Shutter(string name, int type, int iseId, string address) : base(name, type, iseId, address)
+        public Shutter(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
         {
         }        
 

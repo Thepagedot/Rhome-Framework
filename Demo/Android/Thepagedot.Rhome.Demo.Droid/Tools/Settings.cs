@@ -26,7 +26,7 @@ namespace Thepagedot.Rhome.Demo.Droid
                 {
                     await stream.WriteAsync(json);
                 }
-            }            
+            }
         }
 
         public static async Task LoadSettingsAsync()

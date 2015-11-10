@@ -11,12 +11,12 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public string Content { get; set; }
 
         [JsonConstructor]
-        public Information(string name, int type, int iseId, string address, List<Datapoint> values) : base(name, type, iseId, address)
+        public Information(string name, int type, int iseId, string address, bool isVisible, List<Datapoint> values) : base(name, type, iseId, address, isVisible)
         {
             Values = values;
         }
 
-        public Information(string name, int type, int iseId, string address) : base(name, type, iseId, address)
+        public Information(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
         {
             Values = new List<Datapoint>();
         }
@@ -27,6 +27,8 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
 			//TODO: This must be called by the UI to give the chance to provide cutsom stings for name
 			// So the content property needs to be deleted and the ui has to build the string out of the list of datapoints and their ToFormateedString(string) methods
+
+            Content = String.Empty;
             for (int i = 0; i < datapoints.Count(); i++)
             {
                 var datapoint = datapoints.ElementAt(i);
@@ -34,7 +36,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 				Content += datapoint.ToString();
 
                 if (i != datapoints.Count() - 1)
-                    Content += "\n";    
+                    Content += "\n";
             }
         }
     }
