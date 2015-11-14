@@ -55,6 +55,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 		LEVEL,
 		LOWBAT,
 		SETPOINT,
+        SET_TEMPERATURE,
 		STATE,
 		STOP,
 		TEMPERATURE

@@ -26,7 +26,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         {
 			base.SetState(datapoints);
 
-            var statePoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.SETPOINT);
+            var statePoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.SETPOINT || d.Type == DatapointType.SET_TEMPERATURE);
             if (statePoint != null)
             {
                 Value = double.Parse(statePoint.Value, CultureInfo.InvariantCulture);
