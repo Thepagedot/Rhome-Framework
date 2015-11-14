@@ -88,6 +88,9 @@ namespace Thepagedot.Rhome.Demo.Droid
                 case Resource.Id.menu_add:
                     ShowAddEditDialog(null);             
                     break;
+                case Resource.Id.menu_rescan:
+                    Rescan();
+                    break;
             }
 
             return base.OnOptionsItemSelected(item);
@@ -99,7 +102,6 @@ namespace Thepagedot.Rhome.Demo.Droid
             var dialogView = LayoutInflater.Inflate(Resource.Layout.AddHomeControlSystemDialog, null);
             builder.SetView(dialogView);
             builder.SetNeutralButton(Android.Resource.String.Cancel, (sender, e) => {});
-
 
             if (centralUnit == null)
             {
@@ -163,6 +165,13 @@ namespace Thepagedot.Rhome.Demo.Droid
             // Save changes in settings
             Settings.Configuration.CentralUnits = DataHolder.Current.CentralUnits;
             await Settings.SaveSettingsAsync();
+        }
+
+        private async void Rescan()
+        {
+            Settings.Configuration.Rooms.Clear();
+            await Settings.SaveSettingsAsync();
+            DataHolder.Current.Init();
         }
 	}
 }

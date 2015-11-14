@@ -165,8 +165,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             foreach (var channel in channels)
             {
                 var datapoints = allStates.Where(s => s.ChannelIseId == channel.IseId);
-                if (datapoints.Any())
-                    channel.SetState(datapoints);
+                channel.SetState(datapoints);
             }
         }            
 

@@ -3,10 +3,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:text="Devicename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvName"
+        android:textSize="16dip"
+        android:paddingTop="@dimen/default_margin"
+        android:paddingLeft="@dimen/default_margin"
+        android:paddingRight="@dimen/default_margin" />
     <ListView
         android:id="@+id/lvChannels"
         android:minWidth="25px"
         android:minHeight="25px"
+        android:divider="@null"
+        android:dividerHeight="0px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

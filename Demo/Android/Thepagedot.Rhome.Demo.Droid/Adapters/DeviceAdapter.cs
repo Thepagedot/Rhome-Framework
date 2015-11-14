@@ -18,9 +18,12 @@ namespace Thepagedot.Rhome.Demo.Droid
             var view = convertView ?? LayoutInflater.From(Context).Inflate(Resource.Layout.Device, null);
             var device = GetItem(position);
 
+            view.FindViewById<TextView>(Resource.Id.tvName).Text = device.Name;
+
             if (device is HomeMaticDevice)
-            {
-                var adapter = new HomeMaticChannelAdapter(Context, 0, ((HomeMaticDevice)device).ChannelList.Where(c => c.IsVisible).ToList());
+            {                
+                var devices = ((HomeMaticDevice)device).ChannelList.Where(c => c.IsVisible).ToList();
+                var adapter = new HomeMaticChannelAdapter(Context, 0, devices);
                 var lvChannels = view.FindViewById<ListView>(Resource.Id.lvChannels);
                 lvChannels.Adapter = adapter;
                 ScollingHelpers.SetListViewHeightBasedOnChildren(lvChannels, 0);                
