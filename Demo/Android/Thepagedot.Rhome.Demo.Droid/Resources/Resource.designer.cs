@@ -1742,34 +1742,37 @@ namespace Thepagedot.Rhome.Demo.Droid
 			public const int ic_add_white_24dp = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int ic_devices_black_24dp = 2130837569;
+			public const int ic_battery_alert_black_24dp = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int ic_help_black_24dp = 2130837570;
+			public const int ic_devices_black_24dp = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int ic_home_black_24dp = 2130837571;
+			public const int ic_help_black_24dp = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int ic_lock_black_24dp = 2130837572;
+			public const int ic_home_black_24dp = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int ic_lock_open_black_24dp = 2130837573;
+			public const int ic_lock_black_24dp = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int ic_settings_black_24dp = 2130837574;
+			public const int ic_lock_open_black_24dp = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int ic_view_quilt_black_24dp = 2130837575;
+			public const int ic_settings_black_24dp = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int Icon = 2130837576;
-			
-			// aapt resource value: 0x7f02004a
-			public const int notification_template_icon_bg = 2130837578;
+			public const int ic_view_quilt_black_24dp = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int Room = 2130837577;
+			public const int Icon = 2130837577;
+			
+			// aapt resource value: 0x7f02004b
+			public const int notification_template_icon_bg = 2130837579;
+			
+			// aapt resource value: 0x7f02004a
+			public const int Room = 2130837578;
 			
 			static Drawable()
 			{
@@ -1784,8 +1787,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0078
-			public const int action0 = 2131427448;
+			// aapt resource value: 0x7f0b0079
+			public const int action0 = 2131427449;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int action_bar = 2131427413;
@@ -1811,8 +1814,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0056
 			public const int action_context_bar = 2131427414;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int action_divider = 2131427452;
+			// aapt resource value: 0x7f0b007d
+			public const int action_divider = 2131427453;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1847,8 +1850,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b004b
 			public const int buttonPanel = 2131427403;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int cancel_action = 2131427449;
+			// aapt resource value: 0x7f0b007a
+			public const int cancel_action = 2131427450;
 			
 			// aapt resource value: 0x7f0b0029
 			public const int center = 2131427369;
@@ -1862,8 +1865,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b004d
 			public const int checkbox = 2131427405;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int chronometer = 2131427455;
+			// aapt resource value: 0x7f0b0080
+			public const int chronometer = 2131427456;
 			
 			// aapt resource value: 0x7f0b0031
 			public const int clip_horizontal = 2131427377;
@@ -1892,8 +1895,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b000d
 			public const int disableHome = 2131427341;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int drawer_layout = 2131427442;
+			// aapt resource value: 0x7f0b0073
+			public const int drawer_layout = 2131427443;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int edit_query = 2131427415;
@@ -1901,8 +1904,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b001a
 			public const int end = 2131427354;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int end_padder = 2131427460;
+			// aapt resource value: 0x7f0b0085
+			public const int end_padder = 2131427461;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int enterAlways = 2131427362;
@@ -1937,8 +1940,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0036
 			public const int @fixed = 2131427382;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int gvRooms = 2131427446;
+			// aapt resource value: 0x7f0b0077
+			public const int gvRooms = 2131427447;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int home = 2131427332;
@@ -1955,23 +1958,26 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b003d
 			public const int image = 2131427389;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int info = 2131427459;
-			
-			// aapt resource value: 0x7f0b006d
-			public const int ivClosed = 2131427437;
+			// aapt resource value: 0x7f0b0084
+			public const int info = 2131427460;
 			
 			// aapt resource value: 0x7f0b006e
-			public const int ivOpen = 2131427438;
+			public const int ivClosed = 2131427438;
+			
+			// aapt resource value: 0x7f0b006b
+			public const int ivLowBat = 2131427435;
+			
+			// aapt resource value: 0x7f0b006f
+			public const int ivOpen = 2131427439;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int left = 2131427373;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int line1 = 2131427453;
+			// aapt resource value: 0x7f0b007e
+			public const int line1 = 2131427454;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int line3 = 2131427457;
+			// aapt resource value: 0x7f0b0082
+			public const int line3 = 2131427458;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int listMode = 2131427338;
@@ -1979,26 +1985,26 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b003f
 			public const int list_item = 2131427391;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int lvCentralUnits = 2131427463;
+			// aapt resource value: 0x7f0b0088
+			public const int lvCentralUnits = 2131427464;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int lvChannels = 2131427435;
+			// aapt resource value: 0x7f0b006c
+			public const int lvChannels = 2131427436;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int lvDevices = 2131427461;
+			// aapt resource value: 0x7f0b0086
+			public const int lvDevices = 2131427462;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int media_actions = 2131427451;
-			
-			// aapt resource value: 0x7f0b0090
-			public const int menu_add = 2131427472;
-			
-			// aapt resource value: 0x7f0b008a
-			public const int menu_refresh = 2131427466;
+			// aapt resource value: 0x7f0b007c
+			public const int media_actions = 2131427452;
 			
 			// aapt resource value: 0x7f0b0091
-			public const int menu_rescan = 2131427473;
+			public const int menu_add = 2131427473;
+			
+			// aapt resource value: 0x7f0b008b
+			public const int menu_refresh = 2131427467;
+			
+			// aapt resource value: 0x7f0b0092
+			public const int menu_rescan = 2131427474;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -2009,23 +2015,23 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0014
 			public const int multiply = 2131427348;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int nav_about = 2131427471;
-			
-			// aapt resource value: 0x7f0b008d
-			public const int nav_devices = 2131427469;
-			
-			// aapt resource value: 0x7f0b008b
-			public const int nav_home = 2131427467;
-			
-			// aapt resource value: 0x7f0b008c
-			public const int nav_rooms = 2131427468;
+			// aapt resource value: 0x7f0b0090
+			public const int nav_about = 2131427472;
 			
 			// aapt resource value: 0x7f0b008e
-			public const int nav_settings = 2131427470;
+			public const int nav_devices = 2131427470;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int nav_view = 2131427447;
+			// aapt resource value: 0x7f0b008c
+			public const int nav_home = 2131427468;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int nav_rooms = 2131427469;
+			
+			// aapt resource value: 0x7f0b008f
+			public const int nav_settings = 2131427471;
+			
+			// aapt resource value: 0x7f0b0078
+			public const int nav_view = 2131427448;
 			
 			// aapt resource value: 0x7f0b001f
 			public const int never = 2131427359;
@@ -2057,8 +2063,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b002e
 			public const int right = 2131427374;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int sbTemperature = 2131427465;
+			// aapt resource value: 0x7f0b008a
+			public const int sbTemperature = 2131427466;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
@@ -2117,8 +2123,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0012
 			public const int showTitle = 2131427346;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int slSwipeContainer = 2131427444;
+			// aapt resource value: 0x7f0b0075
+			public const int slSwipeContainer = 2131427445;
 			
 			// aapt resource value: 0x7f0b006a
 			public const int snackbar_action = 2131427434;
@@ -2144,26 +2150,26 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b002f
 			public const int start = 2131427375;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int status_bar_latest_event_content = 2131427450;
+			// aapt resource value: 0x7f0b007b
+			public const int status_bar_latest_event_content = 2131427451;
 			
 			// aapt resource value: 0x7f0b0060
 			public const int submit_area = 2131427424;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int svScroller = 2131427445;
+			// aapt resource value: 0x7f0b0076
+			public const int svScroller = 2131427446;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int tabMode = 2131427340;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int tbSwitcher = 2131427464;
+			// aapt resource value: 0x7f0b0089
+			public const int tbSwitcher = 2131427465;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int text = 2131427458;
+			// aapt resource value: 0x7f0b0083
+			public const int text = 2131427459;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int text2 = 2131427456;
+			// aapt resource value: 0x7f0b0081
+			public const int text2 = 2131427457;
 			
 			// aapt resource value: 0x7f0b0048
 			public const int textSpacerNoButtons = 2131427400;
@@ -2171,8 +2177,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0066
 			public const int textView1 = 2131427430;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int time = 2131427454;
+			// aapt resource value: 0x7f0b007f
+			public const int time = 2131427455;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int title = 2131427393;
@@ -2180,8 +2186,8 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int title_template = 2131427396;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int toolbar = 2131427443;
+			// aapt resource value: 0x7f0b0074
+			public const int toolbar = 2131427444;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int top = 2131427376;
@@ -2189,23 +2195,23 @@ namespace Thepagedot.Rhome.Demo.Droid
 			// aapt resource value: 0x7f0b0043
 			public const int topPanel = 2131427395;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int tvAddress = 2131427439;
-			
 			// aapt resource value: 0x7f0b0070
-			public const int tvBrand = 2131427440;
+			public const int tvAddress = 2131427440;
 			
 			// aapt resource value: 0x7f0b0071
-			public const int tvContent = 2131427441;
+			public const int tvBrand = 2131427441;
+			
+			// aapt resource value: 0x7f0b0072
+			public const int tvContent = 2131427442;
 			
 			// aapt resource value: 0x7f0b0068
 			public const int tvName = 2131427432;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int tvRoomName = 2131427462;
+			// aapt resource value: 0x7f0b0087
+			public const int tvRoomName = 2131427463;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int tvState = 2131427436;
+			// aapt resource value: 0x7f0b006d
+			public const int tvState = 2131427437;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;

@@ -149,6 +149,11 @@
     <AndroidResource Include="Resources\layout\HomeControlApiItem.axml" />
     <AndroidResource Include="Resources\layout\Information.axml" />
     <AndroidResource Include="Resources\layout\TemperatureSlider.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_battery_alert_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_battery_alert_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_battery_alert_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_battery_alert_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_battery_alert_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\MainMenu.xml" />

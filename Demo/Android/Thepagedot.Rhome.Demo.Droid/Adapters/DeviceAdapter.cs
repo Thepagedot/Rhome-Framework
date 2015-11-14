@@ -21,9 +21,16 @@ namespace Thepagedot.Rhome.Demo.Droid
             view.FindViewById<TextView>(Resource.Id.tvName).Text = device.Name;
 
             if (device is HomeMaticDevice)
-            {                
-                var devices = ((HomeMaticDevice)device).ChannelList.Where(c => c.IsVisible).ToList();
-                var adapter = new HomeMaticChannelAdapter(Context, 0, devices);
+            {             
+                var homeMaticDevice = (HomeMaticDevice)device;
+
+                // Show low battery indicator, when at leat one channel has low battery
+                if (homeMaticDevice.ChannelList.FirstOrDefault(c => c.IsLowBattery == true) != null)
+                    view.FindViewById<ImageView>(Resource.Id.ivLowBat).Visibility = ViewStates.Visible;
+
+                // Add channels to the list
+                var channels = homeMaticDevice.ChannelList.Where(c => c.IsVisible).ToList();
+                var adapter = new HomeMaticChannelAdapter(Context, 0, channels);
                 var lvChannels = view.FindViewById<ListView>(Resource.Id.lvChannels);
                 lvChannels.Adapter = adapter;
                 ScollingHelpers.SetListViewHeightBasedOnChildren(lvChannels, 0);                
