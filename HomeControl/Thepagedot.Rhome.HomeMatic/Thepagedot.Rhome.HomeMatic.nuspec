@@ -1,21 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
-    <metadata>
-        <id>Thepagedot.Rhome.HomeMatic</id>
-        <version>0.0.5-beta</version>
-        <title>Rhome HomeMatic</title>
-        <authors>Thepagedot</authors>
-        <projectUrl>https://github.com/Thepagedot/Rhome</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/Thepagedot/Rhome/master/Design/Logo.png</iconUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>With this library you can control your HomeMatic system.</description>
-        <summary>Rhome provides a unified smart home remote control .NET library.</summary>
-        <releaseNotes>Added support für Windows 10 and UWP.</releaseNotes>
-        <copyright>Thepagedot</copyright>
-        <tags>Home Control, HomeMatic, eq3, API</tags>
-    </metadata>
-    <files>
-        <file src="bin\Debug\Thepagedot.Rhome.Base.dll" target="lib\Thepagedot.Rhome.Base.dll" />
-        <file src="bin\Debug\Thepagedot.Rhome.HomeMatic.dll" target="lib\Thepagedot.Rhome.HomeMatic.dll" />
-    </files>
+  <metadata>
+    <id>Thepagedot.Rhome.HomeMatic</id>
+    <version>0.0.6-beta</version>
+    <title>Rhome HomeMatic</title>
+    <authors>Thepagedot</authors>
+    <projectUrl>https://github.com/Thepagedot/Rhome</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Thepagedot/Rhome/master/Design/Logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>With this library you can control your HomeMatic system.</description>
+    <summary>Rhome provides a unified smart home remote control .NET library.</summary>
+    <releaseNotes>Added support für Windows 10 and UWP.</releaseNotes>
+    <copyright>Thepagedot</copyright>
+    <tags>Home Control, HomeMatic, eq3, API</tags>
+    <dependencies>
+      <group targetFramework="net">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="win">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="wp">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="wpa">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="MonoAndroid">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="MonoTouch">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="Xamarin.iOS">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="portable-net45+win8+wpa81+wp8">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+      </group>
+      <group targetFramework="uap">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+        <dependency id="System.Collections" version="4.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.0" />
+        <dependency id="System.Globalization" version="4.0.0" />
+        <dependency id="System.Linq" version="4.0.0" />
+        <dependency id="System.Net.Requests" version="3.9.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0" />
+        <dependency id="System.Runtime" version="4.0.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.0" />
+        <dependency id="System.Threading.Tasks" version="4.0.0" />
+        <dependency id="System.Xml.XDocument" version="4.0.0" />
+      </group>
+      <group targetFramework="dotnet">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+        <dependency id="System.Collections" version="4.0.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.0" />
+        <dependency id="System.Globalization" version="4.0.0" />
+        <dependency id="System.Linq" version="4.0.0" />
+        <dependency id="System.Net.Requests" version="3.9.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.0" />
+        <dependency id="System.Runtime" version="4.0.0" />
+        <dependency id="System.Runtime.Extensions" version="4.0.0" />
+        <dependency id="System.Threading.Tasks" version="4.0.0" />
+        <dependency id="System.Xml.XDocument" version="4.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Debug\nupkg\lib\dotnet\Thepagedot.Rhome.Base.dll" target="lib\dotnet\Thepagedot.Rhome.Base.dll" />
+    <file src="bin\Debug\nupkg\lib\dotnet\Thepagedot.Rhome.HomeMatic.dll" target="lib\dotnet\Thepagedot.Rhome.HomeMatic.dll" />
+    <file src="bin\Debug\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.Base.dll" target="lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.Base.dll" />
+    <file src="bin\Debug\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.HomeMatic.dll" target="lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.HomeMatic.dll" />
+  </files>
 </package>

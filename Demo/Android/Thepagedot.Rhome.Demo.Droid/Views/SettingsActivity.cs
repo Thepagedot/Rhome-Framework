@@ -171,7 +171,7 @@ namespace Thepagedot.Rhome.Demo.Droid
         {
             Settings.Configuration.Rooms.Clear();
             await Settings.SaveSettingsAsync();
-            DataHolder.Current.Init();
+            await DataHolder.Current.Init();
         }
 	}
 }
