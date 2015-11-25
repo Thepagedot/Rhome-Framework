@@ -12,6 +12,9 @@ PM> Install-Package Thepagedot.Rhome.HomeMatic -Pre
 ## Details
 ### Supported Home Control solutions
 - HomeMatic 
+- Philips Hue *(planned)*
+
+> To work with HomeMatic, the [XML-API](https://github.com/hobbyquaker/XML-API) has to be installed on the central unit!
 
 ### Supported Devices
 These devices can be accessed with our solution by now. Please consider that we are coninously trying to extend this list to support more devices.
