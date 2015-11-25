@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Thepagedot.Rhome.HomeMatic</id>
-    <version>0.0.7-beta</version>
+    <version>0.0.8-beta</version>
     <title>Rhome HomeMatic</title>
     <authors>Thepagedot</authors>
     <projectUrl>https://github.com/Thepagedot/Rhome</projectUrl>
@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>With this library you can control your HomeMatic system.</description>
     <summary>Rhome provides a unified smart home remote control .NET library.</summary>
-    <releaseNotes>Slightly changed structure of API class</releaseNotes>
+    <releaseNotes>Improved Downloader</releaseNotes>
     <copyright>Thepagedot</copyright>
     <tags>Home Control, HomeMatic, eq3, API, IOT</tags>
     <dependencies>

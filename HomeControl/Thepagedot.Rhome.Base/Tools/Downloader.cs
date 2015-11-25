@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace Thepagedot.Rhome.Base.Tools
     public static class Downloader
     {
         private static readonly Dictionary<string, CacheFile<string>> Cache = new Dictionary<string, CacheFile<string>>();
+        private static CookieContainer Cookies = new CookieContainer();
+        private static HttpClient HttpClient = new HttpClient();
 
         /// <summary>
         /// General download process for API responses
@@ -20,42 +23,21 @@ namespace Thepagedot.Rhome.Base.Tools
         public static async Task<string> DownloadWebResponse(string url, TimeSpan? cacheTime = null)
         {
             // Check if cached response is available
-            if (cacheTime != null)
+            if (cacheTime != null && Cache.ContainsKey(url))
             {
-                if (Cache.ContainsKey(url))
+                var cacheFile = Cache[url];
+                if (DateTime.Now.Subtract(cacheFile.TimeStamp) < cacheTime)
                 {
-                    var cacheFile = Cache[url];
-                    if (DateTime.Now.Subtract(cacheFile.TimeStamp) < cacheTime)
-                    {
-                        return cacheFile.Value;
-                    }
+                    return cacheFile.Value;
                 }
             }
 
-            // Create Web Request and avoid caching with header changes
-            var request = (HttpWebRequest)WebRequest.Create(new Uri(url));
-            if (request.Headers == null)
-                request.Headers = new WebHeaderCollection();
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            //request.Headers.Add("If-Modified-Since", DateTime.UtcNow.ToString());
+            var response = await HttpClient.SendAsync(request);
+            var content = await response.Content.ReadAsStringAsync();           
 
-            try
-            {
-                request.Headers[HttpRequestHeader.IfModifiedSince] = DateTime.UtcNow.ToString();
-            }
-            catch (ArgumentException)
-            {
-
-            }
-
-            // Download data
-            var response = (HttpWebResponse)await request.GetResponseAsync();
-            var receiveStream = response.GetResponseStream();
-            var readStream = new StreamReader(receiveStream, Encoding.GetEncoding("iso-8859-1"));
-            var result = await readStream.ReadToEndAsync();
-
-            // Save result to cache
-            Cache[url] = new CacheFile<string>(result);
-
-            return result;
+            return content;
         }
     }
 
@@ -68,36 +50,6 @@ namespace Thepagedot.Rhome.Base.Tools
         {
             TimeStamp = DateTime.Now;
             Value = value;
-        }
-    }
-
-    internal static class WebRequestExtensions
-    {        
-        internal static Task<HttpWebResponse> GetResponseAsync(this HttpWebRequest request)
-        {
-            var tcs = new TaskCompletionSource<HttpWebResponse>();
-
-            try
-            {
-                request.BeginGetResponse(iar =>
-                {
-                    try
-                    {
-                        var response = (HttpWebResponse)request.EndGetResponse(iar);
-                        tcs.SetResult(response);
-                    }
-                    catch (Exception exc)
-                    {
-                        tcs.SetException(exc);
-                    }
-                }, null);
-            }
-            catch (Exception exc)
-            {
-                tcs.SetException(exc);
-            }
-
-            return tcs.Task;
         }
     }
 }
