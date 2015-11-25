@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Thepagedot.Rhome.HomeMatic.nuspec" />
   </ItemGroup>
@@ -82,5 +83,10 @@
     <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.HomeMatic.pdb" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.HomeMatic.pdb" />
     <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.Base.dll" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.Base.dll" />
     <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.Base.pdb" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.Base.pdb" />
+  </Target>
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
 </Project>

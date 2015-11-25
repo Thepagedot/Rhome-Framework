@@ -44,6 +44,8 @@
         <dependency id="System.Diagnostics.Debug" version="4.0.0" />
         <dependency id="System.Globalization" version="4.0.0" />
         <dependency id="System.Linq" version="4.0.0" />
+        <dependency id="System.Net.Http" version="4.0.0" />
+        <dependency id="System.Net.Primitives" version="4.0.0" />
         <dependency id="System.Net.Requests" version="3.9.0" />
         <dependency id="System.Resources.ResourceManager" version="4.0.0" />
         <dependency id="System.Runtime" version="4.0.0" />
@@ -57,6 +59,8 @@
         <dependency id="System.Diagnostics.Debug" version="4.0.0" />
         <dependency id="System.Globalization" version="4.0.0" />
         <dependency id="System.Linq" version="4.0.0" />
+        <dependency id="System.Net.Http" version="4.0.0" />
+        <dependency id="System.Net.Primitives" version="4.0.0" />
         <dependency id="System.Net.Requests" version="3.9.0" />
         <dependency id="System.Resources.ResourceManager" version="4.0.0" />
         <dependency id="System.Runtime" version="4.0.0" />
