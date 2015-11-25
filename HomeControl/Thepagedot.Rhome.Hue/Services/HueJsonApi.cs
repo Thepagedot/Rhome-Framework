@@ -9,7 +9,7 @@ using Thepagedot.Rhome.Hue.Models;
 
 namespace Thepagedot.Rhome.Hue.Services
 {
-    public class HueJsonApi : IHomeControlApi
+    public class HueJsonApi : IHomeControlApi<Room, Device, Channel>
     {
 		private readonly Bridge Bridge;
 

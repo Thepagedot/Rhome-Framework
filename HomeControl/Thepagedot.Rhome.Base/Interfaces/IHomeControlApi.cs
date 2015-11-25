@@ -4,14 +4,14 @@ using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.Base.Interfaces
 {
-	public interface IHomeControlApi
+	public interface IHomeControlApi<TRoom, TDevice, TChannel>
 	{
         // Rooms
-        Task<IEnumerable<Room>> GetRoomsAsync();
+        Task<IEnumerable<TRoom>> GetRoomsAsync();
         Task GetDevicesForRoomAsync(Room room);
 
         // Devices
-        Task<IEnumerable<Device>> GetDevicesAsync();
+	    Task<IEnumerable<TDevice>> GetDevicesAsync();
 
         // Rooms and Devices
         Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync();
