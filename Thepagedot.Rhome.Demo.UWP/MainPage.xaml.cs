@@ -30,6 +30,13 @@ namespace Thepagedot.Rhome.Demo.UWP
             this.InitializeComponent();
         }
 
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            await ((Bootstrapper)Application.Current.Resources["Bootstrapper"]).MainViewModel.Initialize();
+        }
+
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             HamburgerSplitView.IsPaneOpen = !HamburgerSplitView.IsPaneOpen;

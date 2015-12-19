@@ -20,15 +20,8 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
         private List<Room> _Rooms;
         public List<Room> Rooms
         {
-            get
-            {
-                return _Rooms;
-            }
-            set
-            {
-                _Rooms = value;
-                RaisePropertyChanged();
-            }
+            get { return _Rooms; }
+            set { _Rooms = value; RaisePropertyChanged(); }
         }
 
         public MainViewModel(IResourceService resourceService, ISettingsService settingsService, HomeControlService homeControlService)
@@ -49,12 +42,21 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
 
         public async Task Initialize()
         {
+            // Prevent double loading
+            if (IsLoading || IsLoaded)
+                return;
+
+            IsLoading = true;
+
             _HomeControlService.HomeMatic = new HomeMatic.Services.HomeMaticXmlApi(new Ccu("Demo", "192.168.0.14"));
 
             if (_HomeControlService.HomeMatic != null)
             {
                 Rooms = (await _HomeControlService.HomeMatic.GetRoomsWidthDevicesAsync()).ToList();
             }
+
+            IsLoading = false;
+            IsLoaded = true;
         }
     }
 }

@@ -1,11 +1,13 @@
-﻿<Page x:Class="Thepagedot.Rhome.Demo.UWP.Views.RoomPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="using:Thepagedot.Rhome.Demo.UWP.Views"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      DataContext="{Binding Source={StaticResource Bootstrapper}, Path=RoomViewModel}"
-      mc:Ignorable="d">
+﻿<Page
+    x:Class="Thepagedot.Rhome.Demo.UWP.Views.RoomPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Thepagedot.Rhome.Demo.UWP.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Thepagedot.Rhome.Demo.UWP.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding Source={StaticResource Bootstrapper}, Path=RoomViewModel}"
+    mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -19,27 +21,56 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Width="50"
-                    Height="50"
-                    Background="{ThemeResource LoopingSelectorSelectionBackgroundThemeBrush}"
-                    Click="BackButton_Click"
-                    Content="&#xE72B;"
-                    FontFamily="Segoe MDL2 Assets"
-                    Foreground="White" />
+            <Button
+                Width="50"
+                Height="50"
+                Background="{ThemeResource LoopingSelectorSelectionBackgroundThemeBrush}"
+                Click="BackButton_Click"
+                Content=""
+                FontFamily="Segoe MDL2 Assets"
+                Foreground="White" />
 
-            <TextBlock Grid.Column="1"
-                       Margin="20,0,0,0"
-                       VerticalAlignment="Center"
-                       Foreground="White"
-                       Style="{StaticResource TitleTextBlockStyle}"
-                       Text="{Binding CurrentRoom.Name}" />
+            <TextBlock
+                Grid.Column="1"
+                Margin="20,0,0,0"
+                VerticalAlignment="Center"
+                Foreground="White"
+                Style="{StaticResource TitleTextBlockStyle}"
+                Text="{Binding CurrentRoom.Name}" />
         </Grid>
 
+        <ListView
+            x:Name="DeviceList"
+            Grid.Row="1"
+            ItemsSource="{Binding CurrentRoom.Devices}"
+            Padding="0,10,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="300" />
+                        </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="1"
-                   Margin="180,224.227,180,310"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="{Binding CurrentRoom.Name}" />
+                        <TextBlock Text="{Binding Name}" />
+
+                        <ListView
+                            Grid.Row="1"
+                            Background="Red"
+                            DataContext="{Binding Channels}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <TextBlock Text="Hallo" />
+                                        <controls:ChannelControl HorizontalAlignment="Stretch" Channel="{Binding}" />
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

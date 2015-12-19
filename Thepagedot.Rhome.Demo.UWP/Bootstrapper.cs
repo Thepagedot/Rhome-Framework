@@ -26,6 +26,8 @@ namespace Thepagedot.Rhome.Demo.UWP
             SimpleIoc.Default.Register<RoomViewModel>();
         }
 
+        public HomeControlService HomeControlService { get { return SimpleIoc.Default.GetInstance<HomeControlService>(); } }
+
         public MainViewModel MainViewModel { get { return SimpleIoc.Default.GetInstance<MainViewModel>(); }}
         public RoomViewModel RoomViewModel { get { return SimpleIoc.Default.GetInstance<RoomViewModel>(); }}
     }
