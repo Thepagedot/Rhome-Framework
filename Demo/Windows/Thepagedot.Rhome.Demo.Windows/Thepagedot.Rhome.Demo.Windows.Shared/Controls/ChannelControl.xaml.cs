@@ -34,8 +34,8 @@ namespace Thepagedot.Rhome.Demo.Win.Controls
         private void LoadDemoData()
         {
             var room = MainViewModel.Current.RoomList.First() as HomeMaticRoom;
-            var device = room.DeviceList.First() as HomeMaticDevice;
-            Channel = device.ChannelList.First() as Switcher;
+            var device = room.Devices.First() as HomeMaticDevice;
+            Channel = device.Channels.First() as Switcher;
         }
 
         #region Switcher

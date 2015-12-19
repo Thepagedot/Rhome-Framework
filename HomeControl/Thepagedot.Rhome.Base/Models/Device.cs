@@ -14,11 +14,11 @@ namespace Thepagedot.Rhome.Base.Models
 
     public abstract class Device<ChannelType> : Device
     {
-        public List<ChannelType> ChannelList { get; set; }
+        public List<ChannelType> Channels { get; set; }
 
         protected Device(string name) : base(name)
         {
-            ChannelList = new List<ChannelType>();
+            Channels = new List<ChannelType>();
         }
     }
 }

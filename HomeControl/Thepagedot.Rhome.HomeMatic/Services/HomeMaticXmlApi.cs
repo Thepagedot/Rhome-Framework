@@ -65,10 +65,10 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                     var homeMaticDevice = device as HomeMaticDevice;
                     if (homeMaticDevice != null)
                     {
-                        foreach (var channel in homeMaticDevice.ChannelList)
+                        foreach (var channel in homeMaticDevice.Channels)
                         {
                             // Compare devices channels ISE_IDs with the one from the room list
-                            if (!homeMaticRoom.ChannelIdList.Contains(channel.IseId))
+                            if (!homeMaticRoom.ChannelIds.Contains(channel.IseId))
                                 continue;
 
                             // Get state from state list
@@ -81,7 +81,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                         }
 
                         if (addDeviceToRoom)
-                            room.DeviceList.Add(device);
+                            room.Devices.Add(device);
                     }
                     else
                     {
@@ -158,8 +158,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
             var channels = new List<HomeMaticChannel>();
             foreach (var room in rooms)
-                foreach (var device in room.DeviceList)
-                    foreach(var channel in ((HomeMaticDevice)device).ChannelList)
+                foreach (var device in room.Devices)
+                    foreach(var channel in ((HomeMaticDevice)device).Channels)
                         channels.Add(channel);
 
             foreach (var channel in channels)
@@ -174,8 +174,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var allStates = await GetAllStatesAsync();
 
             var channels = new List<HomeMaticChannel>();
-            foreach (var device in room.DeviceList)
-                foreach(var channel in ((HomeMaticDevice)device).ChannelList)
+            foreach (var device in room.Devices)
+                foreach(var channel in ((HomeMaticDevice)device).Channels)
                     channels.Add(channel);
 
             foreach (var channel in channels)

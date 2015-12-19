@@ -14,14 +14,14 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         {
             this.IseId = iseId;
             this.Address = address;
-            this.ChannelList = channelList;
+            this.Channels = channelList;
         }
 
         public HomeMaticDevice(string name, int iseId, string address) : base (name)
         {
             this.IseId = iseId;
             this.Address = address;
-            this.ChannelList = new List<HomeMaticChannel>();
+            this.Channels = new List<HomeMaticChannel>();
         }        
     }
 }

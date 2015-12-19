@@ -37,7 +37,7 @@ namespace Thepagedot.Rhome.Demo.Win.ViewModels
         {
             var livingRoom = new HomeMaticRoom("Wohnzimmer", new Uri("ms-appx:///Assets/Header/House.jpg"), 1);
             var lightSwitch = new HomeMaticDevice("Light Switch", 0, "", new List<HomeMaticChannel> {new Switcher("Lamp", 12, 0, "")});
-            livingRoom.DeviceList.Add(lightSwitch);
+            livingRoom.Devices.Add(lightSwitch);
 
             RoomList.Add(livingRoom);
             RoomList.Add(new HomeMaticRoom("Küche", new Uri("ms-appx:///Assets/Header/House.jpg"), 1));

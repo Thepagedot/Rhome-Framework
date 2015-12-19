@@ -8,13 +8,13 @@ namespace Thepagedot.Rhome.Base.Models
         public string Name { get; set; }
         public int Floor { get; set; }
         public Uri ImageUrl { get; set; }
-		public List<Device> DeviceList { get; set; }
+		public List<Device> Devices { get; set; }
 
         protected Room(string name)
         {
             Name = name;
             Floor = 0;
-            DeviceList = new List<Device>();
+            Devices = new List<Device>();
         }
 
 		protected Room(string name, Uri imageUrl)
@@ -22,7 +22,7 @@ namespace Thepagedot.Rhome.Base.Models
             Name = name;
 		    ImageUrl = imageUrl;
             Floor = 0;
-			DeviceList = new List<Device> ();
+			Devices = new List<Device> ();
         }
 
         protected Room(string name, Uri imageUrl, List<Device> deviceList)
@@ -30,7 +30,7 @@ namespace Thepagedot.Rhome.Base.Models
             Name = name;
             ImageUrl = imageUrl;
             Floor = 0;
-            DeviceList = deviceList;
+            Devices = deviceList;
         }
     }
 }
