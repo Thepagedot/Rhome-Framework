@@ -96,10 +96,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ResourceService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Views\RoomPage.xaml.cs">
       <DependentUpon>RoomPage.xaml</DependentUpon>
     </Compile>
@@ -111,10 +114,12 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Resources\en\Resources.resw" />
     <None Include="Thepagedot.Rhome.Demo.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\House.jpg" />
+    <Content Include="Assets\Room.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -142,6 +147,21 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo\Shared\Thepagedot.Rhome.Demo.Shared\Thepagedot.Rhome.Demo.Shared.csproj">
+      <Project>{e787a5c5-262c-4f6c-85c8-6096e40f9e08}</Project>
+      <Name>Thepagedot.Rhome.Demo.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeControl\Thepagedot.Rhome.Base\Thepagedot.Rhome.Base.csproj">
+      <Project>{fef4c43a-4d06-477e-be6f-8709ea321397}</Project>
+      <Name>Thepagedot.Rhome.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeControl\Thepagedot.Rhome.HomeMatic\Thepagedot.Rhome.HomeMatic.csproj">
+      <Project>{ef0e99df-41e4-4cb3-a6db-b8d911e6a3bb}</Project>
+      <Name>Thepagedot.Rhome.HomeMatic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

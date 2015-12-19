@@ -1,13 +1,45 @@
-﻿<Page
-    x:Class="Thepagedot.Rhome.Demo.UWP.Views.RoomPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Thepagedot.Rhome.Demo.UWP.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+﻿<Page x:Class="Thepagedot.Rhome.Demo.UWP.Views.RoomPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Thepagedot.Rhome.Demo.UWP.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      DataContext="{Binding Source={StaticResource Bootstrapper}, Path=RoomViewModel}"
+      mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Grid x:Name="Header" Background="{ThemeResource LoopingSelectorSelectionBackgroundThemeBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Width="50"
+                    Height="50"
+                    Background="{ThemeResource LoopingSelectorSelectionBackgroundThemeBrush}"
+                    Click="BackButton_Click"
+                    Content="&#xE72B;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="White" />
+
+            <TextBlock Grid.Column="1"
+                       Margin="20,0,0,0"
+                       VerticalAlignment="Center"
+                       Foreground="White"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       Text="{Binding CurrentRoom.Name}" />
+        </Grid>
+
+
+        <TextBlock Grid.Row="1"
+                   Margin="180,224.227,180,310"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="{Binding CurrentRoom.Name}" />
     </Grid>
 </Page>

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Thepagedot.Rhome.Base.Models;
+using Thepagedot.Rhome.Demo.UWP.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,19 +30,19 @@ namespace Thepagedot.Rhome.Demo.UWP
             this.InitializeComponent();
         }
 
-        private void btnHamburgerMenu_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void lbxHamburgerMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            HamburgerSplitView.IsPaneOpen = !HamburgerSplitView.IsPaneOpen;
+        }
+
+        private void gvRooms_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // Set clicked room as current room
+            var room = e.ClickedItem as Room;
+            ((Bootstrapper)Application.Current.Resources["Bootstrapper"]).RoomViewModel.CurrentRoom = room;
+
+            // Navigate to room page
+            Frame.Navigate(typeof(RoomPage));
         }
     }
 }

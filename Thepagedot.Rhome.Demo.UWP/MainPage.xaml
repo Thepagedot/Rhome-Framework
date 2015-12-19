@@ -4,15 +4,41 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:Thepagedot.Rhome.Demo.UWP"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:viewModel="using:Thepagedot.Rhome.Demo.Shared.ViewModels"
+      DataContext="{Binding Source={StaticResource Bootstrapper}, Path=MainViewModel}"
       mc:Ignorable="d">
+
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="197*" />
+            <RowDefinition Height="393*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Header">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="VisualStatePhone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HamburgerSplitView.CompactPaneLength" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="VisualStateDesktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="HamburgerSplitView.CompactPaneLength" Value="50" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid x:Name="Header" Background="{ThemeResource LoopingSelectorSelectionBackgroundThemeBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="*" />
@@ -30,14 +56,14 @@
             <TextBlock Grid.Column="1"
                        Margin="20,0,0,0"
                        VerticalAlignment="Center"
+                       Foreground="White"
                        Style="{StaticResource TitleTextBlockStyle}"
                        Text="Rhome" />
         </Grid>
 
-        <SplitView x:Name="MySplitView"
+        <SplitView x:Name="HamburgerSplitView"
                    Grid.Row="1"
                    Grid.RowSpan="2"
-                   CompactPaneLength="50"
                    DisplayMode="CompactOverlay"
                    IsPaneOpen="False"
                    OpenPaneLength="150">
@@ -107,13 +133,44 @@
                         <Grid x:Name="PageHeader" Height="180">
                             <Image Source="Assets/House.jpg" Stretch="UniformToFill" />
                         </Grid>
-                        <TextBlock Grid.Row="1"
-                                   Margin="24,161,24,293"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontSize="40"
-                                   Foreground="Black"
-                                   Text="SplitView Basic" />
+
+                        <GridView x:Name="gvRooms"
+                                  Grid.Row="1"
+                                  Margin="10,10,0,0"
+                                  IsItemClickEnabled="True"
+                                  IsMultiSelectCheckBoxEnabled="False"
+                                  ItemClick="gvRooms_ItemClick"
+                                  ItemsSource="{Binding Rooms}"
+                                  SelectionMode="None">
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                    <Setter Property="VerticalAlignment" Value="Stretch" />
+                                    <Setter Property="Margin" Value="0,0,10,10" />
+                                </Style>
+                            </GridView.ItemContainerStyle>
+
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="165"
+                                            Background="{ThemeResource AppBarBackgroundThemeBrush}"
+                                            BorderThickness="2">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="80" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Image Source="Assets/Room.jpg" Stretch="UniformToFill" />
+                                            <TextBlock Grid.Row="1"
+                                                       Margin="5"
+                                                       Style="{StaticResource BodyTextBlockStyle}"
+                                                       Text="{Binding Name}" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
                     </Grid>
                 </ScrollViewer>
             </SplitView.Content>

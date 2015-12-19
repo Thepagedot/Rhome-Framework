@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Thepagedot.Rhome.HomeMatic.Services;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -22,6 +23,8 @@ namespace Thepagedot.Rhome.Demo.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        public static HomeMaticXmlApi HomeMaticApi;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
