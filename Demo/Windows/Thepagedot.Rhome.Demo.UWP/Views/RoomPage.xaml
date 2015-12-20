@@ -49,6 +49,7 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Padding" Value="10" />
                 </Style>
             </ListView.ItemContainerStyle>
 
@@ -61,7 +62,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="18.667" />
 
                         <ListView
                             Grid.Row="1"

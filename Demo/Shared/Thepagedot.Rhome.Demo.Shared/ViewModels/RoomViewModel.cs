@@ -22,11 +22,27 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
             var room = new HomeMaticRoom("Living room", 0, new List<int>());
             room.Devices = new List<Device>
             {
-                new HomeMaticDevice("Testdevice", 0, "")
+                new HomeMaticDevice("Testdevice 1", 0, "")
                 {
                     Channels = new List<HomeMaticChannel>
                     {
                         new Switcher("Testswitcher", 1, 1, "", true)
+                    }
+                },
+
+                new HomeMaticDevice("Testdevice 2", 0, "")
+                {
+                    Channels = new List<HomeMaticChannel>
+                    {
+                        new Shutter("Testshutter", 1, 1, "", true)
+                    }
+                },
+
+                new HomeMaticDevice("Testdevice 3", 0, "")
+                {
+                    Channels = new List<HomeMaticChannel>
+                    {
+                        new TemperatureSlider("Testslider", 1, 1, "", true)
                     }
                 }
             };

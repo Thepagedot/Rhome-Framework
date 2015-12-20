@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thepagedot.Rhome.Demo.Shared.Models;
 using Thepagedot.Rhome.Demo.Shared.Services;
 
 namespace Thepagedot.Rhome.Demo.UWP.Services
 {
-    public class SettingsService : ISettingsService
+    public class LocalStorageService : ILocalStorageService
     {
-        public Task LoadSettingsAsync()
+        public Task SaveSettingsAsync(Configuration configuration)
         {
             throw new NotImplementedException();
         }
 
-        public Task SaveSettingsAsync()
+        public Task<Configuration> LoadSettingsAsync()
         {
             throw new NotImplementedException();
         }

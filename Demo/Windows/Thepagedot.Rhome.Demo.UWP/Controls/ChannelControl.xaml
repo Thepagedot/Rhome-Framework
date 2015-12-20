@@ -144,29 +144,27 @@
                             Margin="0,-12,0,0"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Click="ShutterUp_Click"
-                            Icon="Up"
-                            IsCompact="True"
-                            Label="appbarbutton" />
-                        <AppBarButton
-                            Margin="0,-12,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
                             Click="ShutterDown_Click"
-                            Icon="Stop"
-                            IsCompact="True"
-                            Label="appbarbutton" />
-                        <AppBarButton
-                            Margin="0,-12,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Click="ShutterStop_Click"
                             IsCompact="True"
                             Label="appbarbutton">
                             <AppBarButton.Icon>
                                 <FontIcon Glyph="&#xE1FD;" />
                             </AppBarButton.Icon>
                         </AppBarButton>
+                        <AppBarButton
+                            Margin="0,-12,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="ShutterStop_Click"
+                            Icon="Pause"
+                            IsCompact="True" />
+                        <AppBarButton
+                            Margin="0,-12,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Click="ShutterUp_Click"
+                            Icon="Up"
+                            IsCompact="True" />
                     </StackPanel>
                 </Grid>
             </DataTemplate>

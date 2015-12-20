@@ -190,14 +190,28 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
         public async Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync()
         {
-            var roomList = await GetRoomsAsync();
+            var rooms = await GetRoomsAsync();
+            var devices = await GetDevicesAsync();
 
-            foreach (var room in roomList)
+            foreach (var device in devices)
             {
-                await GetDevicesForRoomAsync(room);
+                foreach (var channel in device.Channels)
+                {
+                    foreach (var room in rooms)
+                    {
+                        if (room.ChannelIds.Contains(channel.IseId))
+                        {
+                            if (!room.Devices.Contains(device))
+                            {
+                                room.Devices.Add(device);
+                            }
+
+                        }
+                    }
+                }
             }
 
-            return roomList;
+            return rooms;
         }
 
         /// <summary>

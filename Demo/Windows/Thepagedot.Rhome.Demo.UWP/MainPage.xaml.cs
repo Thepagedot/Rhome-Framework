@@ -25,6 +25,8 @@ namespace Thepagedot.Rhome.Demo.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private int _NumberOfColumns = 2;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -34,7 +36,11 @@ namespace Thepagedot.Rhome.Demo.UWP
         {
             base.OnNavigatedTo(e);
 
-            await ((Bootstrapper)Application.Current.Resources["Bootstrapper"]).MainViewModel.Initialize();
+            // Init MainViewModel
+            await App.Bootstrapper.MainViewModel.InitializeAsync();
+
+            // Initially set number od columns to the current state's value
+            SetNumberOfColumnsByState(VisualStateManager.GetVisualStateGroups(MainGrid).First().CurrentState);
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -46,16 +52,40 @@ namespace Thepagedot.Rhome.Demo.UWP
         {
             // Set clicked room as current room
             var room = e.ClickedItem as Room;
-            ((Bootstrapper)Application.Current.Resources["Bootstrapper"]).RoomViewModel.CurrentRoom = room;
+            App.Bootstrapper.RoomViewModel.CurrentRoom = room;
 
             // Navigate to room page
             Frame.Navigate(typeof(RoomPage));
         }
 
+        private void MenuSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SettingsPage));
+        }
+
+        #region Room Grid
+
         private void gvRooms_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             // Make sure that the item's width is alsways half the size
-            ((ItemsWrapGrid)gvRooms.ItemsPanelRoot).ItemWidth = e.NewSize.Width / 2 - gvRooms.Padding.Left;
+            ((ItemsWrapGrid)gvRooms.ItemsPanelRoot).ItemWidth = e.NewSize.Width / _NumberOfColumns - gvRooms.Padding.Left;
         }
+
+        private void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+        {
+            SetNumberOfColumnsByState(e.NewState);
+        }
+
+        private void SetNumberOfColumnsByState(VisualState state)
+        {
+            if (state.Name.Equals(VisualStatePhone.Name))
+                _NumberOfColumns = 2;
+            else if (state.Name.Equals(VisualStateTablet.Name))
+                _NumberOfColumns = 3;
+            else if (state.Name.Equals(VisualStateDesktop.Name))
+                _NumberOfColumns = 4;
+        }
+
+        #endregion
     }
 }

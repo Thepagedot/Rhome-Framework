@@ -13,7 +13,7 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
     public class MainViewModel : AsyncViewModelBase
     {
         private IResourceService _ResourceService;
-        private ISettingsService _SettingsService;
+        private ILocalStorageService _SettingsService;
 
         private HomeControlService _HomeControlService;
 
@@ -24,7 +24,7 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
             set { _Rooms = value; RaisePropertyChanged(); }
         }
 
-        public MainViewModel(IResourceService resourceService, ISettingsService settingsService, HomeControlService homeControlService)
+        public MainViewModel(IResourceService resourceService, ILocalStorageService settingsService, HomeControlService homeControlService)
         {
             _ResourceService = resourceService;
             _SettingsService = settingsService;
@@ -40,7 +40,7 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
             };
         }
 
-        public async Task Initialize()
+        public async Task InitializeAsync()
         {
             // Prevent double loading
             if (IsLoading || IsLoaded)

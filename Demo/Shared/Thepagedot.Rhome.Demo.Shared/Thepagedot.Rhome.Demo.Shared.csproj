@@ -48,12 +48,14 @@
     <Compile Include="Models\ConfigurationSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HomeControlService.cs" />
-    <Compile Include="Services\IResourceService.cs" />
-    <Compile Include="Services\ISettingsService.cs" />
+    <Compile Include="Services\Interfaces\IResourceService.cs" />
+    <Compile Include="Services\Interfaces\ILocalStorageService.cs" />
     <Compile Include="Services\RoomService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="ViewModels\AsyncViewModelBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

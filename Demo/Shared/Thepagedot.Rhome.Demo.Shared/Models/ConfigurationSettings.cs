@@ -5,22 +5,21 @@ using Newtonsoft.Json;
 
 namespace Thepagedot.Rhome.Demo.Shared.Models
 {
-    public class ConfigurationSettings
+    public class Configuration
     {
         public List<CentralUnit> CentralUnits { get; set; }
         public List<Room> Rooms { get; set; }
 
-        public ConfigurationSettings()
+        public Configuration()
         {
-            
+
         }
 
         [JsonConstructor]
-        public ConfigurationSettings(List<CentralUnit> centralUnits, List<Room> rooms)
+        public Configuration(List<CentralUnit> centralUnits, List<Room> rooms)
         {
             this.CentralUnits = centralUnits;
             this.Rooms = rooms;
         }
-       
     }
 }
