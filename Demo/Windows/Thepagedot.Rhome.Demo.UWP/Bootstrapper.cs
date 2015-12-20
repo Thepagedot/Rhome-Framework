@@ -20,8 +20,8 @@ namespace Thepagedot.Rhome.Demo.UWP
             SimpleIoc.Default.Register<IResourceService, ResourceService>();
             SimpleIoc.Default.Register<ILocalStorageService, LocalStorageService>();
 
-            SimpleIoc.Default.Register<HomeControlService>();
             SimpleIoc.Default.Register<SettingsService>();
+            SimpleIoc.Default.Register<HomeControlService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<RoomViewModel>();

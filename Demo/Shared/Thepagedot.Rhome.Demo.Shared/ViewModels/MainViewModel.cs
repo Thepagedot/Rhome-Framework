@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Thepagedot.Rhome.Base.Models;
@@ -14,7 +15,6 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
     {
         private IResourceService _ResourceService;
         private ILocalStorageService _SettingsService;
-
         private HomeControlService _HomeControlService;
 
         private List<Room> _Rooms;
@@ -32,12 +32,15 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
 
             //var appTitle = _ResourceService.GetString("AppTitle");
 
-            Rooms = new List<Room>
+            if (IsInDesignMode)
             {
-                new HomeMaticRoom("Bedroom", 0, new List<int>()),
-                new HomeMaticRoom("Living room", 0, new List<int>()),
-                new HomeMaticRoom("Kitchen", 0, new List<int>())
-            };
+                Rooms = new List<Room>
+                {
+                    new HomeMaticRoom("Bedroom", 0, new List<int>()),
+                    new HomeMaticRoom("Living room", 0, new List<int>()),
+                    new HomeMaticRoom("Kitchen", 0, new List<int>())
+                };
+            }
         }
 
         public async Task InitializeAsync()
@@ -48,15 +51,28 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
 
             IsLoading = true;
 
-            _HomeControlService.HomeMatic = new HomeMatic.Services.HomeMaticXmlApi(new Ccu("Demo", "192.168.0.14"));
-
             if (_HomeControlService.HomeMatic != null)
             {
-                Rooms = (await _HomeControlService.HomeMatic.GetRoomsWidthDevicesAsync()).ToList();
+                try
+                {
+                    Rooms = (await _HomeControlService.HomeMatic.GetRoomsWidthDevicesAsync()).ToList();
+                }
+                catch (HttpRequestException)
+                {
+                    //TODO: Load strings from ResourceService
+                    RaiseConnectionError("Connection Error", "Failed to connect");
+                }
+
             }
 
-            IsLoading = false;
             IsLoaded = true;
+            IsLoading = false;
+        }
+
+        public async Task Refresh()
+        {
+            IsLoaded = false;
+            await InitializeAsync();
         }
     }
 }

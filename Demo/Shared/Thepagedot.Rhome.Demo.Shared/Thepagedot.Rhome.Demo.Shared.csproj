@@ -50,7 +50,6 @@
     <Compile Include="Services\HomeControlService.cs" />
     <Compile Include="Services\Interfaces\IResourceService.cs" />
     <Compile Include="Services\Interfaces\ILocalStorageService.cs" />
-    <Compile Include="Services\RoomService.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="ViewModels\AsyncViewModelBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

@@ -10,5 +10,9 @@ namespace Thepagedot.Rhome.Demo.Shared.Services
     public class HomeControlService
     {
         public HomeMaticXmlApi HomeMatic;
+
+        public HomeControlService()
+        {
+        }
     }
 }

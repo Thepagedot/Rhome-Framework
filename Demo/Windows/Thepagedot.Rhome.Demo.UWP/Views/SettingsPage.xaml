@@ -14,6 +14,35 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <ContentDialog
+            x:Name="AddEditHomeControlSystemDialog"
+            Title="Add new home control system"
+            Grid.RowSpan="2"
+            VerticalAlignment="Stretch"
+            Canvas.ZIndex="1"
+            PrimaryButtonClick="AddEditHomeControlSystemDialog_PrimaryButtonClick"
+            PrimaryButtonText="Add"
+            SecondaryButtonText="Cancel">
+
+            <StackPanel>
+                <TextBox
+                    x:Name="tbxName"
+                    Margin="0,10,0,0"
+                    Header="Name" />
+                <TextBox
+                    x:Name="tbxAddress"
+                    Margin="0,10,0,0"
+                    Header="IP-Address" />
+                <ComboBox
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    Header="Brand"
+                    IsEnabled="False">
+                    <ComboBoxItem>HomeMatic</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </ContentDialog>
+
         <Grid x:Name="Header" Background="{ThemeResource LoopingSelectorSelectionBackgroundThemeBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50" />
@@ -64,7 +93,19 @@
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="White" Padding="10">
+                            <Border
+                                Background="White"
+                                Holding="Border_Holding"
+                                Padding="10"
+                                RightTapped="Border_RightTapped">
+                                <FlyoutBase.AttachedFlyout>
+                                    <MenuFlyout Placement="Bottom">
+                                        <MenuFlyoutItem
+                                            x:Name="MenuDelete"
+                                            Click="MenuDelete_Click"
+                                            Text="Delete" />
+                                    </MenuFlyout>
+                                </FlyoutBase.AttachedFlyout>
                                 <StackPanel>
                                     <TextBlock
                                         FontSize="16"
@@ -86,11 +127,16 @@
                 </ListView>
             </Grid>
         </ScrollViewer>
+
     </Grid>
 
     <Page.BottomAppBar>
-        <AppBar IsOpen="True" IsSticky="True">
-            <AppBarButton Icon="Add" Label="Add system" />
-        </AppBar>
+        <CommandBar>
+            <AppBarButton
+                x:Name="AddCentralUnitMenu"
+                Click="AddCentralUnitMenu_Click"
+                Icon="Add"
+                Label="Add" />
+        </CommandBar>
     </Page.BottomAppBar>
 </Page>

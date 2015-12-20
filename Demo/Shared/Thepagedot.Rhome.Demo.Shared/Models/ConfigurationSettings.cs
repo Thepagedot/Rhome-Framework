@@ -12,7 +12,8 @@ namespace Thepagedot.Rhome.Demo.Shared.Models
 
         public Configuration()
         {
-
+            CentralUnits = new List<CentralUnit>();
+            Rooms = new List<Room>();
         }
 
         [JsonConstructor]

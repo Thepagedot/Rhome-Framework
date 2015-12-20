@@ -8,6 +8,7 @@ using Thepagedot.Rhome.Demo.UWP.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,13 @@ namespace Thepagedot.Rhome.Demo.UWP
         public MainPage()
         {
             this.InitializeComponent();
+            App.Bootstrapper.MainViewModel.ConnectionError += MainViewModel_ConnectionError;
+        }
+
+        private async void MainViewModel_ConnectionError(object sender, Shared.ViewModels.ConnectionErrorEventArgs e)
+        {
+            var dialog = new MessageDialog(e.Message, e.Title);
+            await dialog.ShowAsync();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -87,5 +95,10 @@ namespace Thepagedot.Rhome.Demo.UWP
         }
 
         #endregion
+
+        private async void RefreshMenu_Click(object sender, RoutedEventArgs e)
+        {
+            await App.Bootstrapper.MainViewModel.Refresh();
+        }
     }
 }

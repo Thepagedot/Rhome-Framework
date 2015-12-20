@@ -23,8 +23,6 @@ namespace Thepagedot.Rhome.Demo.UWP
     /// </summary>
     sealed partial class App : Application
     {
-        public static HomeMaticXmlApi HomeMaticApi;
-
         public static Bootstrapper Bootstrapper { get { return ((Bootstrapper)Current.Resources["Bootstrapper"]); } }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Thepagedot.Rhome.Demo.UWP
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -51,6 +49,9 @@ namespace Thepagedot.Rhome.Demo.UWP
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+
+            // Load settings
+            await Bootstrapper.SettingsService.LoadSettingsAsync();
 
             Frame rootFrame = Window.Current.Content as Frame;
 

@@ -136,8 +136,9 @@
                             Width="50"
                             Height="50"
                             Background="Transparent"
+                            Click="MenuSettings_Click"
                             Content="&#xE713;"
-                            FontFamily="Segoe MDL2 Assets" Click="MenuSettings_Click" />
+                            FontFamily="Segoe MDL2 Assets" />
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="18"
@@ -174,7 +175,12 @@
                                 Background="{ThemeResource AppBarBackgroundThemeBrush}"
                                 BorderBrush="Black"
                                 BorderThickness="1"
-                                CornerRadius="40" />
+                                CornerRadius="40">
+                                <ProgressRing
+                                    Width="50"
+                                    Height="50"
+                                    IsActive="{Binding IsLoading}" />
+                            </Border>
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 Foreground="Black"
@@ -225,7 +231,9 @@
                         ItemClick="gvRooms_ItemClick"
                         ItemsSource="{Binding Rooms}"
                         Padding="5"
+                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
                         SelectionMode="None"
+                        ShowsScrollingPlaceholders="False"
                         SizeChanged="gvRooms_SizeChanged">
 
                         <ListView.ItemContainerStyle>
@@ -269,4 +277,14 @@
             </ScrollViewer>
         </SplitView>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton
+                x:Name="RefreshMenu"
+                Click="RefreshMenu_Click"
+                Icon="Refresh"
+                Label="Refresh" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
