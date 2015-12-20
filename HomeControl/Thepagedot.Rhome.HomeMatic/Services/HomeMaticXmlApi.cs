@@ -167,7 +167,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                 var datapoints = allStates.Where(s => s.ChannelIseId == channel.IseId);
                 channel.SetState(datapoints);
             }
-        }            
+        }
 
         public async Task UpdateStatesForRoomAsync(Room room)
         {
@@ -230,7 +230,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                         var datapointIseId = Convert.ToInt32(xmlDatapoint.Attribute("ise_id").Value);
                         var datapointValue = xmlDatapoint.Attribute("value").Value;
                         var datapointUnit = xmlDatapoint.Attribute("valueunit").Value;
-                        stateList.Add(new Datapoint(datapointType, datapointIseId, channelIdeId, datapointValue, datapointUnit));                        
+                        stateList.Add(new Datapoint(datapointType, datapointIseId, channelIdeId, datapointValue, datapointUnit));
                     }
                 }
             }

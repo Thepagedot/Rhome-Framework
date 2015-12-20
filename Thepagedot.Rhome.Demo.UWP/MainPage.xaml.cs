@@ -51,5 +51,11 @@ namespace Thepagedot.Rhome.Demo.UWP
             // Navigate to room page
             Frame.Navigate(typeof(RoomPage));
         }
+
+        private void gvRooms_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            // Make sure that the item's width is alsways half the size
+            ((ItemsWrapGrid)gvRooms.ItemsPanelRoot).ItemWidth = e.NewSize.Width / 2 - gvRooms.Padding.Left;
+        }
     }
 }

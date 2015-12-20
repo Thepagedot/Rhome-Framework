@@ -43,28 +43,42 @@
             x:Name="DeviceList"
             Grid.Row="1"
             ItemsSource="{Binding CurrentRoom.Devices}"
-            Padding="0,10,0,0">
+            Padding="0,10,0,0"
+            SelectionMode="None">
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="300" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Text="{Binding Name}" />
 
                         <ListView
                             Grid.Row="1"
-                            Background="Red"
-                            DataContext="{Binding Channels}">
+                            ItemsSource="{Binding Channels}"
+                            SelectionMode="None">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
-                                        <TextBlock Text="Hallo" />
+                                    <Grid Margin="-10,0,0,0">
                                         <controls:ChannelControl HorizontalAlignment="Stretch" Channel="{Binding}" />
                                     </Grid>
-
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>

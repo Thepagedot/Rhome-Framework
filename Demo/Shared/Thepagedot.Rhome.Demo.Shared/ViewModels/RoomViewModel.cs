@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Thepagedot.Rhome.Base.Models;
+using Thepagedot.Rhome.HomeMatic.Models;
 
 namespace Thepagedot.Rhome.Demo.Shared.ViewModels
 {
@@ -18,7 +19,19 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
 
         public RoomViewModel()
         {
+            var room = new HomeMaticRoom("Living room", 0, new List<int>());
+            room.Devices = new List<Device>
+            {
+                new HomeMaticDevice("Testdevice", 0, "")
+                {
+                    Channels = new List<HomeMaticChannel>
+                    {
+                        new Switcher("Testswitcher", 1, 1, "", true)
+                    }
+                }
+            };
 
+            CurrentRoom = room;
         }
 
     }
