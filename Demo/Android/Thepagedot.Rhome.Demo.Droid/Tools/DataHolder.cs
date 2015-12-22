@@ -56,7 +56,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             }
             else
             {
-                Settings.Configuration = new Thepagedot.Rhome.Demo.Shared.Models.ConfigurationSettings();
+                Settings.Configuration = new Thepagedot.Rhome.Demo.Shared.Models.Configuration();
             }
         }
 
@@ -85,12 +85,12 @@ namespace Thepagedot.Rhome.Demo.Droid
             var room3 = new HomeMaticRoom("Bathroom", 0, null);
 
             var device1 = new HomeMaticDevice("Device 1", 0, "");
-            device1.ChannelList.Add(new Switcher("Lamp 1", 0, 0, "", true));
+            device1.Channels.Add(new Switcher("Lamp 1", 0, 0, "", true));
             var device2 = new HomeMaticDevice("Device 2", 0, "");
-            device2.ChannelList.Add(new Shutter("Shutters 1", 0, 0, "", true));
+            device2.Channels.Add(new Shutter("Shutters 1", 0, 0, "", true));
 
-            room1.DeviceList.Add(device1);
-            room1.DeviceList.Add(device2);
+            room1.Devices.Add(device1);
+            room1.Devices.Add(device2);
 
             Rooms.Add(room1);
             Rooms.Add(room2);

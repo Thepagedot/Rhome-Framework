@@ -9,7 +9,7 @@ namespace Thepagedot.Rhome.Demo.Droid
         public static void SetListViewHeightBasedOnChildren(AbsListView listView, float marginBetweenItems) 
         {
             var listAdapter = listView.Adapter;
-            if (listAdapter == null || listAdapter.Count == 0)
+            if (listView == null || listAdapter == null || listAdapter.Count == 0)
                 return;
 
             int desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.Unspecified);

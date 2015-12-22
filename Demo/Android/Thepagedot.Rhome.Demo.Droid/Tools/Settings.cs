@@ -10,7 +10,7 @@ namespace Thepagedot.Rhome.Demo.Droid
 {
     public static class Settings
     {
-        public static ConfigurationSettings Configuration { get; set; }
+        public static Configuration Configuration { get; set; }
 
         private static readonly string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         private static readonly string configurationFileName = "configuration.json";
@@ -44,7 +44,7 @@ namespace Thepagedot.Rhome.Demo.Droid
                     }
                 }
 
-                var conf = JsonConvert.DeserializeObject<ConfigurationSettings>(json, jsonSerializerSettings);             
+                var conf = JsonConvert.DeserializeObject<Configuration>(json, jsonSerializerSettings);             
                 if (conf != null)
                     Configuration = conf;
             }         

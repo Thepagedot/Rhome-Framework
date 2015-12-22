@@ -50,7 +50,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
             gvRooms.Adapter = new RoomAdapter(this, 0, DataHolder.Current.Rooms);
             gvRooms.ItemClick += GvRooms_ItemClick;
-            ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));        
+			ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));        
 
             // Update status
             await DataHolder.Current.Update();
@@ -60,12 +60,13 @@ namespace Thepagedot.Rhome.Demo.Droid
 		{
 			base.OnResume();
 			var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
-			ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));        
-
+			ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));
 		}
 
         async void SlSwipeContainer_Refresh (object sender, EventArgs e)
-        {
+		{
+			var gvRooms = FindViewById<GridView>(Resource.Id.gvRooms);
+			ScollingHelpers.SetListViewHeightBasedOnChildren(gvRooms, Resources.GetDimension(Resource.Dimension.default_margin));
             await DataHolder.Current.Update();
             (sender as SwipeRefreshLayout).Refreshing = false;
         }            

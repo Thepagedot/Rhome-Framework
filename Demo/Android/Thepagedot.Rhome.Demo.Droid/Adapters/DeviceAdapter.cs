@@ -25,11 +25,11 @@ namespace Thepagedot.Rhome.Demo.Droid
                 var homeMaticDevice = (HomeMaticDevice)device;
 
                 // Show low battery indicator, when at leat one channel has low battery
-                if (homeMaticDevice.ChannelList.FirstOrDefault(c => c.IsLowBattery == true) != null)
+                if (homeMaticDevice.Channels.FirstOrDefault(c => c.IsLowBattery == true) != null)
                     view.FindViewById<ImageView>(Resource.Id.ivLowBat).Visibility = ViewStates.Visible;
 
                 // Add channels to the list
-                var channels = homeMaticDevice.ChannelList.Where(c => c.IsVisible).ToList();
+                var channels = homeMaticDevice.Channels.Where(c => c.IsVisible).ToList();
                 var adapter = new HomeMaticChannelAdapter(Context, 0, channels);
                 var lvChannels = view.FindViewById<ListView>(Resource.Id.lvChannels);
                 lvChannels.Adapter = adapter;

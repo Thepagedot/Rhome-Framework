@@ -37,7 +37,7 @@ namespace Thepagedot.Rhome.Demo.Droid
             slSwipeContainer.Refresh += SlSwipeContainer_Refresh;
 
             var lvDevices = FindViewById<ListView>(Resource.Id.lvDevices);
-            lvDevices.Adapter = new DeviceAdapter(this, 0, DataHolder.Current.CurrentRoom.DeviceList);
+            lvDevices.Adapter = new DeviceAdapter(this, 0, DataHolder.Current.CurrentRoom.Devices);
         }
 
         async void SlSwipeContainer_Refresh (object sender, EventArgs e)
