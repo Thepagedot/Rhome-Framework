@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -23,6 +24,20 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
             get { return _Rooms; }
             set { _Rooms = value; RaisePropertyChanged(); }
         }
+
+        private RelayCommand _RefreshCommand;
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                return _RefreshCommand ?? (_RefreshCommand = new RelayCommand(
+                    async () =>
+                    {
+                        await RefreshAsync();
+                    }));
+            }
+        }
+
 
         public MainViewModel(IResourceService resourceService, ILocalStorageService settingsService, HomeControlService homeControlService)
         {
@@ -69,7 +84,7 @@ namespace Thepagedot.Rhome.Demo.Shared.ViewModels
             IsLoading = false;
         }
 
-        public async Task Refresh()
+        public async Task RefreshAsync()
         {
             IsLoaded = false;
             await InitializeAsync();

@@ -95,10 +95,5 @@ namespace Thepagedot.Rhome.Demo.UWP
         }
 
         #endregion
-
-        private async void RefreshMenu_Click(object sender, RoutedEventArgs e)
-        {
-            await App.Bootstrapper.MainViewModel.Refresh();
-        }
     }
 }

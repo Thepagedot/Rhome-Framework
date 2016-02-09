@@ -281,8 +281,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton
-                x:Name="RefreshMenu"
-                Click="RefreshMenu_Click"
+                Command="{Binding RefreshCommand}"
                 Icon="Refresh"
                 Label="Refresh" />
         </CommandBar>
