@@ -1,7 +1,6 @@
 ![logo]
 # Rhome Framework
 Rhome is for for (R)emote (Home) and provides a unified smart home remote control .NET library. We are targeting a solution that unites all major smart home solutions in one layer to tidy up the mess of different manufacturers and apps.
-Additinally a cross platform demo applications demontrate the usage of the library and gives you a neat smart home application for your mobile device.
 
 ## How to use
 To add this library to one of your projects the simplest way might be the [NuGet package](https://www.nuget.org/packages/Thepagedot.Rhome.HomeMatic).
