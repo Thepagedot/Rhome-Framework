@@ -9,6 +9,8 @@ To add this library to one of your projects the simplest way might be the [NuGet
 PM> Install-Package Thepagedot.Rhome.HomeMatic -Pre
 ```
 
+Beside, there is an official [Rhome App](https://github.com/Thepagedot/Rhome-App) that uses the framework and is completely open source. Head over to the repository to see the framework in action and get inspired.
+
 ## Details
 ### Supported Home Control solutions
 - HomeMatic 
