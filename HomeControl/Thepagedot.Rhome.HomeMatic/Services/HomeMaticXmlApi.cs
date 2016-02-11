@@ -150,6 +150,32 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return deviceList;
         }
 
+        public async Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync()
+        {
+            var rooms = await GetRoomsAsync();
+            var devices = await GetDevicesAsync();
+
+            foreach (var device in devices)
+            {
+                foreach (var channel in device.Channels)
+                {
+                    foreach (var room in rooms)
+                    {
+                        if (room.ChannelIds.Contains(channel.IseId))
+                        {
+                            if (!room.Devices.Contains(device))
+                            {
+                                room.Devices.Add(device);
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            return rooms;
+        }
+
         #region Update
 
         public async Task UpdateStatesForRoomsAsync(IEnumerable<Room> rooms)
@@ -188,31 +214,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
         #endregion
 
-        public async Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync()
-        {
-            var rooms = await GetRoomsAsync();
-            var devices = await GetDevicesAsync();
 
-            foreach (var device in devices)
-            {
-                foreach (var channel in device.Channels)
-                {
-                    foreach (var room in rooms)
-                    {
-                        if (room.ChannelIds.Contains(channel.IseId))
-                        {
-                            if (!room.Devices.Contains(device))
-                            {
-                                room.Devices.Add(device);
-                            }
-
-                        }
-                    }
-                }
-            }
-
-            return rooms;
-        }
 
         /// <summary>
         ///
@@ -256,6 +258,34 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 		{
 			throw new NotImplementedException();
 		}
+
+        public async Task<List<SystemVariable>> GetSystemVariablesAsync()
+        {
+            var varList = new List<SystemVariable>();
+
+            // Get xml response from API
+            var url = $"http://{Ccu.Address}/config/xmlapi/sysvarlist.cgi";
+            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
+
+            // Parse xml
+            var xmlVarList = XDocument.Parse(xmlResponse);
+            foreach (var xmlVar in xmlVarList.Descendants("systemVariable"))
+            {
+                var varIseId = Convert.ToInt32(xmlVar.Attribute("ise_id").Value);
+                var varName = xmlVar.Attribute("name").Value;
+                var varVisible = Convert.ToBoolean(xmlVar.Attribute("visible").Value);
+                var varValueType = Convert.ToInt32(xmlVar.Attribute("type").Value);
+                var varValueName0 = xmlVar.Attribute("value_name_0").Value;
+                var varValueName1 = xmlVar.Attribute("value_name_1").Value;
+                var varValue = xmlVar.Attribute("value").Value;
+
+                var variable = new SystemVariable(varIseId, varName, varVisible, varValueType, varValueName0, varValueName1, varValue);
+                varList.Add(variable);
+            }
+
+            return varList;
+        }
+
 
         #region Helper
 
