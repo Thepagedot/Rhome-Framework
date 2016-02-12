@@ -49,6 +49,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return roomList;
         }
 
+
+
         public async Task GetDevicesForRoomAsync(Room room)
         {
             var stateList = await GetAllStatesAsync();
@@ -124,22 +126,22 @@ namespace Thepagedot.Rhome.HomeMatic.Services
                     switch (channelType)
                     {
                         case 17:
-                            channelList.Add(new TemperatureSlider(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
+                            channelList.Add(new TemperatureSlider(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
                             break;
                         case 22:
-                            channelList.Add(new Information(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
+                            channelList.Add(new Information(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
                             break;
                         case 26:
-                            channelList.Add(new Switcher(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
+                            channelList.Add(new Switcher(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
                             break;
                         case 37:
-                            channelList.Add(new Contact(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
+                            channelList.Add(new Contact(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
                             break;
                         case 36:
-                            channelList.Add(new Shutter(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
+                            channelList.Add(new Shutter(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
                             break;
                         case 38:
-                            channelList.Add(new DoorHandle(channelName, channelType, channelIseId, channelAddress, channelIsVisible));
+                            channelList.Add(new DoorHandle(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
                             break;
                     }
                 }
@@ -214,8 +216,6 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
         #endregion
 
-
-
         /// <summary>
         ///
         /// </summary>
@@ -225,6 +225,12 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         public async Task SendChannelUpdateAsync(int id, object value)
         {
             var url = $"http://{Ccu.Address}/config/xmlapi/statechange.cgi?ise_id={id}&new_value={value.ToString().ToLower()}";
+            await Downloader.DownloadWebResponse(url);
+        }
+
+        public async Task RunProgramAsync(int id)
+        {
+            var url = $"http://{Ccu.Address}/config/xmlapi/runprogram.cgi?program_id={id}";
             await Downloader.DownloadWebResponse(url);
         }
 
@@ -292,6 +298,32 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return varList;
         }
 
+        public async Task<List<Program>> GetProgramsAsync()
+        {
+            var programList = new List<Program>();
+
+            // Get xml response from API
+            var url = $"http://{Ccu.Address}/config/xmlapi/programlist.cgi";
+            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
+
+            // Parse xml
+            var xmlProgramList = XDocument.Parse(xmlResponse);
+            foreach (var xmlProgram in xmlProgramList.Descendants("program"))
+            {
+                var id = Convert.ToInt32(xmlProgram.Attribute("id").Value);
+                var active = Convert.ToBoolean(xmlProgram.Attribute("active").Value);
+                var timeStamp = xmlProgram.Attribute("timestamp").Value;
+                var name = xmlProgram.Attribute("name").Value;
+                var description = xmlProgram.Attribute("description").Value;
+                var visible = Convert.ToBoolean(xmlProgram.Attribute("visible").Value);
+                var operate = Convert.ToBoolean(xmlProgram.Attribute("operate").Value);
+
+                var program = new Program(id, active, timeStamp, name, description, visible, operate, this);
+                programList.Add(program);
+            }
+
+            return programList;
+        }
 
         #region Helper
 

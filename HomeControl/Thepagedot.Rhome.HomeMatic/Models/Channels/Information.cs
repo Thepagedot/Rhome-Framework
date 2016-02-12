@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Thepagedot.Rhome.HomeMatic.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -11,15 +12,14 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public string Content { get; set; }
 
         [JsonConstructor]
-        public Information(string name, int type, int iseId, string address, bool isVisible, List<Datapoint> values) : base(name, type, iseId, address, isVisible)
+        public Information(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
-            Values = values;
         }
 
-        public Information(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
-        {
-            Values = new List<Datapoint>();
-        }
+        //public Information(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
+        //{
+        //    Values = new List<Datapoint>();
+        //}
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {

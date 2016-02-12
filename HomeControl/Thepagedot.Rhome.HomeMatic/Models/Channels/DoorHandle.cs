@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Thepagedot.Rhome.HomeMatic.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
     public class DoorHandle : HomeMaticChannel
     {
-		public DoorHandleState State { get; set; }        
+		public DoorHandleState State { get; set; }
 
         [JsonConstructor]
-        public DoorHandle(string name, int type, int iseId, string address, bool isVisible, DoorHandleState state) : base(name, type, iseId, address, isVisible)
+        public DoorHandle(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
-            this.State = state;
         }
 
-        public DoorHandle(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
-        {
-            this.State = DoorHandleState.Closed;
-        }
+        //public DoorHandle(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
+        //{
+        //    this.State = DoorHandleState.Closed;
+        //}
 
         public override void SetState(IEnumerable<Datapoint> datapoints)
         {

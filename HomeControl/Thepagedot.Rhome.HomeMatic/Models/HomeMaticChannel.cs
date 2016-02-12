@@ -2,6 +2,7 @@
 using Thepagedot.Rhome.Base.Models;
 using System.Linq;
 using System;
+using Thepagedot.Rhome.HomeMatic.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
@@ -13,12 +14,16 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 		public bool IsLowBattery { get; set; }
         public bool IsVisible { get; set; }
 
-        protected HomeMaticChannel(string name, int type, int iseId, string address, bool isVisible) : base(name)
+        protected HomeMaticXmlApi _HomeMaticXmlApi;
+
+        protected HomeMaticChannel(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name)
         {
             this.Type = type;
             this.IseId = iseId;
             this.Address = address;
             this.IsVisible = isVisible;
+
+            this._HomeMaticXmlApi = homeMaticXmlApi;
         }
 
 		public override void SetState(IEnumerable<Datapoint> datapoints)

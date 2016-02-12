@@ -16,7 +16,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public string Unit { get; set; }
 
         [JsonConstructor]
-        public TemperatureSlider(string name, int type, int iseId, string address, bool isVisible) : base(name, type, iseId, address, isVisible)
+        public TemperatureSlider(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
             MinValue = 6.0;
             MaxValue = 30.0;
@@ -34,9 +34,9 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             }
         }
 
-        public async Task ChangeTemperatureAsync(int temperature, HomeMaticXmlApi homeMaticXmlApi)
+        public async Task ChangeTemperatureAsync(int temperature)
         {
-            await homeMaticXmlApi.SendChannelUpdateAsync(IseId, temperature);
+            await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, temperature);
         }
 
         //public override void ChangeState(object state)

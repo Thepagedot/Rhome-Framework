@@ -22,6 +22,6 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             this.IseId = iseId;
             this.Address = address;
             this.Channels = new List<HomeMaticChannel>();
-        }        
+        }
     }
 }

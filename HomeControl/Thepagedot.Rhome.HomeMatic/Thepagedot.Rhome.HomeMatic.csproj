@@ -39,18 +39,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Ccu.cs" />
-    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Channels\Contact.cs" />
     <Compile Include="Models\Datapoint.cs" />
-    <Compile Include="Models\DoorHandle.cs" />
+    <Compile Include="Models\Channels\DoorHandle.cs" />
     <Compile Include="Models\HomeMaticChannel.cs" />
     <Compile Include="Models\HomeMaticDevice.cs" />
     <Compile Include="Models\HomeMaticRoom.cs" />
     <Compile Include="Models\HomeMaticSettings.cs" />
-    <Compile Include="Models\Information.cs" />
-    <Compile Include="Models\Shutter.cs" />
-    <Compile Include="Models\Switcher.cs" />
+    <Compile Include="Models\Channels\Information.cs" />
+    <Compile Include="Models\Program.cs" />
+    <Compile Include="Models\Channels\Shutter.cs" />
+    <Compile Include="Models\Channels\Switcher.cs" />
     <Compile Include="Models\SystemVariable.cs" />
-    <Compile Include="Models\TemperatureSlider.cs" />
+    <Compile Include="Models\Channels\TemperatureSlider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HomeMaticXmlApi.cs" />
   </ItemGroup>
