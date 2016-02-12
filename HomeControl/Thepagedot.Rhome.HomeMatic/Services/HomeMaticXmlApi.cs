@@ -271,15 +271,21 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var xmlVarList = XDocument.Parse(xmlResponse);
             foreach (var xmlVar in xmlVarList.Descendants("systemVariable"))
             {
-                var varIseId = Convert.ToInt32(xmlVar.Attribute("ise_id").Value);
-                var varName = xmlVar.Attribute("name").Value;
-                var varVisible = Convert.ToBoolean(xmlVar.Attribute("visible").Value);
-                var varValueType = Convert.ToInt32(xmlVar.Attribute("type").Value);
-                var varValueName0 = xmlVar.Attribute("value_name_0").Value;
-                var varValueName1 = xmlVar.Attribute("value_name_1").Value;
-                var varValue = xmlVar.Attribute("value").Value;
+                var iseId = Convert.ToInt32(xmlVar.Attribute("ise_id").Value);
+                var name = xmlVar.Attribute("name").Value;
+                var value = xmlVar.Attribute("value").Value;
+                var valueList = xmlVar.Attribute("value_list").Value;
+                var min = xmlVar.Attribute("min").Value;
+                var max = xmlVar.Attribute("max").Value;
+                var unit = xmlVar.Attribute("unit").Value;
+                var type = Convert.ToInt32(xmlVar.Attribute("type").Value);
+                var subType = Convert.ToInt32(xmlVar.Attribute("subtype").Value);
+                var visible = Convert.ToBoolean(xmlVar.Attribute("visible").Value);
+                var timeStamp = xmlVar.Attribute("timestamp").Value;
+                var valueName0 = xmlVar.Attribute("value_name_0").Value;
+                var valueName1 = xmlVar.Attribute("value_name_1").Value;
 
-                var variable = new SystemVariable(varIseId, varName, varVisible, varValueType, varValueName0, varValueName1, varValue);
+                var variable = new SystemVariable(iseId, name, value, valueList, min, max, unit, type, subType, visible, timeStamp, valueName0, valueName1);
                 varList.Add(variable);
             }
 
