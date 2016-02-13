@@ -9,7 +9,12 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 {
     public class Switcher : HomeMaticChannel
     {
-        public bool State { get; set; }
+        private bool _State;
+        public bool State
+        {
+            get { return _State; }
+            set { _State = value; RaisePropertyChanged(); }
+        }
 
         [JsonConstructor]
         public Switcher(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)

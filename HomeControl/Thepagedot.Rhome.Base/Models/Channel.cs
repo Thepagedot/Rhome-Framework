@@ -1,6 +1,9 @@
-﻿namespace Thepagedot.Rhome.Base.Models
+﻿using GalaSoft.MvvmLight;
+using System.ComponentModel;
+
+namespace Thepagedot.Rhome.Base.Models
 {
-    public abstract class Channel
+    public abstract class Channel : ViewModelBase
     {
         public string Name { get; set; }
 

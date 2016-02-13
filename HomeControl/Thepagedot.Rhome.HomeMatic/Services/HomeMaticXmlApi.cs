@@ -49,8 +49,6 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return roomList;
         }
 
-
-
         public async Task GetDevicesForRoomAsync(Room room)
         {
             var stateList = await GetAllStatesAsync();
@@ -200,8 +198,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         public async Task UpdateStatesForRoomAsync(Room room)
         {
             var allStates = await GetAllStatesAsync();
-
             var channels = new List<HomeMaticChannel>();
+
             foreach (var device in room.Devices)
                 foreach(var channel in ((HomeMaticDevice)device).Channels)
                     channels.Add(channel);

@@ -12,8 +12,14 @@ namespace Thepagedot.Rhome.HomeMatic.Models
     {
         public double MinValue { get; set; }
         public double MaxValue { get; set; }
-        public double Value { get; set; }
         public string Unit { get; set; }
+
+        private double _Value;
+        public double Value
+        {
+            get { return _Value; }
+            set { _Value = value; RaisePropertyChanged(); }
+        }
 
         [JsonConstructor]
         public TemperatureSlider(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)

@@ -9,7 +9,13 @@ namespace Thepagedot.Rhome.HomeMatic.Models
     public class Information : HomeMaticChannel
     {
         public List<Datapoint> Values { get; set; }
-        public string Content { get; set; }
+
+        private string _Content;
+        public string Content
+        {
+            get { return _Content; }
+            set { _Content = value; RaisePropertyChanged(); }
+        }
 
         [JsonConstructor]
         public Information(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)

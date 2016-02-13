@@ -8,7 +8,12 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 {
     public class DoorHandle : HomeMaticChannel
     {
-		public DoorHandleState State { get; set; }
+        private DoorHandleState _State;
+        public DoorHandleState State
+        {
+            get { return _State; }
+            set { _State = value; RaisePropertyChanged(); }
+        }
 
         [JsonConstructor]
         public DoorHandle(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)

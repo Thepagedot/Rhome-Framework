@@ -11,7 +11,13 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 {
     public class Shutter : HomeMaticChannel
     {
-        public float Level { get; set; }
+        private float _Level;
+        public float Level
+        {
+            get { return _Level; }
+            set { _Level = value; RaisePropertyChanged(); }
+        }
+
         public int StopIseId { get; set; }
 
         [JsonConstructor]
