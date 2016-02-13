@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using Thepagedot.Rhome.Base.Interfaces;
 using Thepagedot.Rhome.Base.Models;
 using Thepagedot.Rhome.Base.Tools;
+using Thepagedot.Rhome.HomeMatic.Misc;
 using Thepagedot.Rhome.HomeMatic.Models;
 
 namespace Thepagedot.Rhome.HomeMatic.Services
@@ -33,7 +34,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var xmlRoomList = XDocument.Parse(xmlResponse);
             foreach (var xmlRoom in xmlRoomList.Descendants("room"))
             {
-                var roomName = xmlRoom.Attribute("name").Value;
+                var roomName = RoomNameResolver.Resolve(xmlRoom.Attribute("name").Value);
                 var roomIseId = Convert.ToInt32(xmlRoom.Attribute("ise_id").Value);
                 var channelIdsForRoomList = new List<int>();
 

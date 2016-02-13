@@ -38,6 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Misc\RoomNameResolver.cs" />
     <Compile Include="Models\Ccu.cs" />
     <Compile Include="Models\Channels\Contact.cs" />
     <Compile Include="Models\Datapoint.cs" />
