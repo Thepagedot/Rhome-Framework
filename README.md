@@ -10,6 +10,9 @@ PM> Install-Package Thepagedot.Rhome.HomeMatic -Pre
 
 Beside, there is an official [Rhome App](https://github.com/Thepagedot/Rhome-App) that uses the framework and is completely open source. Head over to the repository to see the framework in action and get inspired.
 
+## Ideas and Roadmap
+Trello: https://trello.com/b/Nrt0SyCH
+
 ## Details
 ### Supported Home Control solutions
 - HomeMatic 
