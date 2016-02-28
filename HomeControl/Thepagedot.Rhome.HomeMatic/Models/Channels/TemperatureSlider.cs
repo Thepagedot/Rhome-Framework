@@ -40,7 +40,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             }
         }
 
-        public async Task ChangeTemperatureAsync(int temperature)
+        public async Task ChangeTemperatureAsync(double temperature)
         {
             await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, temperature);
         }
