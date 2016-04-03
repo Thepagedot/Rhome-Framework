@@ -67,10 +67,7 @@
   -->
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Thepagedot.Rhome.Base">
-      <HintPath>..\Thepagedot.Rhome.Base\bin\Debug\Thepagedot.Rhome.Base.dll</HintPath>
+      <HintPath>..\..\..\Rhome-App\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616">
       <HintPath>..\..\..\Rhome-App\packages\MvvmLightLibs.5.2.0.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>
@@ -87,19 +84,12 @@
     <None Include="packages.config" />
     <None Include="Thepagedot.Rhome.HomeMatic.nuspec" />
   </ItemGroup>
-  <Target Name="AfterBuild">
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.HomeMatic.dll" DestinationFiles="bin\$(Configuration)\nupkg\lib\dotnet\Thepagedot.Rhome.HomeMatic.dll" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.HomeMatic.pdb" DestinationFiles="bin\$(Configuration)\nupkg\lib\dotnet\Thepagedot.Rhome.HomeMatic.pdb" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.Base.dll" DestinationFiles="bin\$(Configuration)\nupkg\lib\dotnet\Thepagedot.Rhome.Base.dll" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.Base.pdb" DestinationFiles="bin\$(Configuration)\nupkg\lib\dotnet\Thepagedot.Rhome.Base.pdb" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.HomeMatic.dll" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.HomeMatic.dll" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.HomeMatic.pdb" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.HomeMatic.pdb" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.Base.dll" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.Base.dll" />
-    <Copy SkipUnchangedFiles="true" SourceFiles="bin\$(Configuration)\Thepagedot.Rhome.Base.pdb" DestinationFiles="bin\$(Configuration)\nupkg\lib\portable-net45+win8+wpa81+wp8\Thepagedot.Rhome.Base.pdb" />
-  </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\Thepagedot.Rhome.Base\Thepagedot.Rhome.Base.csproj">
+      <Project>{FEF4C43A-4D06-477E-BE6F-8709EA321397}</Project>
+      <Name>Thepagedot.Rhome.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
+  <Import Project="..\..\..\Rhome-App\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\Rhome-App\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>
