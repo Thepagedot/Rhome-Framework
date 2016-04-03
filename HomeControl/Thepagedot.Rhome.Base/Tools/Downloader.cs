@@ -35,7 +35,7 @@ namespace Thepagedot.Rhome.Base.Tools
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             //request.Headers.Add("If-Modified-Since", DateTime.UtcNow.ToString());
             var response = await HttpClient.SendAsync(request);
-            var content = await response.Content.ReadAsStringAsync();           
+            var content = await response.Content.ReadAsStringAsync();
 
             return content;
         }

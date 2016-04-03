@@ -26,25 +26,37 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         {
             get
             {
+                var result = "";
+
                 try
                 {
                     switch (Type)
                     {
                         default:
-                            return Value.ToString();
+                            result = Value.ToString();
+                            break;
                         case 2:
                             if ((bool)Value)
-                                return ValueName1;
+                                result = ValueName1;
                             else
-                                return ValueName0;
+                                result = ValueName0;
+                            break;
                         case 16:
-                            return ValueList.ElementAt(Convert.ToInt32((string)Value));
+                            result = ValueList.ElementAt(Convert.ToInt32((string)Value));
+                            break;
+                    }
+
+                    if (!String.IsNullOrEmpty(Unit))
+                    {
+                        result += $" {Unit}";
                     }
                 }
                 catch (Exception ex)
                 {
-                    return Value.ToString();
+                    result =  Value.ToString();
                 }
+
+                return result;
             }
         }
 
