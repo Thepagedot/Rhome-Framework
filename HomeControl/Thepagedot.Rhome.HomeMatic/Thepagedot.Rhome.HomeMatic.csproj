@@ -51,6 +51,7 @@
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\Channels\Shutter.cs" />
     <Compile Include="Models\Channels\Switcher.cs" />
+    <Compile Include="Models\SystemNotification.cs" />
     <Compile Include="Models\SystemVariable.cs" />
     <Compile Include="Models\Channels\TemperatureSlider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

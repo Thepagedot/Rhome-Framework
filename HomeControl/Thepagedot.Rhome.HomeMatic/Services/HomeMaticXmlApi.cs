@@ -352,6 +352,15 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             return programList;
         }
 
+        public async Task<List<SystemNotification>> GetSystemNotificationsAsync()
+        {
+
+
+
+
+            return null;
+        }
+
         #region Helper
 
         public async Task<bool> CheckConnectionAsync()
