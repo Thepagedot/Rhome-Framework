@@ -8,20 +8,29 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Thepagedot.Rhome.Base.Interfaces;
 using Thepagedot.Rhome.Base.Models;
-using Thepagedot.Rhome.Base.Tools;
 using Thepagedot.Rhome.HomeMatic.Misc;
 using Thepagedot.Rhome.HomeMatic.Models;
+using Thepagedot.Tools;
+using Thepagedot.Tools.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Services
 {
 	public class HomeMaticXmlApi : IHomeControlApi<HomeMaticRoom, HomeMaticDevice, HomeMaticChannel>
     {
         public readonly Ccu Ccu;
-        public bool TestMode = false;
+        public bool IsDemoMode = false;
 
-        public HomeMaticXmlApi(Ccu ccu)
+        private IHttpService _HttpService;
+
+        public HomeMaticXmlApi(Ccu ccu, bool isDemoMode = false, string owner = null)
         {
             this.Ccu = ccu;
+            this.IsDemoMode = isDemoMode;
+
+            _HttpService = new HttpService();
+
+            if (IsDemoMode)
+                _HttpService = new MockedHttpService(owner);
         }
 
         public async Task<IEnumerable<HomeMaticRoom>> GetRoomsAsync()
@@ -29,16 +38,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var roomList = new List<HomeMaticRoom>();
             string xmlResponse;
 
-            if (!TestMode)
-            {
-                // Get xml response from API
-                var url = $"http://{Ccu.Address}/config/xmlapi/roomlist.cgi";
-                xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
-            }
-            else
-            {
-                xmlResponse = DemoEnv.HomeMaticDemoEnv.RoomListLS;
-            }
+            // Get xml response from API
+            var url = $"http://{Ccu.Address}/config/xmlapi/roomlist.cgi";
+            xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 
             // Parse xml
             var xmlRoomList = XDocument.Parse(xmlResponse);
@@ -112,15 +114,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             string xmlResponse;
 
             // Get xml response from API
-            if (!TestMode)
-            {
-                var url = $"http://{Ccu.Address}/config/xmlapi/devicelist.cgi";
-                xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
-            }
-            else
-            {
-                xmlResponse = DemoEnv.HomeMaticDemoEnv.DeviceListLS;
-            }
+            var url = $"http://{Ccu.Address}/config/xmlapi/devicelist.cgi";
+            xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 
             // Parse xml
             var xmlDeviceList = XDocument.Parse(xmlResponse);
@@ -242,13 +237,13 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         public async Task SendChannelUpdateAsync(int id, object value)
         {
             var url = $"http://{Ccu.Address}/config/xmlapi/statechange.cgi?ise_id={id}&new_value={value.ToString().ToLower()}";
-            await Downloader.DownloadWebResponse(url);
+            await _HttpService.GetStringAsync(url);
         }
 
         public async Task RunProgramAsync(int id)
         {
             var url = $"http://{Ccu.Address}/config/xmlapi/runprogram.cgi?program_id={id}";
-            await Downloader.DownloadWebResponse(url);
+            await _HttpService.GetStringAsync(url);
         }
 
         private async Task<List<Datapoint>> GetAllStatesAsync()
@@ -256,16 +251,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
             var stateList = new List<Datapoint>();
             string xmlResponse;
 
-            if (!TestMode)
-            {
-                var url = $"http://{Ccu.Address}/config/xmlapi/statelist.cgi";
-                xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 20));
-
-            }
-            else
-            {
-                xmlResponse = DemoEnv.HomeMaticDemoEnv.StateListLS;
-            }
+            var url = $"http://{Ccu.Address}/config/xmlapi/statelist.cgi";
+            xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 20));
 
             var xmlDeviceList = XDocument.Parse(xmlResponse);
             foreach (XElement xmlDevice in xmlDeviceList.Descendants("device"))
@@ -298,7 +285,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
             // Get xml response from API
             var url = $"http://{Ccu.Address}/config/xmlapi/sysvarlist.cgi";
-            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
+            var xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 
             // Parse xml
             var xmlVarList = XDocument.Parse(xmlResponse);
@@ -331,7 +318,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
             // Get xml response from API
             var url = $"http://{Ccu.Address}/config/xmlapi/programlist.cgi";
-            var xmlResponse = await Downloader.DownloadWebResponse(url, new TimeSpan(0, 0, 0, 60));
+            var xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 
             // Parse xml
             var xmlProgramList = XDocument.Parse(xmlResponse);
@@ -367,7 +354,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
         {
             try
             {
-                await Downloader.DownloadWebResponse($"http://{Ccu.Address}");
+                await _HttpService.GetStringAsync($"http://{Ccu.Address}");
                 Debug.WriteLine("CCU found. IP-Address: " + Ccu.Address);
             }
             catch (WebException e)
@@ -378,7 +365,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
             try
             {
-                XDocument xmlApiVersion = XDocument.Parse(await Downloader.DownloadWebResponse($"http://{Ccu.Address}/addons/xmlapi/version.cgi"));
+                XDocument xmlApiVersion = XDocument.Parse(await _HttpService.GetStringAsync($"http://{Ccu.Address}/addons/xmlapi/version.cgi"));
                 var xElement = xmlApiVersion.Element("version");
                 if (xElement != null)
                 {
