@@ -42,7 +42,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			var url = $"http://{Ccu.Address}/config/xmlapi/roomlist.cgi";
 			xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 			if (xmlResponse == null)
-				return null;
+				return new List<HomeMaticRoom>();
 
 			// Parse xml
 			var xmlRoomList = XDocument.Parse(xmlResponse);
@@ -119,7 +119,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			var url = $"http://{Ccu.Address}/config/xmlapi/devicelist.cgi";
 			xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 			if (xmlResponse == null)
-				return null;
+				return new List<HomeMaticDevice>();
 
 			// Parse xml
 			var xmlDeviceList = XDocument.Parse(xmlResponse);
@@ -290,6 +290,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			// Get xml response from API
 			var url = $"http://{Ccu.Address}/config/xmlapi/sysvarlist.cgi";
 			var xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
+			if (xmlResponse == null)
+				return new List<SystemVariable>();
 
 			// Parse xml
 			var xmlVarList = XDocument.Parse(xmlResponse);
@@ -323,6 +325,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			// Get xml response from API
 			var url = $"http://{Ccu.Address}/config/xmlapi/programlist.cgi";
 			var xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
+			if (xmlResponse == null)
+				return new List<Program>();
 
 			// Parse xml
 			var xmlProgramList = XDocument.Parse(xmlResponse);
@@ -345,10 +349,6 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		public async Task<List<SystemNotification>> GetSystemNotificationsAsync()
 		{
-
-
-
-
 			return null;
 		}
 
@@ -378,27 +378,6 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			}
 
 			return false;
-		}
-
-		public async Task<bool> CheckAvailabilityAsync()
-		{
-			try
-			{
-				XDocument xmlApiVersion = XDocument.Parse(await _HttpService.GetStringAsync($"http://{Ccu.Address}/addons/xmlapi/version.cgi", null, new TimeSpan(0, 0, 10)));
-				var xElement = xmlApiVersion.Element("version");
-				if (xElement != null)
-				{
-					var version = xElement.Value;
-					Debug.WriteLine("XML API found. Version: " + version);
-				}
-			}
-			catch (Exception e)
-			{
-				Debug.WriteLine("ERROR: XML API of the CCU has not been found. Exception: " + e.Message);
-				return false;
-			}
-
-			return true;
 		}
 
 		#endregion
