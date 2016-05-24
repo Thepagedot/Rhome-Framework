@@ -19,6 +19,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		public async Task<string> GetStringAsync(string url, TimeSpan? cacheTime = null, TimeSpan? timeout = null)
 		{
+			if (url.Contains("version.cgi"))
+				return "<?xml version='1.0' encoding='ISO-8859-1' ?><version></version>";
+
 			if (_Owner == "Lars")
 			{
 				if (url.Contains("devicelist.cgi"))

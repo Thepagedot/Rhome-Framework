@@ -356,11 +356,28 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		public async Task<bool> CheckConnectionAsync()
 		{
-			var result = await _HttpService.GetStringAsync($"http://{Ccu.Address}", null, new TimeSpan(0, 0, 10));
+			var result = await _HttpService.GetStringAsync($"http://{Ccu.Address}/addons/xmlapi/version.cgi", null, new TimeSpan(0, 0, 10));
 			if (result == null)
 				return false;
 
-			return true;
+			try
+			{
+				var xmlApiVersion = XDocument.Parse(result);
+				var xElement = xmlApiVersion.Element("version");
+				if (xElement != null)
+				{
+					var version = xElement.Value;
+					Debug.WriteLine("XML API found. Version: " + version);
+					return true;
+				}
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine("ERROR: XML API of the CCU has not been found. Exception: " + e.Message);
+				return false;
+			}
+
+			return false;
 		}
 
 		public async Task<bool> CheckAvailabilityAsync()
