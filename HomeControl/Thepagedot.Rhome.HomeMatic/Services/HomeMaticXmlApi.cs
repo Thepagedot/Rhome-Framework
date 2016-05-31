@@ -15,7 +15,7 @@ using Thepagedot.Tools.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Services
 {
-	public class HomeMaticXmlApi : IHomeControlApi<HomeMaticRoom, HomeMaticDevice, HomeMaticChannel>
+	public class HomeMaticXmlApi : IHomeControlApi
 	{
 		public readonly Ccu Ccu;
 		public bool IsDemoMode = false;
@@ -33,7 +33,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 				_HttpService = new MockedHttpService(owner);
 		}
 
-		public async Task<IEnumerable<HomeMaticRoom>> GetRoomsAsync()
+		public async Task<IEnumerable<Room>> GetRoomsAsync()
 		{
 			var roomList = new List<HomeMaticRoom>();
 			string xmlResponse;
@@ -110,7 +110,7 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			}
 		}
 
-		public async Task<IEnumerable<HomeMaticDevice>> GetDevicesAsync()
+		public async Task<IEnumerable<Device>> GetDevicesAsync()
 		{
 			var deviceList = new List<HomeMaticDevice>();
 			string xmlResponse;
