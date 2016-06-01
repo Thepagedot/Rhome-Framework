@@ -4,7 +4,7 @@ using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.Base.Interfaces
 {
-	public interface IHomeControlApi
+	public interface IHomeControlPlatform
 	{
 		// Rooms
 		Task<IEnumerable<Room>> GetRoomsAsync();
@@ -20,13 +20,20 @@ namespace Thepagedot.Rhome.Base.Interfaces
 		Task SendChannelUpdateAsync(int id, object value);
 		Task<object> GetChannelStateAsync(Channel channel);
 
-		// Update
-		Task UpdateStatesForRoomsAsync(IEnumerable<Room> rooms);
+        // Programs
+        Task<IEnumerable<Program>> GetProgramsAsync();
+
+        // System Variables
+        Task<IEnumerable<SystemVariable>> GetSystemVariablesAsync();
+
+        // Update
+        Task UpdateStatesForRoomsAsync(IEnumerable<Room> rooms);
 		Task UpdateStatesForRoomAsync(Room room);
 
 		// Helper methods
 		Task<bool> CheckConnectionAsync();
-	}
+        Task<IEnumerable<Message>> GetSystemNotificationsAsync();
+    }
 
 	//public interface IHomeControlApi<TRoom, TDevice, TChannel> : IHomeControlApi
 	//{

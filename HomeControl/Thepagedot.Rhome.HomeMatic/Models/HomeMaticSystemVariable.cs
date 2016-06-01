@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.HomeMatic.Models
 {
-    public class SystemVariable
+    public class HomeMaticSystemVariable : SystemVariable
     {
         public int IseId { get; set; }
-        public string Name { get; set; }
-        public dynamic Value { get; set; }
         public List<string> ValueList { get; }
         public double? Min { get; set; }
         public double? Max { get; set; }
@@ -22,7 +21,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public string ValueName0 { get; set; }
         public string ValueName1 { get; set; }
 
-        public string ValueString
+        public new string ValueString
         {
             get
             {
@@ -53,14 +52,14 @@ namespace Thepagedot.Rhome.HomeMatic.Models
                 }
                 catch (Exception ex)
                 {
-                    result =  Value.ToString();
+                    result = Value.ToString();
                 }
 
                 return result;
             }
         }
 
-        public SystemVariable(int iseId, string name, string value, string valueList, string min, string max, string unit, int type, int subtype, bool visible, string timeStamp, string valueName0, string valueName1)
+        public HomeMaticSystemVariable(int iseId, string name, string value, string valueList, string min, string max, string unit, int type, int subtype, bool visible, string timeStamp, string valueName0, string valueName1)
         {
             // Set properties
             IseId = iseId;

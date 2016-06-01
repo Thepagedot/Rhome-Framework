@@ -41,8 +41,10 @@
     <Compile Include="Interfaces\IHomeControlApi.cs" />
     <Compile Include="Models\CentralUnit.cs" />
     <Compile Include="Models\Channel.cs" />
+    <Compile Include="Models\SystemVariable.cs" />
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Program.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

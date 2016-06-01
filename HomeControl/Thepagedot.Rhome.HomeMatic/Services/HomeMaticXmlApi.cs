@@ -15,7 +15,7 @@ using Thepagedot.Tools.Services;
 
 namespace Thepagedot.Rhome.HomeMatic.Services
 {
-	public class HomeMaticXmlApi : IHomeControlApi
+	public class HomeMaticXmlApi : IHomeControlPlatform
 	{
 		public readonly Ccu Ccu;
 		public bool IsDemoMode = false;
@@ -170,8 +170,8 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		public async Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync()
 		{
-			var rooms = await GetRoomsAsync();
-			var devices = await GetDevicesAsync();
+			var rooms = (IEnumerable<HomeMaticRoom>)await GetRoomsAsync();
+			var devices = (IEnumerable<HomeMaticDevice>)await GetDevicesAsync();
 
 			foreach (var device in devices)
 			{
@@ -283,15 +283,15 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			throw new NotImplementedException();
 		}
 
-		public async Task<List<SystemVariable>> GetSystemVariablesAsync()
+		public async Task<IEnumerable<SystemVariable>> GetSystemVariablesAsync()
 		{
-			var varList = new List<SystemVariable>();
+			var varList = new List<HomeMaticSystemVariable>();
 
 			// Get xml response from API
 			var url = $"http://{Ccu.Address}/config/xmlapi/sysvarlist.cgi";
 			var xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 			if (xmlResponse == null)
-				return new List<SystemVariable>();
+				return new List<HomeMaticSystemVariable>();
 
 			// Parse xml
 			var xmlVarList = XDocument.Parse(xmlResponse);
@@ -311,22 +311,22 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 				var valueName0 = xmlVar.Attribute("value_name_0").Value;
 				var valueName1 = xmlVar.Attribute("value_name_1").Value;
 
-				var variable = new SystemVariable(iseId, name, value, valueList, min, max, unit, type, subType, visible, timeStamp, valueName0, valueName1);
+				var variable = new HomeMaticSystemVariable(iseId, name, value, valueList, min, max, unit, type, subType, visible, timeStamp, valueName0, valueName1);
 				varList.Add(variable);
 			}
 
 			return varList;
 		}
 
-		public async Task<List<Program>> GetProgramsAsync()
+		public async Task<IEnumerable<Program>> GetProgramsAsync()
 		{
-			var programList = new List<Program>();
+			var programList = new List<HomeMaticProgram>();
 
 			// Get xml response from API
 			var url = $"http://{Ccu.Address}/config/xmlapi/programlist.cgi";
 			var xmlResponse = await _HttpService.GetStringAsync(url, new TimeSpan(0, 0, 0, 60));
 			if (xmlResponse == null)
-				return new List<Program>();
+				return new List<HomeMaticProgram>();
 
 			// Parse xml
 			var xmlProgramList = XDocument.Parse(xmlResponse);
@@ -340,14 +340,14 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 				var visible = Convert.ToBoolean(xmlProgram.Attribute("visible").Value);
 				var operate = Convert.ToBoolean(xmlProgram.Attribute("operate").Value);
 
-				var program = new Program(id, active, timeStamp, name, description, visible, operate, this);
+				var program = new HomeMaticProgram(id, active, timeStamp, name, description, visible, operate, this);
 				programList.Add(program);
 			}
 
 			return programList;
 		}
 
-		public async Task<List<SystemNotification>> GetSystemNotificationsAsync()
+		public async Task<IEnumerable<Message>> GetSystemNotificationsAsync()
 		{
 			return null;
 		}
@@ -356,12 +356,12 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		public async Task<bool> CheckConnectionAsync()
 		{
-			var result = await _HttpService.GetStringAsync($"http://{Ccu.Address}/addons/xmlapi/version.cgi", null, new TimeSpan(0, 0, 10));
-			if (result == null)
-				return false;
+            try
+            {
+                var result = await _HttpService.GetStringAsync($"http://{Ccu.Address}/addons/xmlapi/version.cgi", null, new TimeSpan(0, 0, 10));
+			    if (result == null)
+				    return false;
 
-			try
-			{
 				var xmlApiVersion = XDocument.Parse(result);
 				var xElement = xmlApiVersion.Element("version");
 				if (xElement != null)
@@ -380,6 +380,6 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			return false;
 		}
 
-		#endregion
-	}
+        #endregion
+    }
 }
