@@ -31,6 +31,7 @@ namespace Thepagedot.Rhome.Base.Interfaces
 		Task UpdateStatesForRoomAsync(Room room);
 
 		// Helper methods
+		string GetName();
 		Task<bool> CheckConnectionAsync();
         Task<IEnumerable<Message>> GetSystemNotificationsAsync();
     }

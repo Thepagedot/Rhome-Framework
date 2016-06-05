@@ -354,6 +354,11 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		#region Helper
 
+		public string GetName()
+		{
+			return "HomeMatic";
+		}
+
 		public async Task<bool> CheckConnectionAsync()
 		{
             try

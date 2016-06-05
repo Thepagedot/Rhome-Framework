@@ -38,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IHomeControlApi.cs" />
+    <Compile Include="Interfaces\IHomeControlPlatform.cs" />
     <Compile Include="Models\CentralUnit.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\SystemVariable.cs" />

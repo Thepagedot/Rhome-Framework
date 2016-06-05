@@ -62,5 +62,10 @@ namespace Thepagedot.Rhome.Hue.Services
         {
             throw new NotImplementedException();
         }
+
+		public string GetName()
+		{
+			return "Philips Hue";
+		}
     }
 }
