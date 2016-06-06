@@ -138,11 +138,13 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 					var channelIseId = Convert.ToInt32(xmlChannel.Attribute("ise_id").Value);
 					var channelAddress = xmlChannel.Attribute("address").Value;
 					var channelIsVisible = Convert.ToBoolean(xmlChannel.Attribute("visible").Value);
+                    var direction = xmlChannel.Attribute("direction").Value;
 
-					switch (channelType)
+                    switch (channelType)
 					{
 						case 17:
-							channelList.Add(new TemperatureSlider(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
+                            if (direction.Equals("SENDER")) // HACK: To hide other sliders
+							    channelList.Add(new TemperatureSlider(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
 							break;
 						case 22:
 							channelList.Add(new Information(channelName, channelType, channelIseId, channelAddress, channelIsVisible, this));
@@ -225,8 +227,10 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 			foreach (var channel in channels)
 			{
 				var datapoints = allStates.Where(s => s.ChannelIseId == channel.IseId);
-				if (datapoints.Any())
-					channel.SetState(datapoints);
+                if (datapoints.Any())
+                    channel.SetState(datapoints);
+                else
+                    channel.IsVisible = false; // Hide channel when no datapoints are available
 			}
 		}
 

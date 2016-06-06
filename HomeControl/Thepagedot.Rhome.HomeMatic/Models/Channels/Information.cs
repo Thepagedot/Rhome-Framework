@@ -31,15 +31,15 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         {
 			base.SetState(datapoints);
 
-			//TODO: This must be called by the UI to give the chance to provide cutsom stings for name
-			// So the content property needs to be deleted and the ui has to build the string out of the list of datapoints and their ToFormateedString(string) methods
+			//TODO: This must be called by the UI to give the chance to provide custom strings for name
+			// So the content property needs to be deleted and the ui has to build the string out of the list of datapoints and their ToFormattedString(string) methods
 
             Content = String.Empty;
             for (int i = 0; i < datapoints.Count(); i++)
             {
                 var datapoint = datapoints.ElementAt(i);
                 Values.Add(datapoint);
-				Content += datapoint.ToString();
+				Content += datapoint.ToFormattedString();
 
                 if (i != datapoints.Count() - 1)
                     Content += "\n";
