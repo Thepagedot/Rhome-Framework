@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Thepagedot.Rhome.Base.Interfaces;
 
 namespace Thepagedot.Rhome.Base.Models
 {
@@ -9,18 +11,26 @@ namespace Thepagedot.Rhome.Base.Models
         public int Floor { get; set; }
 		public List<Device> Devices { get; set; }
 
-        protected Room(string name)
+
         {
             Name = name;
             Floor = 0;
             Devices = new List<Device>();
+
+            _HomeControlPlatform = homeControlPlatform;
         }
 
-        protected Room(string name, Uri imageUrl, List<Device> deviceList)
         {
             Name = name;
             Floor = 0;
             Devices = deviceList;
+
+            _HomeControlPlatform = homeControlPlatform;
+        }
+
+        public async Task UpdateStatesAsync()
+        {
+            await _HomeControlPlatform.UpdateStatesForRoomAsync(this);
         }
     }
 }

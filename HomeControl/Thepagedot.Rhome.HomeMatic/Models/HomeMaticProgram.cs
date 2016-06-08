@@ -16,9 +16,9 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public bool Visible { get; set; }
         public bool Operate { get; set; }
 
-        private HomeMaticXmlApi _HomeMaticXmlApi;
+        private HomeMaticXmlApiAdapter _HomeMaticXmlApi;
 
-        public HomeMaticProgram(int id, bool active, string timeStamp, string name, string description, bool visible, bool operate, HomeMaticXmlApi homeMaticXmlApi)
+        public HomeMaticProgram(int id, bool active, string timeStamp, string name, string description, bool visible, bool operate, HomeMaticXmlApiAdapter homeMaticXmlApi)
         {
             Id = id;
             Active = active;

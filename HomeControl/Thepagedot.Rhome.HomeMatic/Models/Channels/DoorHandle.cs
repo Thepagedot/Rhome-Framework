@@ -16,7 +16,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         }
 
         [JsonConstructor]
-        public DoorHandle(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
+        public DoorHandle(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApiAdapter homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
         }
 

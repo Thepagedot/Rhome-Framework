@@ -18,7 +18,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         }
 
         [JsonConstructor]
-        public Information(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
+        public Information(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApiAdapter homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
         }
 

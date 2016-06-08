@@ -4,7 +4,7 @@ using Thepagedot.Rhome.Base.Models;
 
 namespace Thepagedot.Rhome.Base.Interfaces
 {
-	public interface IHomeControlPlatform
+	public interface IHomeControlAdapter
 	{
 		// Rooms
 		Task<IEnumerable<Room>> GetRoomsAsync();

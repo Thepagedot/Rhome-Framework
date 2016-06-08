@@ -21,7 +21,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         public int StopIseId { get; set; }
 
         [JsonConstructor]
-        public Shutter(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
+        public Shutter(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApiAdapter homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
         }
 

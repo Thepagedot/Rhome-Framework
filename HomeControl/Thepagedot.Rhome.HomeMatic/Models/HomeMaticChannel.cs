@@ -14,9 +14,9 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 		public bool IsLowBattery { get; set; }
         public bool IsVisible { get; set; }
 
-        protected HomeMaticXmlApi _HomeMaticXmlApi;
+        protected HomeMaticXmlApiAdapter _HomeMaticXmlApi;
 
-        protected HomeMaticChannel(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name)
+        protected HomeMaticChannel(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApiAdapter homeMaticXmlApi) : base(name)
         {
             this.Type = type;
             this.IseId = iseId;
@@ -28,13 +28,13 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
 		public override void SetState(IEnumerable<Datapoint> datapoints)
 		{
-			// Set IsLowbattery
-			var lowBatPoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.LOWBAT);
-			if (lowBatPoint != null)
-				IsLowBattery = Convert.ToBoolean(lowBatPoint.Value);
-
             // Set invisible when no datapoints available
             IsVisible = datapoints.Any();
+
+            // Set IsLowbattery
+            var lowBatPoint = datapoints.FirstOrDefault(d => d.Type == DatapointType.LOWBAT);
+			if (lowBatPoint != null)
+				IsLowBattery = Convert.ToBoolean(lowBatPoint.Value);
 		}
     }
 }

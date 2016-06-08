@@ -17,7 +17,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
         }
 
         [JsonConstructor]
-        public Switcher(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApi homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
+        public Switcher(string name, int type, int iseId, string address, bool isVisible, HomeMaticXmlApiAdapter homeMaticXmlApi) : base(name, type, iseId, address, isVisible, homeMaticXmlApi)
         {
         }
 
