@@ -204,9 +204,10 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 			var channels = new List<HomeMaticChannel>();
 			foreach (var room in rooms)
-				foreach (var device in room.Devices)
-					foreach (var channel in ((HomeMaticDevice)device).Channels)
-						channels.Add(channel);
+                if (room is HomeMaticRoom)
+				    foreach (var device in room.Devices)
+					    foreach (var channel in ((HomeMaticDevice)device).Channels)
+						    channels.Add(channel);
 
 			foreach (var channel in channels)
 			{
@@ -217,6 +218,9 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 
 		public async Task UpdateStatesForRoomAsync(Room room)
 		{
+            if (!(room is HomeMaticRoom))
+                return;
+
 			var allStates = await GetAllStatesAsync();
 			var channels = new List<HomeMaticChannel>();
 

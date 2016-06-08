@@ -7,7 +7,6 @@ namespace Thepagedot.Rhome.Base.Models
     {
         public string Name { get; set; }
         public int Floor { get; set; }
-        public Uri ImageUrl { get; set; }
 		public List<Device> Devices { get; set; }
 
         protected Room(string name)
@@ -17,18 +16,9 @@ namespace Thepagedot.Rhome.Base.Models
             Devices = new List<Device>();
         }
 
-		protected Room(string name, Uri imageUrl)
-        {
-            Name = name;
-		    ImageUrl = imageUrl;
-            Floor = 0;
-			Devices = new List<Device> ();
-        }
-
         protected Room(string name, Uri imageUrl, List<Device> deviceList)
         {
             Name = name;
-            ImageUrl = imageUrl;
             Floor = 0;
             Devices = deviceList;
         }
