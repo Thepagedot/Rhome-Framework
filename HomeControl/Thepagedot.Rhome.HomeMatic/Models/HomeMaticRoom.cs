@@ -23,12 +23,5 @@ namespace Thepagedot.Rhome.HomeMatic.Models
             ChannelIds = channelIdList;
             Devices = new List<Device>();
         }
-
-		public HomeMaticRoom (string name, Uri imageUrl, int iseId) : base(name, imageUrl)
-		{
-			IseId = iseId;
-            ChannelIds = new List<int>();
-			Devices = new List<Device>();
-		}        
     }
 }
