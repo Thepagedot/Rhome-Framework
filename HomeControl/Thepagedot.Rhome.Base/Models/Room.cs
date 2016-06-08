@@ -11,7 +11,9 @@ namespace Thepagedot.Rhome.Base.Models
         public int Floor { get; set; }
 		public List<Device> Devices { get; set; }
 
+        protected IHomeControlAdapter _HomeControlPlatform;
 
+        protected Room(string name, IHomeControlAdapter homeControlPlatform)
         {
             Name = name;
             Floor = 0;
@@ -20,6 +22,7 @@ namespace Thepagedot.Rhome.Base.Models
             _HomeControlPlatform = homeControlPlatform;
         }
 
+        protected Room(string name, Uri imageUrl, List<Device> deviceList, IHomeControlAdapter homeControlPlatform)
         {
             Name = name;
             Floor = 0;
