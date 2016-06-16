@@ -50,7 +50,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
                         result += $" {Unit}";
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     result = Value.ToString();
                 }
@@ -117,7 +117,7 @@ namespace Thepagedot.Rhome.HomeMatic.Models
                         break;
                 }
             }
-            catch (FormatException fex)
+            catch (FormatException)
             {
                 Value = value;
             }
