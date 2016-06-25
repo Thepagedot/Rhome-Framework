@@ -17,7 +17,7 @@ namespace Thepagedot.Rhome.Base.Interfaces
 		Task<IEnumerable<Room>> GetRoomsWidthDevicesAsync();
 
 		// States
-		Task SendChannelUpdateAsync(int id, object value);
+		Task<bool> SendChannelUpdateAsync(int id, object value);
 		Task<object> GetChannelStateAsync(Channel channel);
 
         // Programs

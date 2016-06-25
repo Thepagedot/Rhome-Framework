@@ -37,17 +37,20 @@ namespace Thepagedot.Rhome.HomeMatic.Models
 
         public async Task OnAsync()
         {
-            await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, true);
+            if (await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, true));
+                State = true;
         }
 
         public async Task OffAsync()
         {
-            await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, false);
+            if (await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, false));
+                State = false;
         }
 
         public async Task SetStateAsync(bool state)
         {
-            await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, state);
+            if(await _HomeMaticXmlApi.SendChannelUpdateAsync(IseId, state));
+                State = state;
         }
     }
 }

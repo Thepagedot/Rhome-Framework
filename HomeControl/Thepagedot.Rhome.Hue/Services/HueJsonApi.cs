@@ -9,11 +9,11 @@ using Thepagedot.Rhome.Hue.Models;
 
 namespace Thepagedot.Rhome.Hue.Services
 {
-    public class HueJsonApi : IHomeControlApi
+	public class HueJsonAdapter : IHomeControlAdapter
     {
 		private readonly Bridge Bridge;
 
-		public HueJsonApi (Bridge bridge)
+		public HueJsonAdapter (Bridge bridge)
 		{
 			this.Bridge = bridge;
 		}
@@ -67,5 +67,20 @@ namespace Thepagedot.Rhome.Hue.Services
 		{
 			return "Philips Hue";
 		}
-    }
+
+		public Task<IEnumerable<Program>> GetProgramsAsync()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<IEnumerable<SystemVariable>> GetSystemVariablesAsync()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<IEnumerable<Message>> GetSystemNotificationsAsync()
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

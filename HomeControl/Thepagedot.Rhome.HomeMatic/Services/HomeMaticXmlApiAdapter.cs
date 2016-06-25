@@ -243,10 +243,33 @@ namespace Thepagedot.Rhome.HomeMatic.Services
 		/// <param name="id">Ise ID of the channel to update</param>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public async Task SendChannelUpdateAsync(int id, object value)
+		public async Task<bool> SendChannelUpdateAsync(int id, object value)
 		{
+            var success = false;
 			var url = $"http://{Ccu.Address}/config/xmlapi/statechange.cgi?ise_id={id}&new_value={value.ToString().ToLower()}";
-			await _HttpService.GetStringAsync(url);
+			var result = await _HttpService.GetStringAsync(url);
+
+            try
+            {
+                var resultXml = XDocument.Parse(result);
+
+                foreach (var changedXml in resultXml.Descendants("changed"))
+                {
+                    var idAttr = changedXml.Attribute("id");
+                    var newValAttr = changedXml.Attribute("new_value");
+
+                    if (idAttr.Value.Equals(id.ToString(), StringComparison.OrdinalIgnoreCase) && newValAttr.Value.Equals(value.ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        success = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                success = false;
+            }
+
+            return success;
 		}
 
 		public async Task RunProgramAsync(int id)
